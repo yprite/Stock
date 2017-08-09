@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<manifest xmlns="http://tizen.org/ns/packages" api-version="3.0" package="team.tizenia.w-stock-alarm" version="1.0.0">
+    <profile name="wearable"/>
+    <ui-application appid="team.tizenia.w-stock-alarm" exec="w-stock-alarm" hw-acceleration="on" multiple="false" nodisplay="false" taskmanage="true" type="capp">
+        <label>w-stock-alarm</label>
+        <icon>w-stock-alarm.png</icon>
+    </ui-application>
+    <privileges>
+        <privilege>http://tizen.org/privilege/network.get</privilege>
+        <privilege>http://tizen.org/privilege/internet</privilege>
+    </privileges>
+</manifest>

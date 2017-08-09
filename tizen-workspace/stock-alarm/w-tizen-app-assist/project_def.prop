@@ -1,0 +1,11 @@
+APPNAME = w-tizen-app-assist
+
+type = sharedLib
+profile = wearable-3.0
+
+USER_SRCS = src/w-tizen-app-assist.c
+USER_DEFS =
+USER_INC_DIRS = inc
+USER_OBJS =
+USER_LIBS =
+USER_EDCS =

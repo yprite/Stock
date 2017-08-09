@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tproject xmlns="http://www.tizen.org/tproject">
+    <platforms>
+        <platform>
+            <name>wearable-3.0</name>
+        </platform>
+    </platforms>
+    <package>
+        <blacklist/>
+        <referencedProject project="w-stock-alarm-common" path="lib"/>
+        <referencedProject project="w-stock-alarm-ui-common" path="lib"/>
+        <referencedProject project="w-tizen-app-assist" path="lib"/>
+        <resFallback autoGen="true"/>
+        <subProjects>
+            <tizenProject project="w-stock-alarm-service"/>
+            <tizenProject project="w-stock-alarm-widget"/>
+        </subProjects>
+    </package>
+</tproject>

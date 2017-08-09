@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns="http://tizen.org/ns/packages" package="team.tizenia.w-stock-alarm-widget" api-version="3.0" version="1.0.0">
+	<profile name="wearable" />
+	<widget-application appid="team.tizenia.w-stock-alarm-widget" exec="w-stock-alarm-widget" main="true" update-period="0" >
+		<icon>icon.png</icon>
+		<label>w-stock-alarm-widget</label>
+		<support-size preview="preview.png">2x2</support-size>
+	</widget-application>
+</manifest>
