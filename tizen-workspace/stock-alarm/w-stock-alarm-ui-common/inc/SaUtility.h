@@ -12,12 +12,12 @@
 
 class WAPP_ASSIST_EXPORT SaUtility
 {
-    public:
-        SaUtility();
-        virtual ~SaUtility();
+public:
+    SaUtility();
+    virtual ~SaUtility();
 
-    public:
-        static void convertHexColorToRGBA(char const *hexCode, int *r, int *g, int *b);
+public:
+    static void convertHexColorToRGBA(char const *hexCode, int *r, int *g, int *b);
 };
 
 #endif /* SAUTILITY_H_ */

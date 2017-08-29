@@ -6,6 +6,8 @@
  */
 
 #include "SaServiceApp.h"
+#include "SaDataProvider.h"
+#include "NetConnection.h"
 #include "SaServiceDebug.h"
 
 #include <app_manager.h>
@@ -36,6 +38,10 @@ bool SaServiceApp::onCreate()
         WERROR("app_manager_set_app_context_event_cb failed. (%d)", ret);
     }
 
+    // initialize singleton object
+    SaDataProvider::getInstance()->initialize();
+    NetConnection::getInstance()->initialize();
+
     return true;
 }
 
@@ -43,6 +49,8 @@ void SaServiceApp::onTerminate()
 {
     WENTER();
 
+    SaDataProvider::getInstance()->finalize();
+    NetConnection::getInstance()->finalize();
     app_manager_unset_app_context_event_cb();
 }
 

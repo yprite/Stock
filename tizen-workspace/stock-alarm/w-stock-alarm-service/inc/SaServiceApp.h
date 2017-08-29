@@ -13,21 +13,17 @@
 
 class SaServiceApp : public app_assist::WServiceApp
 {
-    public:
-        SaServiceApp();
-        virtual ~SaServiceApp();
+public:
+    SaServiceApp();
+    virtual ~SaServiceApp();
 
-    private:
-        virtual bool onCreate() override;
-        virtual void onTerminate() override;
-        virtual void onAppControl(app_control_h request, bool firstLaunch) override;
+private:
+    virtual bool onCreate() override;
+    virtual void onTerminate() override;
+    virtual void onAppControl(app_control_h request, bool firstLaunch) override;
 
-    private:
-        static void _onAppContextEventChanged(app_context_h appContext, app_context_event_e event, void *userData);
-//
-//    private:
-//        bool _isAppAlive;
-//        bool _isWidgetAlive;
+private:
+    static void _onAppContextEventChanged(app_context_h appContext, app_context_event_e event, void *userData);
 };
 
 #endif /* _SA_SERVICE_APP_H_ */

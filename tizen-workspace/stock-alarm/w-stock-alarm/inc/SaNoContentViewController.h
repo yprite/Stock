@@ -12,17 +12,17 @@
 
 class SaNoContentViewController: public app_assist::WContentViewController
 {
-    public:
-        SaNoContentViewController();
-        virtual ~SaNoContentViewController();
+public:
+    SaNoContentViewController();
+    virtual ~SaNoContentViewController();
 
-    private:
-        virtual Evas_Object* onCreateView(Evas_Object* parent, void* viewParam) override;
-        virtual void onCreated() override;
-        virtual void onPushed(Elm_Object_Item* naviItem) override;
-        virtual void onDestroy() override;
-        virtual bool onPop() override;
-        virtual void onBecomeTop() override;
+private:
+    virtual Evas_Object* onCreateView(Evas_Object* parent, void* viewParam) override;
+    virtual void onCreated() override;
+    virtual void onPushed(Elm_Object_Item* naviItem) override;
+    virtual void onDestroy() override;
+    virtual bool onPop() override;
+    virtual void onBecomeTop() override;
 };
 
 #endif /* _SA_NO_CONTENT_VIEW_CONTROLLER_H_ */

@@ -10,9 +10,9 @@
 
 class SaBaseListViewController
 {
-    public:
-        SaBaseListViewController();
-        virtual ~SaBaseListViewController();
+public:
+    SaBaseListViewController();
+    virtual ~SaBaseListViewController();
 };
 
 #endif /* SABASELISTVIEWCONTROLLER_H_ */

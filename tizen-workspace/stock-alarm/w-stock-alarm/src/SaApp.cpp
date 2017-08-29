@@ -10,6 +10,7 @@
 #include "WWindowController.h"
 #include "WNaviframeController.h"
 #include "SaNoContentViewController.h"
+#include "SaDataConsumer.h"
 #include "SaDebug.h"
 
 #include <Elementary.h>
@@ -27,6 +28,10 @@ SaApp::SaApp()
 SaApp::~SaApp()
 {
     // TODO Auto-generated destructor stub
+}
+
+void foo(char **str)
+{
 }
 
 bool SaApp::onCreate()
@@ -53,21 +58,24 @@ bool SaApp::onCreate()
 //    ScRotaryManager::getInstance()->initialize(getWindowController()->getConformantEvasObject());
 //
 //    // init service application
-//    app_control_h appControl = nullptr;
-//    app_control_create(&appControl);
-//    app_control_set_operation(appControl, APP_CONTROL_OPERATION_DEFAULT);
-//    app_control_set_app_id(appControl, "com.samsung.w-samsung-connect-service");
-//    app_control_send_launch_request(appControl, NULL, NULL);
-//    app_control_destroy(appControl);
+    app_control_h appControl = nullptr;
+    app_control_create(&appControl);
+    app_control_set_operation(appControl, APP_CONTROL_OPERATION_DEFAULT);
+    app_control_set_app_id(appControl, "team.tizenia.w-stock-alarm-service");
+    app_control_send_launch_request(appControl, NULL, NULL);
+    app_control_destroy(appControl);
 //
 //    ScDataExchangeConsumer::getInstance().init();
 
+    // initialize singleton object
+    SaDataConsumer::getInstance()->initialize();
     return true;
 }
 
 void SaApp::onTerminate()
 {
     //  ScRotaryManager::getInstance()->finalize();
+   	SaDataConsumer::getInstance()->finalize();
 }
 
 void SaApp::onAppControl(app_control_h request, bool firstLaunch)

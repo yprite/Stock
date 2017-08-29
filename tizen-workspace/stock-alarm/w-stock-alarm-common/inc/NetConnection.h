@@ -60,8 +60,11 @@ public:
         UNKNWON
     };
 
-    NetConnection();
-    virtual ~NetConnection();
+    static NetConnection* getInstance();
+    static void destroy();
+
+    int initialize();
+    int finalize();
 
     NetConnection::NetState getNetworkState() const;
     NetConnection::CellularState getCellularState() const;
@@ -73,6 +76,9 @@ public:
     void setOnIpAddressChangedCb(const std::function<void(const char *ipv4_address, const char *ipv6_address)>& ipChangedCb);
 
 private:
+    NetConnection();
+    virtual ~NetConnection();
+
     void _setConnectionCallback();
     void _unsetConnectionCallback();
 
@@ -81,6 +87,7 @@ private:
     static void _onIpAddressChanged(const char* ipv4_address, const char* ipv6_address, void* userData);
 
 private:
+    static NetConnection* _instance;
     connection_h _conHandler;
 
     std::function<void(NetConnection::NetState type)> _connectionChangedCb;

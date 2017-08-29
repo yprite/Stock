@@ -1,44 +1,33 @@
 /*
  * AppEventManager.h
  *
- *  Created on: Dec 13, 2016
- *      Author: gabin
+ *  Created on: Aug 21, 2017
+ *      Author: devbin
  */
 
-#ifndef _APP_EVENT_MANAGER_H_
-#define _APP_EVENT_MANAGER_H_
+#ifndef APPEVENTMANAGER_H_
+#define APPEVENTMANAGER_H_
 
-#include "WDefine.h"
-#include "WSignal.h"
+#include "AppEventListener.h"
 #include "Singleton.h"
+#include "WDefine.h"
 
 class WAPP_ASSIST_EXPORT AppEventManager
 {
-SINGLETON_IDIOM(AppEventManager);
+    SINGLETON_IDIOM(AppEventManager);
+
 public:
-    enum class EventType
-    {
-        FONT_CHANGED = 0,
-        COLOR_CHANGED,
-        TIME_CHANGED,
-        LANGUAGE_CHANGED,
-        REGION_FORMAT_CHANGED,
-        APP_PAUSED,
-        APP_RESUMED,
-    };
-public:
-    app_assist::WSignal_ListenerId addListener(const std::function<void(AppEventManager::EventType typ)>& listener);
+    app_assist::WSignal_ListenerId addListener(
+            const std::function<void(AppEventListener::EventType eventType)>& listener);
     void removeListener(app_assist::WSignal_ListenerId id);
-    void propagateEvent(AppEventManager::EventType eventType);
+    void propagateEvent(AppEventListener::EventType eventType);
 
 protected:
     AppEventManager();
     virtual ~AppEventManager();
 
 private:
-    WDISABLE_COPY_AND_ASSIGN(AppEventManager);
-private:
-    app_assist::WSignal<void(AppEventManager::EventType)> _eventSignal;
+    app_assist::WSignal<void(AppEventListener::EventType)> _eventSignal;
 };
 
-#endif /* _APP_EVENT_MANAGER_H_ */
+#endif /* APPEVENTMANAGER_H_ */

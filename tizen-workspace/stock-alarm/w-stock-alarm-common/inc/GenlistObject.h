@@ -27,47 +27,47 @@
 
 class WAPP_ASSIST_EXPORT GenlistObject: public app_assist::WViewController
 {
-    public:
-        GenlistObject();
-        virtual ~GenlistObject();
+public:
+    GenlistObject();
+    virtual ~GenlistObject();
 
-        Elm_Object_Item* addItem(app_assist::WGenlistItem *item, Evas_Smart_Cb selectCb = nullptr);
-        Elm_Object_Item* addItemAfter(app_assist::WGenlistItem *current, app_assist::WGenlistItem *item, Evas_Smart_Cb selectCb = nullptr);
-        Elm_Object_Item* addTitleItem(app_assist::WGenlistItem *item, Evas_Smart_Cb selectCb = nullptr);
-        Elm_Object_Item* addGroupItem(app_assist::WGenlistItem *item);
-        Elm_Object_Item* addPaddingItem(app_assist::WGenlistItem *item);
+    Elm_Object_Item* addItem(app_assist::WGenlistItem *item, Evas_Smart_Cb selectCb = nullptr);
+    Elm_Object_Item* addItemAfter(app_assist::WGenlistItem *current, app_assist::WGenlistItem *item, Evas_Smart_Cb selectCb = nullptr);
+    Elm_Object_Item* addTitleItem(app_assist::WGenlistItem *item, Evas_Smart_Cb selectCb = nullptr);
+    Elm_Object_Item* addGroupItem(app_assist::WGenlistItem *item);
+    Elm_Object_Item* addPaddingItem(app_assist::WGenlistItem *item);
 
-        app_assist::WGenlistItem* getFirstItem();
-        app_assist::WGenlistItem* getLastItem();
-        app_assist::WGenlistItem* getNextItem(app_assist::WGenlistItem *item);
-        app_assist::WGenlistItem* getPrevItem(app_assist::WGenlistItem *item);
+    app_assist::WGenlistItem* getFirstItem();
+    app_assist::WGenlistItem* getLastItem();
+    app_assist::WGenlistItem* getNextItem(app_assist::WGenlistItem *item);
+    app_assist::WGenlistItem* getPrevItem(app_assist::WGenlistItem *item);
 
-        void clear();
-        void setHomogeneousMode(bool value);
-        //void setRealizationMode(bool value);
+    void clear();
+    void setHomogeneousMode(bool value);
+    //void setRealizationMode(bool value);
 
-        void setCustomTheme(const char *themePath);
+    void setCustomTheme(const char *themePath);
 
-    private:
-        virtual Evas_Object* onCreateView(Evas_Object *parent, void *param);
+private:
+    virtual Evas_Object* onCreateView(Evas_Object *parent, void *param);
 
-    protected:
-        // if you want to some actions,
-        // please override under functions.
-        virtual void onCreated();
-        virtual void onDestroy();
+protected:
+    // if you want to some actions,
+    // please override under functions.
+    virtual void onCreated();
+    virtual void onDestroy();
 
-        virtual void onLongpressed(Elm_Object_Item *item);
+    virtual void onLongpressed(Elm_Object_Item *item);
 
-    protected:
-        // when you want to custom theme, call under functions.
-        void _initTheme(const char *themePath);
-        void _finalTheme();
+protected:
+    // when you want to custom theme, call under functions.
+    void _initTheme(const char *themePath);
+    void _finalTheme();
 
-    private:
-        Elm_Theme *_theme;
-        bool _isHomogeneousMode;
-        //bool _isRealizationMode;
+private:
+    Elm_Theme *_theme;
+    bool _isHomogeneousMode;
+    //bool _isRealizationMode;
 };
 
 #endif /* _SC_GENLIST_OBJECT_H_ */

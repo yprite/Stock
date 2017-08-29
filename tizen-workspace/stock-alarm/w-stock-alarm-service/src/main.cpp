@@ -7,14 +7,14 @@
 
 #include "SaServiceApp.h"
 #include "SaServiceDebug.h"
-#include "SaProvider.h"
+//#include "SaProvider.h"
 
 int main(int argc, char **argv)
 {
     //yql_test();
-    SaProvider::getInstance()->initialize();
-    SaProvider::getInstance()->getFinanceQuatesList("APPL");
-    SaProvider::getInstance()->getFinanceQuatesList("GOOGL");
+    //SaProvider::getInstance()->initialize();
+    //SaProvider::getInstance()->getFinanceQuatesList("APPL");
+    //SaProvider::getInstance()->getFinanceQuatesList("GOOGL");
     //SaProvider::getInstance()->getFinanceQuatesList("APPL");
     SaServiceApp app;
 

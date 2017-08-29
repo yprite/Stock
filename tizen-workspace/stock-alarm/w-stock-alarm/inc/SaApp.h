@@ -12,16 +12,16 @@
 
 class SaApp: public app_assist::WApp
 {
-    public:
-        SaApp();
-        virtual ~SaApp();
+public:
+    SaApp();
+    virtual ~SaApp();
 
-    private:
-        virtual bool onCreate() override;
-        virtual void onTerminate() override;
-        virtual void onAppControl(app_control_h request, bool firstLaunch) override;
-        virtual void onPause() override;
-        virtual void onResume() override;
+private:
+    virtual bool onCreate() override;
+    virtual void onTerminate() override;
+    virtual void onAppControl(app_control_h request, bool firstLaunch) override;
+    virtual void onPause() override;
+    virtual void onResume() override;
 };
 
 #endif /* _SA_APP_H_ */

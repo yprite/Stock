@@ -13,32 +13,56 @@
 
 #define LOG_TAG "NetConnection"
 
-NetConnection::NetConnection()
-{
-    _conHandler = nullptr;
-    _connectionChangedCb = nullptr;
-    _ipChangedCb = nullptr;
+NetConnection* NetConnection::_instance = nullptr;
 
+NetConnection* NetConnection::getInstance()
+{
+    if (!_instance)
+        _instance = new NetConnection();
+
+    return _instance;
+}
+void NetConnection::destroy()
+{
+    if (_instance)
+        delete _instance;
+    _instance = nullptr;
+}
+
+int NetConnection::initialize()
+{
     int err = connection_create(&_conHandler);
 
     if (err != CONNECTION_ERROR_NONE)
     {
         WERROR("connection_create failed.(%d)", err);
+        return -1;
     }
-    else
-    {
-        _setConnectionCallback();
-    }
+    _setConnectionCallback();
 
+    return 0;
 }
-
-NetConnection::~NetConnection()
+int NetConnection::finalize()
 {
     if (_conHandler)
     {
         _unsetConnectionCallback();
         connection_destroy(_conHandler);
+        _conHandler = nullptr;
     }
+    return 0;
+}
+
+NetConnection::NetConnection()
+{
+    _conHandler = nullptr;
+    _connectionChangedCb = nullptr;
+    _ipChangedCb = nullptr;
+}
+
+NetConnection::~NetConnection()
+{
+
 }
 
 void NetConnection::setOnConnectionTypeChangedCb(const std::function<void(NetConnection::NetState type)>& connectionChangedCb)

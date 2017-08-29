@@ -4,35 +4,55 @@
 <SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"></SignatureMethod>
 <Reference URI="author-signature.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>HYHen2zJRKUkxlQaEb/1whqNk2cKvXyVOZwXRqXAdD8=</DigestValue>
+<DigestValue>ctnMJDCRYM3MyUFRG/P5GwUEifWTfY8x+X65ym+F+Fo=</DigestValue>
 </Reference>
 <Reference URI="bin%2Fw-stock-alarm">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>nA5Cy5sKYQDWS9vQWG310r7tsr+TYGX5lb+g0XoGt5E=</DigestValue>
+<DigestValue>Zfmmg+fwuOQ6Vdv8RCPNdTSwUM8pHZZi7IGxJa9Eqzc=</DigestValue>
 </Reference>
 <Reference URI="bin%2Fw-stock-alarm-service">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>zbEis1PWI/Y6VrifjQ3ZPnAXrl3f4L2pH4Gc4BVJltc=</DigestValue>
+<DigestValue>4AkkhnDFE37bnls0oea7SeOYCMrrlpPEStWpIGIcMUo=</DigestValue>
 </Reference>
 <Reference URI="bin%2Fw-stock-alarm-widget">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>YQvjcqX4RstlQ07LKTEYzpzMNjNlfBjBWrNcR5jPyJ4=</DigestValue>
+<DigestValue>dRcOI1tjnWltZeav9AeXYsVmibCzhF0l1rDEnVXJhYo=</DigestValue>
 </Reference>
 <Reference URI="lib%2Flibw-stock-alarm-common.so">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>VtqUe+mYBDQ8whQBpHrbE7Y/kHmNkRKB6eVHvdR5lD0=</DigestValue>
+<DigestValue>2cNc7IhROf4kJPj95Lt7kf3zrVABzEmLmGpjNaPBbNQ=</DigestValue>
 </Reference>
 <Reference URI="lib%2Flibw-stock-alarm-ui-common.so">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>knhfjXKIyIcU6FBznBPrb9jNETeo+TP0N5hw0btS8vE=</DigestValue>
+<DigestValue>PEXQ3aHqeDUEgSxs9kDl9+F50MxHM33hhyZjsnrm4L8=</DigestValue>
 </Reference>
 <Reference URI="lib%2Flibw-tizen-app-assist.so">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
 <DigestValue>yOLifA+Aj0Uh+1gCgedO7JkeHGW9mi8XtFIL8LDYihM=</DigestValue>
 </Reference>
+<Reference URI="res%2Fedje%2FSaWidgetMainView.edj">
+<DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
+<DigestValue>9VroXB2rKD7vCzVTEUQVi8l8lE3p03BtxnWfDtInbBQ=</DigestValue>
+</Reference>
+<Reference URI="res%2Fedje%2FSaWidgetStockInfoView.edj">
+<DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
+<DigestValue>cANA8XYmfC4HabtHKqVpUHxwUqjs7YurXHBLmgj1+sg=</DigestValue>
+</Reference>
 <Reference URI="res%2Fedje%2Fapp-assist-efl.edj">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
 <DigestValue>9rNLUfWlFrtlnsJRY+jZSFsBmfrU08Cn5/ZZ7YQ62ao=</DigestValue>
+</Reference>
+<Reference URI="res%2Fedje%2Ftext.edj">
+<DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
+<DigestValue>Smp+kY1l/7GP5PvaRXVJIEISuCjddfeJhFXgA51/C2E=</DigestValue>
+</Reference>
+<Reference URI="res%2Fimages%2Fclipper.png">
+<DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
+<DigestValue>SdV/zvQo1EXojgBWgwudecCXacLa/mzmerx6U/flSOQ=</DigestValue>
+</Reference>
+<Reference URI="res%2Fimages%2Ftarget.png">
+<DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
+<DigestValue>+bpCqw/VPeWiP0eALzKLmKQYM0K5IVsyWgwzD5eUI1E=</DigestValue>
 </Reference>
 <Reference URI="res%2FjsonFile.json">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -56,7 +76,7 @@
 </Reference>
 <Reference URI="tizen-manifest.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>c2jHNIuW/HK8AWnNt3BNRY5c/a8/R64k2JjY6sOpgtg=</DigestValue>
+<DigestValue>HWSIjyic69JkvqtrqFl62EsvHcWoZYgNyNZBD2gYlOc=</DigestValue>
 </Reference>
 <Reference URI="#prop">
 <Transforms>
@@ -67,9 +87,9 @@
 </Reference>
 </SignedInfo>
 <SignatureValue>
-U6EZS4ID9AYRdYtwdHzP3tfgUhaOwxFql78D2OPHk7DRMwYwBvETKYqxybRifTzp6eREGLc7YWHm
-1ArpBEHD1a816mPGlGiuSZ1ZxUSR1j4IHIUNgQTfxk/WMav0Iah77cQhNMR6g2tRa+d2SYM675H8
-34XHsCis81hD2DNURKc=
+UsglSQ/m3HVSnKUAliGX+ay8IVNYrH8ZaqRkN3b/Gh64ZfCUJAjykhsmjSGnaG91rnjpT/34maB1
+ukCENx36cGouxt1g5xo/dQs/swm5vVtnnF7zMOmDBgv89pUs6fuIMlkQpKKiFUmnRZDVRaPW5fvx
+m4V6ZDINRhOe9HSDeEU=
 </SignatureValue>
 <KeyInfo>
 <X509Data>

@@ -1,25 +1,37 @@
 /*
  * AppEventListener.h
  *
- *  Created on: Dec 13, 2016
- *      Author: gabin
+ *  Created on: Aug 21, 2017
+ *      Author: devbin
  */
 
-#ifndef _APP_EVENT_LISTENER_H_
-#define _APP_EVENT_LISTENER_H_
+#ifndef APPEVENTLISTENER_H_
+#define APPEVENTLISTENER_H_
 
+#include "WSignal.h"
 #include "WDefine.h"
-#include "AppEventManager.h"
 
 class WAPP_ASSIST_EXPORT AppEventListener
 {
+public:
+    enum class EventType
+    {
+        APP_PAUSE,
+        APP_RESUME,
+        FONT_CHANGED,
+        COLOR_CHANGED,
+        TIME_CHANGED,
+        LANGUAGE_CHANGED,
+        REGION_FORMAT_CHANGED,
+    };
+
 public:
     AppEventListener();
     virtual ~AppEventListener();
 
 protected:
-    virtual void onEvent(AppEventManager::EventType eventType) = 0;
+    virtual void onEventOccured(AppEventListener::EventType eventType) = 0;
     app_assist::WSignal_ListenerId _signalId;
 };
 
-#endif /* _APP_EVENT_LISTENER_H_ */
+#endif /* APPEVENTLISTENER_H_ */

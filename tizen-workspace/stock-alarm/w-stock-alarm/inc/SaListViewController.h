@@ -10,9 +10,9 @@
 
 class SaListViewController
 {
-    public:
-        SaListViewController();
-        virtual ~SaListViewController();
+public:
+    SaListViewController();
+    virtual ~SaListViewController();
 };
 
 #endif /* SALISTVIEWCONTROLLER_H_ */

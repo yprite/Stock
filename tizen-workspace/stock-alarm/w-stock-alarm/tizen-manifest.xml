@@ -4,9 +4,13 @@
     <ui-application appid="team.tizenia.w-stock-alarm" exec="w-stock-alarm" hw-acceleration="on" multiple="false" nodisplay="false" taskmanage="true" type="capp">
         <label>w-stock-alarm</label>
         <icon>w-stock-alarm.png</icon>
+        <background-category value="background-network"/>
     </ui-application>
     <privileges>
+        <privilege>http://tizen.org/privilege/mediastorage</privilege>
         <privilege>http://tizen.org/privilege/network.get</privilege>
         <privilege>http://tizen.org/privilege/internet</privilege>
+        <privilege>http://tizen.org/privilege/appmanager.launch</privilege>
+        <privilege>http://tizen.org/privilege/datasharing</privilege>
     </privileges>
 </manifest>

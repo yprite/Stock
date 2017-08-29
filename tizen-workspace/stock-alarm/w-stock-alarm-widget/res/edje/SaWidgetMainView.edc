@@ -1,0 +1,33 @@
+collections
+{
+    base_scale, 1.3;
+
+    group
+    {
+        name, SaWidgetMainView;
+        parts
+        {
+            part
+            {
+                name, base;
+                type, RECT;
+                description
+                {
+                    state, default 0.0;
+                    color, 0 0 0 0;
+                }
+            }
+            part
+            {
+                name, sw.content;
+                type, SWALLOW;
+                description
+                {
+                    state, default 0.0;
+                    rel1.to, base;
+                    rel2.to, base;
+                }
+            }
+        }
+    }
+}

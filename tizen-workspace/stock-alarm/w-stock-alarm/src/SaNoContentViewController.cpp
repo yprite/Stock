@@ -7,6 +7,7 @@
 
 #include "SaNoContentViewController.h"
 #include "SaProgressObject.h"
+#include "SaDataConsumer.h"
 #include "SaDebug.h"
 
 #include <Elementary.h>
@@ -34,30 +35,66 @@ Evas_Object* SaNoContentViewController::onCreateView(Evas_Object* parent, void* 
     elm_object_part_text_set(layout, "elm.text", "text");
     //elm_object_part_content_set(layout, "elm.swallow.icon", iconObj);
 
-//    Evas_Object *effectBtn = elm_button_add(layout);
-//    elm_object_style_set(effectBtn, "effect/full");
-//    evas_object_size_hint_weight_set(effectBtn, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
-//    evas_object_show(effectBtn);
-//    evas_object_smart_callback_add(effectBtn, "clicked",
-//            [](void *data, Evas_Object *obj, void *eventInfo)
-//            {
-//                WHIT();
-//            }, this);
-//
-//    elm_object_part_content_set(layout, "elm.swallow.content", effectBtn);
+    /*
+    Evas_Object *effectBtn = elm_button_add(layout);
+    elm_object_style_set(effectBtn, "effect/full");
+    evas_object_size_hint_weight_set(effectBtn, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
+    evas_object_show(effectBtn);
+    evas_object_smart_callback_add(effectBtn, "clicked",
+            [](void *data, Evas_Object *obj, void *eventInfo)
+            {
+                WHIT();
+                SaDataConsumer::getInstance()->requestFinanceQuatesList("APPL");
+            }, this);
 
+    elm_object_part_content_set(layout, "elm.swallow.content", effectBtn);
+	*/
     //elm_object_part_content_set(layout, "elm.swallow.content", content);
     return layout;
 }
 
 void SaNoContentViewController::onCreated()
 {
+    /*
     SaProgressObject *progressObj = new SaProgressObject();
     progressObj->create(getEvasObject(), nullptr);
     evas_object_size_hint_weight_set(progressObj->getEvasObject(), EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
     evas_object_show(progressObj->getEvasObject());
     elm_object_part_content_set(getEvasObject(), "elm.swallow.content", progressObj->getEvasObject());
     progressObj->run();
+    */
+    WENTER();
+    Evas_Object *layout = getEvasObject();
+    Evas *e = evas_object_evas_get(layout);
+
+    char targetImgPath[PATH_MAX] = { 0, };
+    char clipperImgPath[PATH_MAX] = { 0, };
+    char *resPath = app_get_resource_path();
+
+    if (resPath)
+    {
+        snprintf(targetImgPath, sizeof(targetImgPath), "%s%s", resPath, "images/target.png");
+        snprintf(clipperImgPath, sizeof(clipperImgPath), "%s%s", resPath, "images/clipper.png");
+        free(resPath);
+    }
+
+    Evas_Object *target = evas_object_image_filled_add(e);
+    evas_object_image_file_set(target, targetImgPath, nullptr);
+    evas_object_size_hint_min_set(target, 360, 360);
+    evas_object_size_hint_max_set(target, 360, 360);
+    evas_object_resize(target, 360, 360);
+    evas_object_show(target);
+
+    Evas_Object *clipper = evas_object_image_filled_add(e);
+    evas_object_image_file_set(clipper, clipperImgPath, nullptr);
+    evas_object_size_hint_min_set(clipper, 60, 60);
+    evas_object_size_hint_max_set(clipper, 60, 60);
+    evas_object_resize(clipper, 60, 60);
+    evas_object_show(clipper);
+
+    evas_object_clip_set(target, clipper);
+
+    elm_object_part_content_set(layout, "elm.swallow.content", clipper);
 }
 
 void SaNoContentViewController::onPushed(Elm_Object_Item* naviItem)
