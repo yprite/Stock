@@ -1,0 +1,1 @@
+select Code, Name from info where Name LIKE '%삼성%';
