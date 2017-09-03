@@ -37,39 +37,39 @@ GenlistObject::~GenlistObject()
 	_finalTheme();
 }
 
-Elm_Object_Item* GenlistObject::addItem(app_assist::WGenlistItem *item, Evas_Smart_Cb selectCb)
+Elm_Object_Item* GenlistObject::addItem(app_assist::WGenlistItem *item, Evas_Smart_Cb selectCb, void *userData)
 {
 	Elm_Genlist_Item_Class* itc = item->getItemClassStatic();
 
 	Elm_Object_Item* objectItem = nullptr;
 
-	objectItem = elm_genlist_item_append(getEvasObject(), itc, item, NULL, ELM_GENLIST_ITEM_NONE, selectCb, this);
+	objectItem = elm_genlist_item_append(getEvasObject(), itc, item, NULL, ELM_GENLIST_ITEM_NONE, selectCb, userData);
 
 	item->setElmObjectItem(objectItem);
 
 	return objectItem;
 }
 
-Elm_Object_Item* GenlistObject::addItemAfter(app_assist::WGenlistItem *current, app_assist::WGenlistItem *item, Evas_Smart_Cb selectCb)
+Elm_Object_Item* GenlistObject::addItemAfter(app_assist::WGenlistItem *current, app_assist::WGenlistItem *item, Evas_Smart_Cb selectCb, void *userData)
 {
 	Elm_Genlist_Item_Class *itc = item->getItemClassStatic();
 
 	Elm_Object_Item *objectItem = nullptr;
 
-	objectItem = elm_genlist_item_insert_after(getEvasObject(), itc, item, nullptr, current->getElmObjectItem(), ELM_GENLIST_ITEM_NONE, selectCb, this);
+	objectItem = elm_genlist_item_insert_after(getEvasObject(), itc, item, nullptr, current->getElmObjectItem(), ELM_GENLIST_ITEM_NONE, selectCb, userData);
 
 	item->setElmObjectItem(objectItem);
 
 	return objectItem;
 }
 
-Elm_Object_Item* GenlistObject::addTitleItem(app_assist::WGenlistItem *item, Evas_Smart_Cb selectCb)
+Elm_Object_Item* GenlistObject::addTitleItem(app_assist::WGenlistItem *item, Evas_Smart_Cb selectCb, void *userData)
 {
 	Elm_Genlist_Item_Class* itc = item->getItemClassStatic();
 
 	Elm_Object_Item* titleItem = nullptr;
 
-	titleItem = elm_genlist_item_append(getEvasObject(), itc, item, nullptr, ELM_GENLIST_ITEM_NONE, selectCb, this);
+	titleItem = elm_genlist_item_append(getEvasObject(), itc, item, nullptr, ELM_GENLIST_ITEM_NONE, selectCb, userData);
 
 	item->setElmObjectItem(titleItem);
 
@@ -89,13 +89,13 @@ Elm_Object_Item* GenlistObject::addTitleItem(app_assist::WGenlistItem *item, Eva
 	return titleItem;
 }
 
-Elm_Object_Item* GenlistObject::addGroupItem(app_assist::WGenlistItem *item)
+Elm_Object_Item* GenlistObject::addGroupItem(app_assist::WGenlistItem *item, void *userData)
 {
 	Elm_Genlist_Item_Class* itc = item->getItemClassStatic();
 
 	Elm_Object_Item* objectItem = nullptr;
 
-	objectItem = elm_genlist_item_append(getEvasObject(), itc, item, NULL, ELM_GENLIST_ITEM_NONE, nullptr, this);
+	objectItem = elm_genlist_item_append(getEvasObject(), itc, item, NULL, ELM_GENLIST_ITEM_NONE, nullptr, userData);
 
 	item->setElmObjectItem(objectItem);
 
@@ -104,13 +104,13 @@ Elm_Object_Item* GenlistObject::addGroupItem(app_assist::WGenlistItem *item)
 	return objectItem;
 }
 
-Elm_Object_Item* GenlistObject::addPaddingItem(app_assist::WGenlistItem *item)
+Elm_Object_Item* GenlistObject::addPaddingItem(app_assist::WGenlistItem *item, void *userData)
 {
 	Elm_Genlist_Item_Class* itc = item->getItemClassStatic();
 
 	Elm_Object_Item* objectItem = nullptr;
 
-	objectItem = elm_genlist_item_append(getEvasObject(), itc, item, NULL, ELM_GENLIST_ITEM_NONE, nullptr, this);
+	objectItem = elm_genlist_item_append(getEvasObject(), itc, item, NULL, ELM_GENLIST_ITEM_NONE, nullptr, userData);
 
 	item->setElmObjectItem(objectItem);
 

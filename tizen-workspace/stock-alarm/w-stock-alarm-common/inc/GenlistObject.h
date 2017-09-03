@@ -31,11 +31,11 @@ public:
     GenlistObject();
     virtual ~GenlistObject();
 
-    Elm_Object_Item* addItem(app_assist::WGenlistItem *item, Evas_Smart_Cb selectCb = nullptr);
-    Elm_Object_Item* addItemAfter(app_assist::WGenlistItem *current, app_assist::WGenlistItem *item, Evas_Smart_Cb selectCb = nullptr);
-    Elm_Object_Item* addTitleItem(app_assist::WGenlistItem *item, Evas_Smart_Cb selectCb = nullptr);
-    Elm_Object_Item* addGroupItem(app_assist::WGenlistItem *item);
-    Elm_Object_Item* addPaddingItem(app_assist::WGenlistItem *item);
+    Elm_Object_Item* addItem(app_assist::WGenlistItem *item, Evas_Smart_Cb selectCb = nullptr, void *userData = nullptr);
+    Elm_Object_Item* addItemAfter(app_assist::WGenlistItem *current, app_assist::WGenlistItem *item, Evas_Smart_Cb selectCb = nullptr, void *userData = nullptr);
+    Elm_Object_Item* addTitleItem(app_assist::WGenlistItem *item, Evas_Smart_Cb selectCb = nullptr, void *userData = nullptr);
+    Elm_Object_Item* addGroupItem(app_assist::WGenlistItem *item, void *userData = nullptr);
+    Elm_Object_Item* addPaddingItem(app_assist::WGenlistItem *item, void *userData = nullptr);
 
     app_assist::WGenlistItem* getFirstItem();
     app_assist::WGenlistItem* getLastItem();

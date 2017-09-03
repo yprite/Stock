@@ -11,6 +11,7 @@
 #include "WNaviframeController.h"
 #include "SaNoContentViewController.h"
 #include "SaDataConsumer.h"
+#include "RotaryManager.h"
 #include "SaDebug.h"
 
 #include <Elementary.h>
@@ -69,6 +70,7 @@ bool SaApp::onCreate()
 
     // initialize singleton object
     SaDataConsumer::getInstance()->initialize();
+    RotaryManager::getInstance()->initialize(getWindowController()->getConformantEvasObject());
     return true;
 }
 

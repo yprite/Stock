@@ -8,6 +8,13 @@
 #include "SaNoContentViewController.h"
 #include "SaProgressObject.h"
 #include "SaDataConsumer.h"
+
+// test for genlist
+#include "RotaryManager.h"
+#include "SaListObject.h"
+#include "SaListStockInfoItem.h"
+#include "GLTitleItem.h"
+#include "GLPaddingItem.h"
 #include "SaDebug.h"
 
 #include <Elementary.h>
@@ -26,6 +33,7 @@ SaNoContentViewController::~SaNoContentViewController()
 
 Evas_Object* SaNoContentViewController::onCreateView(Evas_Object* parent, void* viewParam)
 {
+#if 0
     Evas_Object *layout = elm_layout_add(parent);
     elm_layout_theme_set(layout, "layout", "nocontents", "default");
     evas_object_size_hint_weight_set(layout, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
@@ -33,6 +41,7 @@ Evas_Object* SaNoContentViewController::onCreateView(Evas_Object* parent, void* 
 
     elm_object_part_text_set(layout, "elm.text.title", "title");
     elm_object_part_text_set(layout, "elm.text", "text");
+#endif
     //elm_object_part_content_set(layout, "elm.swallow.icon", iconObj);
 
     /*
@@ -50,6 +59,11 @@ Evas_Object* SaNoContentViewController::onCreateView(Evas_Object* parent, void* 
     elm_object_part_content_set(layout, "elm.swallow.content", effectBtn);
 	*/
     //elm_object_part_content_set(layout, "elm.swallow.content", content);
+
+    Evas_Object *layout = elm_layout_add(parent);
+    elm_layout_theme_set(layout, "layout", "application", "default");
+    evas_object_size_hint_weight_set(layout, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
+    evas_object_show(layout);
     return layout;
 }
 
@@ -64,6 +78,7 @@ void SaNoContentViewController::onCreated()
     progressObj->run();
     */
     WENTER();
+#if 0
     Evas_Object *layout = getEvasObject();
     Evas *e = evas_object_evas_get(layout);
 
@@ -95,6 +110,28 @@ void SaNoContentViewController::onCreated()
     evas_object_clip_set(target, clipper);
 
     elm_object_part_content_set(layout, "elm.swallow.content", clipper);
+#endif
+
+    // genlist test.
+    Evas_Object *layout = getEvasObject();
+    SaListObject *listObj = new SaListObject();
+    listObj->create(layout, nullptr);
+    elm_object_part_content_set(layout, "elm.swallow.content", listObj->getEvasObject());
+
+    GLTitleItem *titleItem = new GLTitleItem("title");
+    listObj->addTitleItem(titleItem);
+
+    for (int i = 0; i < 3; ++i)
+    {
+        SaListStockInfoItem *item = new SaListStockInfoItem();
+        listObj->addItem(item);
+    }
+
+    GLPaddingItem *paddingItem = new GLPaddingItem();
+    listObj->addPaddingItem(paddingItem);
+
+    Evas_Object *circleObj = eext_circle_object_genlist_add(listObj->getEvasObject(), RotaryManager::getInstance()->getCircleSurface());
+    RotaryManager::getInstance()->setOnRotary(circleObj, ROTARY_MANAGER_DEFAULT_ROTARY_HANDLER);
 }
 
 void SaNoContentViewController::onPushed(Elm_Object_Item* naviItem)

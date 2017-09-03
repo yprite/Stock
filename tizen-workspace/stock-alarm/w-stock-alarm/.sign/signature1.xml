@@ -4,31 +4,31 @@
 <SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"></SignatureMethod>
 <Reference URI="author-signature.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>ctnMJDCRYM3MyUFRG/P5GwUEifWTfY8x+X65ym+F+Fo=</DigestValue>
+<DigestValue>ds1WhQYoPz9dN9i96ZyBhB5SD8AoRYdaU9liLl+M8yk=</DigestValue>
 </Reference>
 <Reference URI="bin%2Fw-stock-alarm">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>Zfmmg+fwuOQ6Vdv8RCPNdTSwUM8pHZZi7IGxJa9Eqzc=</DigestValue>
+<DigestValue>MSwlvAHniLmP6AY+vyYY9BuOpzTcmaSRBQd1I/UlW14=</DigestValue>
 </Reference>
 <Reference URI="bin%2Fw-stock-alarm-service">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>4AkkhnDFE37bnls0oea7SeOYCMrrlpPEStWpIGIcMUo=</DigestValue>
+<DigestValue>eKPj2dMrP/MyNir5Odt04bwrdkJWwwWJq5k5PJK2bXs=</DigestValue>
 </Reference>
 <Reference URI="bin%2Fw-stock-alarm-widget">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>dRcOI1tjnWltZeav9AeXYsVmibCzhF0l1rDEnVXJhYo=</DigestValue>
+<DigestValue>ZSa54rrkt6cqmGDjwIDOjxIXoe0jNBkmvkVkX2MdlV8=</DigestValue>
 </Reference>
 <Reference URI="lib%2Flibw-stock-alarm-common.so">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>2cNc7IhROf4kJPj95Lt7kf3zrVABzEmLmGpjNaPBbNQ=</DigestValue>
+<DigestValue>cYJtHN35q+GbgEoUSAItjJC5M5K2M9SE3tc0046DfDA=</DigestValue>
 </Reference>
 <Reference URI="lib%2Flibw-stock-alarm-ui-common.so">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>PEXQ3aHqeDUEgSxs9kDl9+F50MxHM33hhyZjsnrm4L8=</DigestValue>
+<DigestValue>BsFUHMmG3GRElZCPyh5KY0J3P9QQIYW9VWsbcuP4CGo=</DigestValue>
 </Reference>
 <Reference URI="lib%2Flibw-tizen-app-assist.so">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>yOLifA+Aj0Uh+1gCgedO7JkeHGW9mi8XtFIL8LDYihM=</DigestValue>
+<DigestValue>CJZN5lGU6JGv0Fxbj1CFhD4vJvMIL4f4SnpBr/awxvk=</DigestValue>
 </Reference>
 <Reference URI="res%2Fedje%2FSaWidgetMainView.edj">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -36,7 +36,7 @@
 </Reference>
 <Reference URI="res%2Fedje%2FSaWidgetStockInfoView.edj">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>cANA8XYmfC4HabtHKqVpUHxwUqjs7YurXHBLmgj1+sg=</DigestValue>
+<DigestValue>Nk2CxWEevK0itT1COX/jYW0GyNhjStHQxPzEVoBKKyA=</DigestValue>
 </Reference>
 <Reference URI="res%2Fedje%2Fapp-assist-efl.edj">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -87,9 +87,9 @@
 </Reference>
 </SignedInfo>
 <SignatureValue>
-UsglSQ/m3HVSnKUAliGX+ay8IVNYrH8ZaqRkN3b/Gh64ZfCUJAjykhsmjSGnaG91rnjpT/34maB1
-ukCENx36cGouxt1g5xo/dQs/swm5vVtnnF7zMOmDBgv89pUs6fuIMlkQpKKiFUmnRZDVRaPW5fvx
-m4V6ZDINRhOe9HSDeEU=
+XGXtuRSmTSiIutXce3Q7vRx154jxGZy1D56oXmY1Lr5qt1AfL5kSc2bXOB86/BZPXsFtVRY+ToLO
+2FDAwI3iVQvFoTsotpuA3lCcnZeyrmq8kWwraBreUo3sn8KlNkfwPgnsx3/Pa3HGtWqzBmK+obtT
+Y8PIdcetyYrpVpesiDY=
 </SignatureValue>
 <KeyInfo>
 <X509Data>
