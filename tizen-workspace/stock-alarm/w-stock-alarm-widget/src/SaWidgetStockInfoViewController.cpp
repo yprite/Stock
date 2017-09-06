@@ -25,6 +25,8 @@ SaWidgetStockInfoViewController::SaWidgetStockInfoViewController()
 	_titlePriceInfoBox = nullptr;
     _titlePriceInfoIcon = nullptr;
     _titlePriceInfoText = nullptr;
+
+    _priceIcon = nullptr;
 }
 
 SaWidgetStockInfoViewController::~SaWidgetStockInfoViewController()
@@ -81,13 +83,9 @@ void SaWidgetStockInfoViewController::onCreated()
         [](void *data, Evas_Object *obj, const char *emission, const char *source)
         {
             auto self = (SaWidgetStockInfoViewController *)data;
-            if (self->_isAnimatorRunning)
-                return;
+            elm_layout_signal_emit(self->_priceIcon, "show.anim", "*");
 
-            self->_animationStartTime = ecore_loop_time_get();
-            self->_isAnimatorRunning = true;
-
-#if 1
+#if 0
             WINFO("START ANIMATOR!");
             self->_animator = WTimer::addAnimator(
                 [](void *data)->bool
@@ -152,14 +150,16 @@ void SaWidgetStockInfoViewController::_createTitlePriceInfo()
 {
     WENTER();
 
-    static const int TITLE_PRICE_ICON_SIZE = 46;
+    static const int TITLE_PRICE_ICON_SIZE = 50;
     static const int TITLE_PRICE_INFO_PADDING = 20;
     char *resPath = app_get_resource_path();
     char edjPath[PATH_MAX] = { 0, };
+    char iconEdjPath[PATH_MAX] = { 0, };
 
     if (resPath)
     {
         snprintf(edjPath, sizeof(edjPath), "%s%s", resPath, "edje/SaWidgetStockInfoView.edj");
+        snprintf(iconEdjPath, sizeof(iconEdjPath), "%s%s", resPath, "edje/SaWidgetIcon.edj");
         free(resPath);
     }
 
@@ -167,12 +167,21 @@ void SaWidgetStockInfoViewController::_createTitlePriceInfo()
     Evas_Object *box = elm_box_add(layout);
     elm_box_horizontal_set(box, EINA_TRUE);
 
+#if 0
     Evas_Object *priceInfoIcon = evas_object_rectangle_add(evas_object_evas_get(box));
     evas_object_size_hint_min_set(priceInfoIcon, TITLE_PRICE_ICON_SIZE, TITLE_PRICE_ICON_SIZE);
     evas_object_size_hint_max_set(priceInfoIcon, TITLE_PRICE_ICON_SIZE, TITLE_PRICE_ICON_SIZE);
     evas_object_resize(priceInfoIcon, TITLE_PRICE_ICON_SIZE, TITLE_PRICE_ICON_SIZE);
     evas_object_color_set(priceInfoIcon, 0, 0, 255, 255);
     evas_object_show(priceInfoIcon);
+#endif
+    Evas_Object *priceInfoIcon = elm_layout_add(box);
+    elm_layout_file_set(priceInfoIcon, iconEdjPath, "SaWidgetIcon/W");
+    evas_object_size_hint_min_set(priceInfoIcon, TITLE_PRICE_ICON_SIZE, TITLE_PRICE_ICON_SIZE);
+    evas_object_size_hint_max_set(priceInfoIcon, TITLE_PRICE_ICON_SIZE, TITLE_PRICE_ICON_SIZE);
+    evas_object_resize(priceInfoIcon, TITLE_PRICE_ICON_SIZE, TITLE_PRICE_ICON_SIZE);
+    evas_object_show(priceInfoIcon);
+    _priceIcon = priceInfoIcon;
 
     Evas_Object *paddingRect = evas_object_rectangle_add(evas_object_evas_get(box));
     evas_object_size_hint_min_set(paddingRect, TITLE_PRICE_INFO_PADDING, TITLE_PRICE_ICON_SIZE);

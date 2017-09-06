@@ -130,8 +130,8 @@
 								<option id="sbi.gnu.cpp.compiler.option.frameworks.core.953354051" name="Tizen-Frameworks" superClass="sbi.gnu.cpp.compiler.option.frameworks.core" valueType="userObjs">
 									<listOptionValue builtIn="false" value="Native_API"/>
 								</option>
-								<option id="gnu.cpp.compiler.option.dialect.std.1179221520" superClass="gnu.cpp.compiler.option.dialect.std" value="gnu.cpp.compiler.dialect.c++11" valueType="enumerated"/>
-								<option id="sbi.gnu.cpp.compiler.option.preprocessor.def.deprecation.605481840" superClass="sbi.gnu.cpp.compiler.option.preprocessor.def.deprecation" valueType="definedSymbols">
+								<option id="gnu.cpp.compiler.option.dialect.std.1179221520" name="Language standard" superClass="gnu.cpp.compiler.option.dialect.std" value="gnu.cpp.compiler.dialect.c++11" valueType="enumerated"/>
+								<option id="sbi.gnu.cpp.compiler.option.preprocessor.def.deprecation.605481840" name="Defined symbols (-D)" superClass="sbi.gnu.cpp.compiler.option.preprocessor.def.deprecation" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="TIZEN_DEPRECATION"/>
 									<listOptionValue builtIn="false" value="TIZEN_DEBUG_ENABLE"/>
 									<listOptionValue builtIn="false" value="DEPRECATION_WARNING"/>
@@ -260,7 +260,7 @@
 								<option id="gnu.cpp.link.option.paths.1390446274" name="Library search path (-L)" superClass="gnu.cpp.link.option.paths" valueType="libPaths">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/lib}&quot;"/>
 								</option>
-								<option id="gnu.cpp.link.option.libs.56737259" superClass="gnu.cpp.link.option.libs" valueType="libs">
+								<option id="gnu.cpp.link.option.libs.56737259" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" valueType="libs">
 									<listOptionValue builtIn="false" value="w-tizen-app-assist"/>
 									<listOptionValue builtIn="false" value="w-stock-alarm-common"/>
 									<listOptionValue builtIn="false" value="w-stock-alarm-ui-common"/>

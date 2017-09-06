@@ -1,0 +1,241 @@
+collections
+{
+    base_scale, 1.3;
+#define WIDTH (50)
+#define HEIGHT (50)
+
+    images
+    {
+        image, ./W_icon/1.png COMP;
+        image, ./W_icon/2.png COMP;
+        image, ./W_icon/3.png COMP;
+        image, ./W_icon/4.png COMP;
+        image, ./W_icon/5.png COMP;
+        image, ./W_icon/6.png COMP;
+        image, ./W_icon/7.png COMP;
+        image, ./W_icon/8.png COMP;
+        image, ./W_icon/9.png COMP;
+        image, ./W_icon/10.png COMP;
+        image, ./W_icon/11.png COMP;
+        image, ./W_icon/12.png COMP;
+        image, ./W_icon/13.png COMP;
+        image, ./W_icon/14.png COMP;
+        image, ./W_icon/15.png COMP;
+        image, ./W_icon/16.png COMP;
+        image, ./W_icon/17.png COMP;
+        image, ./W_icon/18.png COMP;
+        image, ./W_icon/19.png COMP;
+        image, ./W_icon/20.png COMP;
+        image, ./W_icon/21.png COMP;
+        image, ./W_icon/22.png COMP;
+        image, ./W_icon/23.png COMP;
+        image, ./W_icon/24.png COMP;
+        image, ./W_icon/25.png COMP;
+        image, ./W_icon/26.png COMP;
+        image, ./W_icon/27.png COMP;
+        image, ./W_icon/28.png COMP;
+        image, ./W_icon/29.png COMP;
+        image, ./W_icon/30.png COMP;
+        image, ./W_icon/31.png COMP;
+        image, ./W_icon/32.png COMP;
+        image, ./W_icon/33.png COMP;
+        image, ./W_icon/34.png COMP;
+        image, ./W_icon/35.png COMP;
+        image, ./W_icon/36.png COMP;
+        image, ./W_icon/37.png COMP;
+        image, ./W_icon/38.png COMP;
+        image, ./W_icon/39.png COMP;
+        image, ./W_icon/40.png COMP;
+        image, ./W_icon/41.png COMP;
+        image, ./W_icon/42.png COMP;
+        image, ./W_icon/43.png COMP;
+        image, ./W_icon/44.png COMP;
+        image, ./W_icon/45.png COMP;
+        image, ./W_icon/46.png COMP;
+        image, ./W_icon/47.png COMP;
+        image, ./W_icon/48.png COMP;
+        image, ./W_icon/49.png COMP;
+        image, ./W_icon/50.png COMP;
+        image, ./W_icon/51.png COMP;
+        image, ./W_icon/52.png COMP;
+    }
+
+    group
+    {
+        name, SaWidgetIcon/W;
+        parts
+        {
+            part
+            {
+                name, base;
+                type, RECT;
+                description
+                {
+                    state, default 0.0;
+                    min, (WIDTH) (HEIGHT);
+                    max, (WIDTH) (HEIGHT);
+                    fixed, 1 1;
+                    color, 0 0 0 0;
+                }
+            }
+            part
+            {
+                name, icon;
+                type, IMAGE;
+                description
+                {
+                    state, default 0.0;
+                    min, (WIDTH) (HEIGHT);
+                    max, (WIDTH) (HEIGHT);
+                    fixed, 1 1;
+                    image.normal, ./W_icon/52.png;
+                }
+                description
+                {
+                    state, show.anim 0.0;
+                    inherit, default 0.0;
+
+                    image.normal, ./W_icon/52.png;
+                    image.tween, ./W_icon/51.png;
+                    image.tween, ./W_icon/50.png;
+                    image.tween, ./W_icon/49.png;
+                    image.tween, ./W_icon/48.png;
+                    image.tween, ./W_icon/47.png;
+                    image.tween, ./W_icon/46.png;
+                    image.tween, ./W_icon/45.png;
+                    image.tween, ./W_icon/44.png;
+                    image.tween, ./W_icon/43.png;
+                    image.tween, ./W_icon/42.png;
+                    image.tween, ./W_icon/41.png;
+                    image.tween, ./W_icon/40.png;
+
+                    image.tween, ./W_icon/39.png;
+                    image.tween, ./W_icon/38.png;
+                    image.tween, ./W_icon/37.png;
+                    image.tween, ./W_icon/36.png;
+                    image.tween, ./W_icon/35.png;
+                    image.tween, ./W_icon/34.png;
+                    image.tween, ./W_icon/33.png;
+                    image.tween, ./W_icon/32.png;
+                    image.tween, ./W_icon/31.png;
+                    image.tween, ./W_icon/30.png;
+
+                    image.tween, ./W_icon/29.png;
+                    image.tween, ./W_icon/28.png;
+                    image.tween, ./W_icon/27.png;
+                    image.tween, ./W_icon/26.png;
+                    image.tween, ./W_icon/25.png;
+                    image.tween, ./W_icon/24.png;
+                    image.tween, ./W_icon/23.png;
+                    image.tween, ./W_icon/22.png;
+                    image.tween, ./W_icon/21.png;
+                    image.tween, ./W_icon/20.png;
+
+                    image.tween, ./W_icon/19.png;
+                    image.tween, ./W_icon/18.png;
+                    image.tween, ./W_icon/17.png;
+                    image.tween, ./W_icon/16.png;
+                    image.tween, ./W_icon/15.png;
+                    image.tween, ./W_icon/14.png;
+                    image.tween, ./W_icon/13.png;
+                    image.tween, ./W_icon/12.png;
+                    image.tween, ./W_icon/11.png;
+                    image.tween, ./W_icon/10.png;
+                    
+                    image.tween, ./W_icon/9.png;
+                    image.tween, ./W_icon/8.png;
+                    image.tween, ./W_icon/7.png;
+                    image.tween, ./W_icon/6.png;
+                    image.tween, ./W_icon/5.png;
+                    image.tween, ./W_icon/4.png;
+                    image.tween, ./W_icon/3.png;
+                    image.tween, ./W_icon/2.png;
+                    image.normal, ./W_icon/1.png;
+                }
+                description
+                {
+                    state, hide.anim 0.0;
+                    inherit, default 0.0;
+
+                    image.normal, ./W_icon/1.png;
+                    image.tween, ./W_icon/2.png;
+                    image.tween, ./W_icon/3.png;
+                    image.tween, ./W_icon/4.png;
+                    image.tween, ./W_icon/5.png;
+                    image.tween, ./W_icon/6.png;
+                    image.tween, ./W_icon/7.png;
+                    image.tween, ./W_icon/8.png;
+                    image.tween, ./W_icon/9.png;
+                    
+                    image.tween, ./W_icon/10.png;
+                    image.tween, ./W_icon/11.png;
+                    image.tween, ./W_icon/12.png;
+                    image.tween, ./W_icon/13.png;
+                    image.tween, ./W_icon/14.png;
+                    image.tween, ./W_icon/15.png;
+                    image.tween, ./W_icon/16.png;
+                    image.tween, ./W_icon/17.png;
+                    image.tween, ./W_icon/18.png;
+                    image.tween, ./W_icon/19.png;
+
+                    image.tween, ./W_icon/20.png;
+                    image.tween, ./W_icon/21.png;
+                    image.tween, ./W_icon/22.png;
+                    image.tween, ./W_icon/23.png;
+                    image.tween, ./W_icon/24.png;
+                    image.tween, ./W_icon/25.png;
+                    image.tween, ./W_icon/26.png;
+                    image.tween, ./W_icon/27.png;
+                    image.tween, ./W_icon/28.png;
+                    image.tween, ./W_icon/29.png;
+
+                    image.tween, ./W_icon/30.png;
+                    image.tween, ./W_icon/31.png;
+                    image.tween, ./W_icon/32.png;
+                    image.tween, ./W_icon/33.png;
+                    image.tween, ./W_icon/34.png;
+                    image.tween, ./W_icon/35.png;
+                    image.tween, ./W_icon/36.png;
+                    image.tween, ./W_icon/37.png;
+                    image.tween, ./W_icon/38.png;
+                    image.tween, ./W_icon/39.png;
+
+                    image.tween, ./W_icon/40.png;
+                    image.tween, ./W_icon/41.png;
+                    image.tween, ./W_icon/42.png;
+                    image.tween, ./W_icon/43.png;
+                    image.tween, ./W_icon/44.png;
+                    image.tween, ./W_icon/45.png;
+                    image.tween, ./W_icon/46.png;
+                    image.tween, ./W_icon/47.png;
+                    image.tween, ./W_icon/48.png;
+                    image.tween, ./W_icon/49.png;
+
+                    image.tween, ./W_icon/50.png;
+                    image.tween, ./W_icon/51.png;
+                    image.normal, ./W_icon/52.png;
+                }
+            } // part
+        } // parts
+        programs
+        {
+            program
+            {
+                signal, show.anim;
+                source, *;
+                action, STATE_SET show.anim 0.0;
+                target, icon;
+                transition: SINUSOIDAL 0.6;
+            }
+            program
+            {
+                signal, hide.anim;
+                source, *;
+                action, STATE_SET hide.anim 0.0;
+                target, icon;
+                transition: SINUSOIDAL 0.6;
+            }
+        }
+    }
+}
+
