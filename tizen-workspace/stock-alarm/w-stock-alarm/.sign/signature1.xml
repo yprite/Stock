@@ -4,31 +4,39 @@
 <SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"></SignatureMethod>
 <Reference URI="author-signature.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>ds1WhQYoPz9dN9i96ZyBhB5SD8AoRYdaU9liLl+M8yk=</DigestValue>
+<DigestValue>BeNCmIIp35eRowG8TJ0Z+ZidjaMry0QAqFfPaYISgpg=</DigestValue>
 </Reference>
 <Reference URI="bin%2Fw-stock-alarm">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>MSwlvAHniLmP6AY+vyYY9BuOpzTcmaSRBQd1I/UlW14=</DigestValue>
+<DigestValue>QZewjNE5137lLXE689b4zVMgv7TBWFS8ekcijjl8ybs=</DigestValue>
 </Reference>
 <Reference URI="bin%2Fw-stock-alarm-service">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>eKPj2dMrP/MyNir5Odt04bwrdkJWwwWJq5k5PJK2bXs=</DigestValue>
+<DigestValue>h/2UGE0ouhMXNYc2nuNu7RAhnJZ1KNc4oTLHbyYX2mE=</DigestValue>
 </Reference>
 <Reference URI="bin%2Fw-stock-alarm-widget">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>ZSa54rrkt6cqmGDjwIDOjxIXoe0jNBkmvkVkX2MdlV8=</DigestValue>
+<DigestValue>B3Dws0yA7zwyN85zR+WH2l22Wyc9hR5qmLAZ7uxiQsA=</DigestValue>
 </Reference>
 <Reference URI="lib%2Flibw-stock-alarm-common.so">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>cYJtHN35q+GbgEoUSAItjJC5M5K2M9SE3tc0046DfDA=</DigestValue>
+<DigestValue>0k47JQI38ILmfIDNYAG3mbbwJruq+9KYU/AT4pQMcUU=</DigestValue>
 </Reference>
 <Reference URI="lib%2Flibw-stock-alarm-ui-common.so">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>BsFUHMmG3GRElZCPyh5KY0J3P9QQIYW9VWsbcuP4CGo=</DigestValue>
+<DigestValue>6l6SUcR+Mse2iV8Qr951JXz6/Qo9igo1w0PvRT8V5m4=</DigestValue>
 </Reference>
 <Reference URI="lib%2Flibw-tizen-app-assist.so">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>CJZN5lGU6JGv0Fxbj1CFhD4vJvMIL4f4SnpBr/awxvk=</DigestValue>
+<DigestValue>fMoYfNF6Czjy2rFRhVAwRmm3wuMNsA9CtG2YW1RU1Mc=</DigestValue>
+</Reference>
+<Reference URI="res%2Fdb%2Fcompanyinfo.db">
+<DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
+<DigestValue>PY/KKNjb7/FYACzX7unRCVZaHNN15g/zP1pXkKCl6PM=</DigestValue>
+</Reference>
+<Reference URI="res%2Fedje%2FSaSearchCompanyView.edj">
+<DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
+<DigestValue>fUxFP+bAA0az9KZBAe/PDAON7q51Qu0mNZcCKeAEZF4=</DigestValue>
 </Reference>
 <Reference URI="res%2Fedje%2FSaWidgetMainView.edj">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -36,7 +44,7 @@
 </Reference>
 <Reference URI="res%2Fedje%2FSaWidgetStockInfoView.edj">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>Nk2CxWEevK0itT1COX/jYW0GyNhjStHQxPzEVoBKKyA=</DigestValue>
+<DigestValue>HJfDtuIyHJIeC4yRA59w0fLuf1oNOLZqExH0Z9Fb4o4=</DigestValue>
 </Reference>
 <Reference URI="res%2Fedje%2Fapp-assist-efl.edj">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -58,6 +66,10 @@
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
 <DigestValue>zNX52Pc6+dIjL03vNFntNzaRcnFrJZ8I1kWSwxvJKp8=</DigestValue>
 </Reference>
+<Reference URI="res%2Fnext.txt">
+<DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
+<DigestValue>iwNVYzqQbpX+FTnCg6hwQROkqQKaIlFapJRO28iqHaY=</DigestValue>
+</Reference>
 <Reference URI="shared%2Fres%2Ficon.png">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
 <DigestValue>1d0oEZHqPn+QzNzGIHwj9ODby6x9ggFs9uOsav6jPNs=</DigestValue>
@@ -76,7 +88,7 @@
 </Reference>
 <Reference URI="tizen-manifest.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>HWSIjyic69JkvqtrqFl62EsvHcWoZYgNyNZBD2gYlOc=</DigestValue>
+<DigestValue>P/zXtxq62QpTzyBSsMPRCFZ+Y+XMFafwwd4S6HxHCs8=</DigestValue>
 </Reference>
 <Reference URI="#prop">
 <Transforms>
@@ -87,9 +99,9 @@
 </Reference>
 </SignedInfo>
 <SignatureValue>
-XGXtuRSmTSiIutXce3Q7vRx154jxGZy1D56oXmY1Lr5qt1AfL5kSc2bXOB86/BZPXsFtVRY+ToLO
-2FDAwI3iVQvFoTsotpuA3lCcnZeyrmq8kWwraBreUo3sn8KlNkfwPgnsx3/Pa3HGtWqzBmK+obtT
-Y8PIdcetyYrpVpesiDY=
+rrJFP4rPZvlNfaUh6YAvXvKGLH1G4ALfK0rWDen5WrlBxRhEpRXB87VHRcJKJ92PBXP3dHBuquoy
+P1W/+c0oVZbxbeAajtVbDmEkIkxLsuCpy8IV5E6y3MstcLXj5K8fDVbSEOpAceu/OUMRfjsnS8A4
+fw4Pwsr9AcRW+igmfa8=
 </SignatureValue>
 <KeyInfo>
 <X509Data>

@@ -6,6 +6,7 @@
  */
 
 #include "SaWidgetStockInfoViewController.h"
+#include "SaWidgetGraphObject.h"
 #include "SaWidgetDebug.h"
 #include "WTimer.h"
 
@@ -59,6 +60,22 @@ void SaWidgetStockInfoViewController::onCreated()
     Evas_Object *layout = getEvasObject();
     _createTitlePriceInfo();
     _createSubPriceInfo();
+
+    SaWidgetGraphObject *graphObj = new SaWidgetGraphObject(360, 150);
+    graphObj->create(layout, nullptr);
+    graphObj->addPoint(30);
+    graphObj->addPoint(40);
+    graphObj->addPoint(10);
+    graphObj->addPoint(100);
+    graphObj->addPoint(100);
+    graphObj->addPoint(300);
+    graphObj->addPoint(30);
+    graphObj->addPoint(10);
+    graphObj->addPoint(2);
+
+    graphObj->drawGraph();
+
+    elm_object_part_content_set(layout, "sw.graph", graphObj->getEvasObject());
 
     edje_object_signal_callback_add(elm_layout_edje_get(layout), "touch.area.mouse.clicked", "*",
         [](void *data, Evas_Object *obj, const char *emission, const char *source)
