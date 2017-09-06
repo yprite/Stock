@@ -4,27 +4,35 @@
 <SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"></SignatureMethod>
 <Reference URI="bin%2Fw-stock-alarm">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>MSwlvAHniLmP6AY+vyYY9BuOpzTcmaSRBQd1I/UlW14=</DigestValue>
+<DigestValue>O6FeayIjfQDSUY96XowY3ncfq09C8Ipelp+3tBGVHtc=</DigestValue>
 </Reference>
 <Reference URI="bin%2Fw-stock-alarm-service">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>eKPj2dMrP/MyNir5Odt04bwrdkJWwwWJq5k5PJK2bXs=</DigestValue>
+<DigestValue>BVSdgqqaP4upo5S1tnz50n97+GhFS7EgoPNgt2iqta4=</DigestValue>
 </Reference>
 <Reference URI="bin%2Fw-stock-alarm-widget">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>ZSa54rrkt6cqmGDjwIDOjxIXoe0jNBkmvkVkX2MdlV8=</DigestValue>
+<DigestValue>CoHT3iN28H4Nrree+s0kGLkv2FS5b+3PY4wwDZ1xt44=</DigestValue>
 </Reference>
 <Reference URI="lib%2Flibw-stock-alarm-common.so">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>cYJtHN35q+GbgEoUSAItjJC5M5K2M9SE3tc0046DfDA=</DigestValue>
+<DigestValue>IgvYhXJOK4ea3xZ0rDGk46/PYdJ069+XXIoTO+5LYnI=</DigestValue>
 </Reference>
 <Reference URI="lib%2Flibw-stock-alarm-ui-common.so">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>BsFUHMmG3GRElZCPyh5KY0J3P9QQIYW9VWsbcuP4CGo=</DigestValue>
+<DigestValue>JQ1PQqK8aWIy9LSJfj/ZhaClqcx6mcMgC9aP/5tOF18=</DigestValue>
 </Reference>
 <Reference URI="lib%2Flibw-tizen-app-assist.so">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>CJZN5lGU6JGv0Fxbj1CFhD4vJvMIL4f4SnpBr/awxvk=</DigestValue>
+<DigestValue>1d51dhSxgXubUusVirFbYJE4VPvLB6zryd3scjPsPP8=</DigestValue>
+</Reference>
+<Reference URI="res%2Fdb%2Fcompanyinfo.db">
+<DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
+<DigestValue>PY/KKNjb7/FYACzX7unRCVZaHNN15g/zP1pXkKCl6PM=</DigestValue>
+</Reference>
+<Reference URI="res%2Fedje%2FSaSearchCompanyView.edj">
+<DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
+<DigestValue>fUxFP+bAA0az9KZBAe/PDAON7q51Qu0mNZcCKeAEZF4=</DigestValue>
 </Reference>
 <Reference URI="res%2Fedje%2FSaWidgetMainView.edj">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -32,7 +40,7 @@
 </Reference>
 <Reference URI="res%2Fedje%2FSaWidgetStockInfoView.edj">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>Nk2CxWEevK0itT1COX/jYW0GyNhjStHQxPzEVoBKKyA=</DigestValue>
+<DigestValue>OQMQUx+YT1lzUuu+oNAsdBhXUsGSIbtxo1XymrjoYLE=</DigestValue>
 </Reference>
 <Reference URI="res%2Fedje%2Fapp-assist-efl.edj">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -72,7 +80,7 @@
 </Reference>
 <Reference URI="tizen-manifest.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>HWSIjyic69JkvqtrqFl62EsvHcWoZYgNyNZBD2gYlOc=</DigestValue>
+<DigestValue>P/zXtxq62QpTzyBSsMPRCFZ+Y+XMFafwwd4S6HxHCs8=</DigestValue>
 </Reference>
 <Reference URI="#prop">
 <Transforms>
@@ -83,25 +91,25 @@
 </Reference>
 </SignedInfo>
 <SignatureValue>
-d7Pl7zfP3Tu8PYFzO+0nDjMwOPA8rpFrU/9K/Lci1us9H2dn2Enf3MLn5Acnnf1Q7zh7DxJS9zU/
-2gTCxuW/Wy+idM4vXj2/Fs/1omiS1QpFLBPTae32rpgiBOGQPW48SC9cB5BtOK4ItJZQFsu9XK3E
-OhPqlWfL2Evmh/VPbyc=
+TD/1K3xuwetrFnzd6eHeDOax4vc+grH+YE2SlxJQU7Msnx5yTAEU10LwJXEkiakV6/eLH2R308VR
+/noperRngdaVMymiboTHaSDTURaCuO4dupt7LIQCvjUiEEf2gxXMQQgKgqviPG5emg4zE0kHhrT7
+zJgmVfwi9+e7aq+ZBy4=
 </SignatureValue>
 <KeyInfo>
 <X509Data>
 <X509Certificate>
-MIICljCCAX6gAwIBAgIGAV5F+4L3MA0GCSqGSIb3DQEBBQUAMFYxGjAYBgNVBAoMEVRpemVuIEFz
+MIICljCCAX6gAwIBAgIGAV5QoTXEMA0GCSqGSIb3DQEBBQUAMFYxGjAYBgNVBAoMEVRpemVuIEFz
 c29jaWF0aW9uMRowGAYDVQQLDBFUaXplbiBBc3NvY2lhdGlvbjEcMBoGA1UEAwwTVGl6ZW4gRGV2
 ZWxvcGVycyBDQTAeFw0xMjExMDEwMDAwMDBaFw0xOTAxMDEwMDAwMDBaMBIxEDAOBgNVBAMMB3Rp
-emVuaWEwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAIHlAWvIiGSMp6f0+WEjlV1OfhvmuM2I
-3jBewREUGv4TWianhOWjvJcmVIEBTh4MAxwusqQ1IFPOHJwSi5cNDhN4Uy2PbFWSLk7VZu4YfZub
-Ky6GQWlFzlTFasWE9s8l04LLlDlVGt3VWWrNXcdvcn54soGToSTb7CSwqDXc7awjAgMBAAGjMjAw
+emVuaWEwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBALAn22R0iPlgphpctigUzAWdlfXCWh1v
+pdqXqQqiwA8gRYHKgOSqt3UChrR97uioFxLGN2T96u+qWRK5yJGXyZygjqz9TXrbzVj7mBxK8cjA
+ZRP/r2iSHNncXKrHfxWzDhqbFLSB2a6WktuIfrbQXQ/cR/TpzsYNzMxl0akJK0kbAgMBAAGjMjAw
 MAwGA1UdEwEB/wQCMAAwCwYDVR0PBAQDAgeAMBMGA1UdJQQMMAoGCCsGAQUFBwMDMA0GCSqGSIb3
-DQEBBQUAA4IBAQDDjcKf2XiXky1sp3wMwFfmzl1MAcBuBdxdh69zi6jM6IZ7WMvqdlTnP0PnAP8a
-fHLQ+OjWTohvxt6xSTV2IacyyfGVlEpGrYdeCP2e+j3YPSBgWXj3lJPtTZfz97H+QD0aeKBO1SHL
-KiJuNK8LwFQJH+XAz745h85aA1g0E8juQAUxmKk0l9EJJLlDz4GAttYLOofJqpFCaNiVMx3Gmu/X
-d8pM/rv6efLqbOJLzJLEZPxEY1D6brvuL2/A0JAbDent+U1saG7JqcXHfrgERSM3k0Usg8tc3n1N
-BdasSqg0NpTW0+eH6Fa3at1jeS/BGVtA8N+H/k6BEzbCvR+pI7Lx
+DQEBBQUAA4IBAQAPHXUophBvEn+HIcePkxlPgpOL4IirfmQ09CxZi2sa6gbjjB4/MtD+DbM7Vg/7
+5TaVmJsbbnPJj5CmWcr8017Wjh1BM66EZogN79y9FPP7IiP2pJ8Xu+jUUAvHB8X9U7d9608aK/aL
++iXF2At3ewWSCwr1uWiS5h485gnUBzqFDNWtkZ2jaL6oV4zDsDf3je/NGi1eC4FSutmNp+MJcs1F
+xT5SOHERumQxu9yAr2FiNn58pfytxNG8Etu6qjAelWME/Xu2BQJod4mkD27+Fow1/XIEKfVxMi8E
+VnTlCsY51+HDriXH9fULMSyaPG1IZ2NwHOV0Qkdlt99bkZ2lTAgn
 </X509Certificate>
 <X509Certificate>
 MIIDOTCCAiGgAwIBAgIBATANBgkqhkiG9w0BAQUFADBYMRowGAYDVQQKDBFUaXplbiBBc3NvY2lh

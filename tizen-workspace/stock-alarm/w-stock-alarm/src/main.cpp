@@ -6,13 +6,14 @@
  */
 
 #include "SaApp.h"
+#include "SaCompanyDBManager.h"
+#include "SaDebug.h"
 
 int main(int argc, char **argv)
 {
     SaApp app;
 
-    int ret = app.start(argc, argv);
-    return ret;
+    return app.start(argc, argv);
 }
 
 /*
