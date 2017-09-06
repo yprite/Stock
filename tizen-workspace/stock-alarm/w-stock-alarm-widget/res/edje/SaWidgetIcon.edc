@@ -1,68 +1,70 @@
 collections
 {
     base_scale, 1.3;
-#define WIDTH (50)
-#define HEIGHT (50)
 
-    images
-    {
-        image, ./W_icon/1.png COMP;
-        image, ./W_icon/2.png COMP;
-        image, ./W_icon/3.png COMP;
-        image, ./W_icon/4.png COMP;
-        image, ./W_icon/5.png COMP;
-        image, ./W_icon/6.png COMP;
-        image, ./W_icon/7.png COMP;
-        image, ./W_icon/8.png COMP;
-        image, ./W_icon/9.png COMP;
-        image, ./W_icon/10.png COMP;
-        image, ./W_icon/11.png COMP;
-        image, ./W_icon/12.png COMP;
-        image, ./W_icon/13.png COMP;
-        image, ./W_icon/14.png COMP;
-        image, ./W_icon/15.png COMP;
-        image, ./W_icon/16.png COMP;
-        image, ./W_icon/17.png COMP;
-        image, ./W_icon/18.png COMP;
-        image, ./W_icon/19.png COMP;
-        image, ./W_icon/20.png COMP;
-        image, ./W_icon/21.png COMP;
-        image, ./W_icon/22.png COMP;
-        image, ./W_icon/23.png COMP;
-        image, ./W_icon/24.png COMP;
-        image, ./W_icon/25.png COMP;
-        image, ./W_icon/26.png COMP;
-        image, ./W_icon/27.png COMP;
-        image, ./W_icon/28.png COMP;
-        image, ./W_icon/29.png COMP;
-        image, ./W_icon/30.png COMP;
-        image, ./W_icon/31.png COMP;
-        image, ./W_icon/32.png COMP;
-        image, ./W_icon/33.png COMP;
-        image, ./W_icon/34.png COMP;
-        image, ./W_icon/35.png COMP;
-        image, ./W_icon/36.png COMP;
-        image, ./W_icon/37.png COMP;
-        image, ./W_icon/38.png COMP;
-        image, ./W_icon/39.png COMP;
-        image, ./W_icon/40.png COMP;
-        image, ./W_icon/41.png COMP;
-        image, ./W_icon/42.png COMP;
-        image, ./W_icon/43.png COMP;
-        image, ./W_icon/44.png COMP;
-        image, ./W_icon/45.png COMP;
-        image, ./W_icon/46.png COMP;
-        image, ./W_icon/47.png COMP;
-        image, ./W_icon/48.png COMP;
-        image, ./W_icon/49.png COMP;
-        image, ./W_icon/50.png COMP;
-        image, ./W_icon/51.png COMP;
-        image, ./W_icon/52.png COMP;
-    }
 
     group
     {
         name, SaWidgetIcon/W;
+        
+#define W_WIDTH (50)
+#define W_HEIGHT (50)
+
+	    images
+	    {
+	        image, ./W_icon/1.png COMP;
+	        image, ./W_icon/2.png COMP;
+	        image, ./W_icon/3.png COMP;
+	        image, ./W_icon/4.png COMP;
+	        image, ./W_icon/5.png COMP;
+	        image, ./W_icon/6.png COMP;
+	        image, ./W_icon/7.png COMP;
+	        image, ./W_icon/8.png COMP;
+	        image, ./W_icon/9.png COMP;
+	        image, ./W_icon/10.png COMP;
+	        image, ./W_icon/11.png COMP;
+	        image, ./W_icon/12.png COMP;
+	        image, ./W_icon/13.png COMP;
+	        image, ./W_icon/14.png COMP;
+	        image, ./W_icon/15.png COMP;
+	        image, ./W_icon/16.png COMP;
+	        image, ./W_icon/17.png COMP;
+	        image, ./W_icon/18.png COMP;
+	        image, ./W_icon/19.png COMP;
+	        image, ./W_icon/20.png COMP;
+	        image, ./W_icon/21.png COMP;
+	        image, ./W_icon/22.png COMP;
+	        image, ./W_icon/23.png COMP;
+	        image, ./W_icon/24.png COMP;
+	        image, ./W_icon/25.png COMP;
+	        image, ./W_icon/26.png COMP;
+	        image, ./W_icon/27.png COMP;
+	        image, ./W_icon/28.png COMP;
+	        image, ./W_icon/29.png COMP;
+	        image, ./W_icon/30.png COMP;
+	        image, ./W_icon/31.png COMP;
+	        image, ./W_icon/32.png COMP;
+	        image, ./W_icon/33.png COMP;
+	        image, ./W_icon/34.png COMP;
+	        image, ./W_icon/35.png COMP;
+	        image, ./W_icon/36.png COMP;
+	        image, ./W_icon/37.png COMP;
+	        image, ./W_icon/38.png COMP;
+	        image, ./W_icon/39.png COMP;
+	        image, ./W_icon/40.png COMP;
+	        image, ./W_icon/41.png COMP;
+	        image, ./W_icon/42.png COMP;
+	        image, ./W_icon/43.png COMP;
+	        image, ./W_icon/44.png COMP;
+	        image, ./W_icon/45.png COMP;
+	        image, ./W_icon/46.png COMP;
+	        image, ./W_icon/47.png COMP;
+	        image, ./W_icon/48.png COMP;
+	        image, ./W_icon/49.png COMP;
+	        image, ./W_icon/50.png COMP;
+	        image, ./W_icon/51.png COMP;
+	        image, ./W_icon/52.png COMP;
+	    }
         parts
         {
             part
@@ -72,8 +74,8 @@ collections
                 description
                 {
                     state, default 0.0;
-                    min, (WIDTH) (HEIGHT);
-                    max, (WIDTH) (HEIGHT);
+                    min, (W_WIDTH) (W_HEIGHT);
+                    max, (W_WIDTH) (W_HEIGHT);
                     fixed, 1 1;
                     color, 0 0 0 0;
                 }
@@ -85,8 +87,8 @@ collections
                 description
                 {
                     state, default 0.0;
-                    min, (WIDTH) (HEIGHT);
-                    max, (WIDTH) (HEIGHT);
+                    min, (W_WIDTH) (W_HEIGHT);
+                    max, (W_WIDTH) (W_HEIGHT);
                     fixed, 1 1;
                     image.normal, ./W_icon/52.png;
                 }
@@ -236,6 +238,620 @@ collections
                 transition: SINUSOIDAL 0.6;
             }
         }
-    }
+    } // group
+    
+    
+    // Up Group==================================================================
+    group
+    {
+        name, SaWidgetIcon/Up;
+        
+#define Up_WIDTH (34)
+#define Up_HEIGHT (34)
+
+	    images
+	    {
+	        image, ./Up_icon/1.png COMP;
+	        image, ./Up_icon/2.png COMP;
+	        image, ./Up_icon/3.png COMP;
+	        image, ./Up_icon/4.png COMP;
+	        image, ./Up_icon/5.png COMP;
+	        image, ./Up_icon/6.png COMP;
+	        image, ./Up_icon/7.png COMP;
+	        image, ./Up_icon/8.png COMP;
+	        image, ./Up_icon/9.png COMP;
+	        image, ./Up_icon/10.png COMP;
+	        image, ./Up_icon/11.png COMP;
+	        image, ./Up_icon/12.png COMP;
+	        image, ./Up_icon/13.png COMP;
+	        image, ./Up_icon/14.png COMP;
+	        image, ./Up_icon/15.png COMP;
+	        image, ./Up_icon/16.png COMP;
+	        image, ./Up_icon/17.png COMP;
+	        image, ./Up_icon/18.png COMP;
+	        image, ./Up_icon/19.png COMP;
+	        image, ./Up_icon/20.png COMP;
+	        image, ./Up_icon/21.png COMP;
+	        image, ./Up_icon/22.png COMP;
+	        image, ./Up_icon/23.png COMP;
+	        image, ./Up_icon/24.png COMP;
+	        image, ./Up_icon/25.png COMP;
+	        image, ./Up_icon/26.png COMP;
+	        image, ./Up_icon/27.png COMP;
+	        image, ./Up_icon/28.png COMP;
+	        image, ./Up_icon/29.png COMP;
+	        image, ./Up_icon/30.png COMP;
+	    }
+        parts
+        {
+            part
+            {
+                name, base;
+                type, RECT;
+                description
+                {
+                    state, default 0.0;
+                    min, (Up_WIDTH) (Up_HEIGHT);
+                    max, (Up_WIDTH) (Up_HEIGHT);
+                    fixed, 1 1;
+                    color, 0 0 0 0;
+                }
+            }
+            part
+            {
+                name, icon;
+                type, IMAGE;
+                description
+                {
+                    state, default 0.0;
+                    min, (Up_WIDTH) (Up_HEIGHT);
+                    max, (Up_WIDTH) (Up_HEIGHT);
+                    fixed, 1 1;
+                    image.normal, ./Up_icon/30.png;
+                }
+                description
+                {
+                    state, show.anim 0.0;
+                    inherit, default 0.0;
+
+                    image.tween, ./Up_icon/30.png;
+
+                    image.tween, ./Up_icon/29.png;
+                    image.tween, ./Up_icon/28.png;
+                    image.tween, ./Up_icon/27.png;
+                    image.tween, ./Up_icon/26.png;
+                    image.tween, ./Up_icon/25.png;
+                    image.tween, ./Up_icon/24.png;
+                    image.tween, ./Up_icon/23.png;
+                    image.tween, ./Up_icon/22.png;
+                    image.tween, ./Up_icon/21.png;
+                    image.tween, ./Up_icon/20.png;
+
+                    image.tween, ./Up_icon/19.png;
+                    image.tween, ./Up_icon/18.png;
+                    image.tween, ./Up_icon/17.png;
+                    image.tween, ./Up_icon/16.png;
+                    image.tween, ./Up_icon/15.png;
+                    image.tween, ./Up_icon/14.png;
+                    image.tween, ./Up_icon/13.png;
+                    image.tween, ./Up_icon/12.png;
+                    image.tween, ./Up_icon/11.png;
+                    image.tween, ./Up_icon/10.png;
+                    
+                    image.tween, ./Up_icon/9.png;
+                    image.tween, ./Up_icon/8.png;
+                    image.tween, ./Up_icon/7.png;
+                    image.tween, ./Up_icon/6.png;
+                    image.tween, ./Up_icon/5.png;
+                    image.tween, ./Up_icon/4.png;
+                    image.tween, ./Up_icon/3.png;
+                    image.tween, ./Up_icon/2.png;
+                    image.normal, ./Up_icon/1.png;
+                }
+                description
+                {
+                    state, hide.anim 0.0;
+                    inherit, default 0.0;
+
+                    image.normal, ./Up_icon/1.png;
+                    image.tween, ./Up_icon/2.png;
+                    image.tween, ./Up_icon/3.png;
+                    image.tween, ./Up_icon/4.png;
+                    image.tween, ./Up_icon/5.png;
+                    image.tween, ./Up_icon/6.png;
+                    image.tween, ./Up_icon/7.png;
+                    image.tween, ./Up_icon/8.png;
+                    image.tween, ./Up_icon/9.png;
+                    
+                    image.tween, ./Up_icon/10.png;
+                    image.tween, ./Up_icon/11.png;
+                    image.tween, ./Up_icon/12.png;
+                    image.tween, ./Up_icon/13.png;
+                    image.tween, ./Up_icon/14.png;
+                    image.tween, ./Up_icon/15.png;
+                    image.tween, ./Up_icon/16.png;
+                    image.tween, ./Up_icon/17.png;
+                    image.tween, ./Up_icon/18.png;
+                    image.tween, ./Up_icon/19.png;
+
+                    image.tween, ./Up_icon/20.png;
+                    image.tween, ./Up_icon/21.png;
+                    image.tween, ./Up_icon/22.png;
+                    image.tween, ./Up_icon/23.png;
+                    image.tween, ./Up_icon/24.png;
+                    image.tween, ./Up_icon/25.png;
+                    image.tween, ./Up_icon/26.png;
+                    image.tween, ./Up_icon/27.png;
+                    image.tween, ./Up_icon/28.png;
+                    image.tween, ./Up_icon/29.png;
+
+                    image.tween, ./Up_icon/30.png;
+                }
+            } // part
+        } // parts
+        programs
+        {
+            program
+            {
+                signal, show.anim;
+                source, *;
+                action, STATE_SET show.anim 0.0;
+                target, icon;
+                transition: SINUSOIDAL 0.6;
+            }
+            program
+            {
+                signal, hide.anim;
+                source, *;
+                action, STATE_SET hide.anim 0.0;
+                target, icon;
+                transition: SINUSOIDAL 0.6;
+            }
+        }
+    } // Up group
+// Down Group==================================================================
+    group
+    {
+        name, SaWidgetIcon/Down;
+        
+#define Down_WIDTH (34)
+#define Down_HEIGHT (34)
+
+	    images
+	    {
+	        image, ./Down_icon/1.png COMP;
+	        image, ./Down_icon/2.png COMP;
+	        image, ./Down_icon/3.png COMP;
+	        image, ./Down_icon/4.png COMP;
+	        image, ./Down_icon/5.png COMP;
+	        image, ./Down_icon/6.png COMP;
+	        image, ./Down_icon/7.png COMP;
+	        image, ./Down_icon/8.png COMP;
+	        image, ./Down_icon/9.png COMP;
+	        image, ./Down_icon/10.png COMP;
+	        image, ./Down_icon/11.png COMP;
+	        image, ./Down_icon/12.png COMP;
+	        image, ./Down_icon/13.png COMP;
+	        image, ./Down_icon/14.png COMP;
+	        image, ./Down_icon/15.png COMP;
+	        image, ./Down_icon/16.png COMP;
+	        image, ./Down_icon/17.png COMP;
+	        image, ./Down_icon/18.png COMP;
+	        image, ./Down_icon/19.png COMP;
+	        image, ./Down_icon/20.png COMP;
+	        image, ./Down_icon/21.png COMP;
+	        image, ./Down_icon/22.png COMP;
+	        image, ./Down_icon/23.png COMP;
+	        image, ./Down_icon/24.png COMP;
+	        image, ./Down_icon/25.png COMP;
+	        image, ./Down_icon/26.png COMP;
+	        image, ./Down_icon/27.png COMP;
+	        image, ./Down_icon/28.png COMP;
+	        image, ./Down_icon/29.png COMP;
+	        image, ./Down_icon/30.png COMP;
+	    }
+        parts
+        {
+            part
+            {
+                name, base;
+                type, RECT;
+                description
+                {
+                    state, default 0.0;
+                    min, (Down_WIDTH) (Down_HEIGHT);
+                    max, (Down_WIDTH) (Down_HEIGHT);
+                    fixed, 1 1;
+                    color, 0 0 0 0;
+                }
+            }
+            part
+            {
+                name, icon;
+                type, IMAGE;
+                description
+                {
+                    state, default 0.0;
+                    min, (Down_WIDTH) (Down_HEIGHT);
+                    max, (Down_WIDTH) (Down_HEIGHT);
+                    fixed, 1 1;
+                    image.normal, ./Down_icon/30.png;
+                }
+                description
+                {
+                    state, show.anim 0.0;
+                    inherit, default 0.0;
+
+                    image.tween, ./Down_icon/30.png;
+
+                    image.tween, ./Down_icon/29.png;
+                    image.tween, ./Down_icon/28.png;
+                    image.tween, ./Down_icon/27.png;
+                    image.tween, ./Down_icon/26.png;
+                    image.tween, ./Down_icon/25.png;
+                    image.tween, ./Down_icon/24.png;
+                    image.tween, ./Down_icon/23.png;
+                    image.tween, ./Down_icon/22.png;
+                    image.tween, ./Down_icon/21.png;
+                    image.tween, ./Down_icon/20.png;
+
+                    image.tween, ./Down_icon/19.png;
+                    image.tween, ./Down_icon/18.png;
+                    image.tween, ./Down_icon/17.png;
+                    image.tween, ./Down_icon/16.png;
+                    image.tween, ./Down_icon/15.png;
+                    image.tween, ./Down_icon/14.png;
+                    image.tween, ./Down_icon/13.png;
+                    image.tween, ./Down_icon/12.png;
+                    image.tween, ./Down_icon/11.png;
+                    image.tween, ./Down_icon/10.png;
+                    
+                    image.tween, ./Down_icon/9.png;
+                    image.tween, ./Down_icon/8.png;
+                    image.tween, ./Down_icon/7.png;
+                    image.tween, ./Down_icon/6.png;
+                    image.tween, ./Down_icon/5.png;
+                    image.tween, ./Down_icon/4.png;
+                    image.tween, ./Down_icon/3.png;
+                    image.tween, ./Down_icon/2.png;
+                    image.normal, ./Down_icon/1.png;
+                }
+                description
+                {
+                    state, hide.anim 0.0;
+                    inherit, default 0.0;
+
+                    image.normal, ./Down_icon/1.png;
+                    image.tween, ./Down_icon/2.png;
+                    image.tween, ./Down_icon/3.png;
+                    image.tween, ./Down_icon/4.png;
+                    image.tween, ./Down_icon/5.png;
+                    image.tween, ./Down_icon/6.png;
+                    image.tween, ./Down_icon/7.png;
+                    image.tween, ./Down_icon/8.png;
+                    image.tween, ./Down_icon/9.png;
+                    
+                    image.tween, ./Down_icon/10.png;
+                    image.tween, ./Down_icon/11.png;
+                    image.tween, ./Down_icon/12.png;
+                    image.tween, ./Down_icon/13.png;
+                    image.tween, ./Down_icon/14.png;
+                    image.tween, ./Down_icon/15.png;
+                    image.tween, ./Down_icon/16.png;
+                    image.tween, ./Down_icon/17.png;
+                    image.tween, ./Down_icon/18.png;
+                    image.tween, ./Down_icon/19.png;
+
+                    image.tween, ./Down_icon/20.png;
+                    image.tween, ./Down_icon/21.png;
+                    image.tween, ./Down_icon/22.png;
+                    image.tween, ./Down_icon/23.png;
+                    image.tween, ./Down_icon/24.png;
+                    image.tween, ./Down_icon/25.png;
+                    image.tween, ./Down_icon/26.png;
+                    image.tween, ./Down_icon/27.png;
+                    image.tween, ./Down_icon/28.png;
+                    image.tween, ./Down_icon/29.png;
+
+                    image.tween, ./Down_icon/30.png;
+                }
+            } // part
+        } // parts
+        programs
+        {
+            program
+            {
+                signal, show.anim;
+                source, *;
+                action, STATE_SET show.anim 0.0;
+                target, icon;
+                transition: SINUSOIDAL 0.6;
+            }
+            program
+            {
+                signal, hide.anim;
+                source, *;
+                action, STATE_SET hide.anim 0.0;
+                target, icon;
+                transition: SINUSOIDAL 0.6;
+            }
+        }
+    } // Down group
+
+// Plus Group==================================================================
+    group
+    {
+        name, SaWidgetIcon/Plus;
+        
+#define Plus_WIDTH (34)
+#define Plus_HEIGHT (34)
+
+	    images
+	    {
+	        image, ./Plus_icon/1.png COMP;
+	        image, ./Plus_icon/2.png COMP;
+	        image, ./Plus_icon/3.png COMP;
+	        image, ./Plus_icon/4.png COMP;
+	        image, ./Plus_icon/5.png COMP;
+	        image, ./Plus_icon/6.png COMP;
+	        image, ./Plus_icon/7.png COMP;
+	        image, ./Plus_icon/8.png COMP;
+	        image, ./Plus_icon/9.png COMP;
+	        image, ./Plus_icon/10.png COMP;
+	        image, ./Plus_icon/11.png COMP;
+	        image, ./Plus_icon/12.png COMP;
+	        image, ./Plus_icon/13.png COMP;
+	        image, ./Plus_icon/14.png COMP;
+	        image, ./Plus_icon/15.png COMP;
+	        image, ./Plus_icon/16.png COMP;
+	        image, ./Plus_icon/17.png COMP;
+	        image, ./Plus_icon/18.png COMP;
+	        image, ./Plus_icon/19.png COMP;
+	        image, ./Plus_icon/20.png COMP;
+	        image, ./Plus_icon/21.png COMP;
+	        image, ./Plus_icon/22.png COMP;
+	        image, ./Plus_icon/23.png COMP;
+	        image, ./Plus_icon/24.png COMP;
+	        image, ./Plus_icon/25.png COMP;
+	        image, ./Plus_icon/26.png COMP;
+	    }
+        parts
+        {
+            part
+            {
+                name, base;
+                type, RECT;
+                description
+                {
+                    state, default 0.0;
+                    min, (Plus_WIDTH) (Plus_HEIGHT);
+                    max, (Plus_WIDTH) (Plus_HEIGHT);
+                    fixed, 1 1;
+                    color, 0 0 0 0;
+                }
+            }
+            part
+            {
+                name, icon;
+                type, IMAGE;
+                description
+                {
+                    state, default 0.0;
+                    min, (Plus_WIDTH) (Plus_HEIGHT);
+                    max, (Plus_WIDTH) (Plus_HEIGHT);
+                    fixed, 1 1;
+                    image.normal, ./Plus_icon/26.png;
+                }
+                description
+                {
+                    state, show.anim 0.0;
+                    inherit, default 0.0;
+
+                    image.tween, ./Plus_icon/26.png;
+                    image.tween, ./Plus_icon/25.png;
+                    image.tween, ./Plus_icon/24.png;
+                    image.tween, ./Plus_icon/23.png;
+                    image.tween, ./Plus_icon/22.png;
+                    image.tween, ./Plus_icon/21.png;
+                    image.tween, ./Plus_icon/20.png;
+
+                    image.tween, ./Plus_icon/19.png;
+                    image.tween, ./Plus_icon/18.png;
+                    image.tween, ./Plus_icon/17.png;
+                    image.tween, ./Plus_icon/16.png;
+                    image.tween, ./Plus_icon/15.png;
+                    image.tween, ./Plus_icon/14.png;
+                    image.tween, ./Plus_icon/13.png;
+                    image.tween, ./Plus_icon/12.png;
+                    image.tween, ./Plus_icon/11.png;
+                    image.tween, ./Plus_icon/10.png;
+                    
+                    image.tween, ./Plus_icon/9.png;
+                    image.tween, ./Plus_icon/8.png;
+                    image.tween, ./Plus_icon/7.png;
+                    image.tween, ./Plus_icon/6.png;
+                    image.tween, ./Plus_icon/5.png;
+                    image.tween, ./Plus_icon/4.png;
+                    image.tween, ./Plus_icon/3.png;
+                    image.tween, ./Plus_icon/2.png;
+                    image.normal, ./Plus_icon/1.png;
+                }
+                description
+                {
+                    state, hide.anim 0.0;
+                    inherit, default 0.0;
+
+                    image.normal, ./Plus_icon/1.png;
+                    image.tween, ./Plus_icon/2.png;
+                    image.tween, ./Plus_icon/3.png;
+                    image.tween, ./Plus_icon/4.png;
+                    image.tween, ./Plus_icon/5.png;
+                    image.tween, ./Plus_icon/6.png;
+                    image.tween, ./Plus_icon/7.png;
+                    image.tween, ./Plus_icon/8.png;
+                    image.tween, ./Plus_icon/9.png;
+                    
+                    image.tween, ./Plus_icon/10.png;
+                    image.tween, ./Plus_icon/11.png;
+                    image.tween, ./Plus_icon/12.png;
+                    image.tween, ./Plus_icon/13.png;
+                    image.tween, ./Plus_icon/14.png;
+                    image.tween, ./Plus_icon/15.png;
+                    image.tween, ./Plus_icon/16.png;
+                    image.tween, ./Plus_icon/17.png;
+                    image.tween, ./Plus_icon/18.png;
+                    image.tween, ./Plus_icon/19.png;
+
+                    image.tween, ./Plus_icon/20.png;
+                    image.tween, ./Plus_icon/21.png;
+                    image.tween, ./Plus_icon/22.png;
+                    image.tween, ./Plus_icon/23.png;
+                    image.tween, ./Plus_icon/24.png;
+                    image.tween, ./Plus_icon/25.png;
+                    image.tween, ./Plus_icon/26.png;
+                }
+            } // part
+        } // parts
+        programs
+        {
+            program
+            {
+                signal, show.anim;
+                source, *;
+                action, STATE_SET show.anim 0.0;
+                target, icon;
+                transition: SINUSOIDAL 0.6;
+            }
+            program
+            {
+                signal, hide.anim;
+                source, *;
+                action, STATE_SET hide.anim 0.0;
+                target, icon;
+                transition: SINUSOIDAL 0.6;
+            }
+        }
+    } // Plus group
+
+// Minus Group==================================================================
+    group
+    {
+        name, SaWidgetIcon/Minus;
+        
+#define Minus_WIDTH (34)
+#define Minus_HEIGHT (34)
+
+	    images
+	    {
+	        image, ./Minus_icon/1.png COMP;
+	        image, ./Minus_icon/2.png COMP;
+	        image, ./Minus_icon/3.png COMP;
+	        image, ./Minus_icon/4.png COMP;
+	        image, ./Minus_icon/5.png COMP;
+	        image, ./Minus_icon/6.png COMP;
+	        image, ./Minus_icon/7.png COMP;
+	        image, ./Minus_icon/8.png COMP;
+	        image, ./Minus_icon/9.png COMP;
+	        image, ./Minus_icon/10.png COMP;
+	        image, ./Minus_icon/11.png COMP;
+	        image, ./Minus_icon/12.png COMP;
+	        image, ./Minus_icon/13.png COMP;
+	        image, ./Minus_icon/14.png COMP;
+	        image, ./Minus_icon/15.png COMP;
+	    }
+        parts
+        {
+            part
+            {
+                name, base;
+                type, RECT;
+                description
+                {
+                    state, default 0.0;
+                    min, (Minus_WIDTH) (Minus_HEIGHT);
+                    max, (Minus_WIDTH) (Minus_HEIGHT);
+                    fixed, 1 1;
+                    color, 0 0 0 0;
+                }
+            }
+            part
+            {
+                name, icon;
+                type, IMAGE;
+                description
+                {
+                    state, default 0.0;
+                    min, (Minus_WIDTH) (Minus_HEIGHT);
+                    max, (Minus_WIDTH) (Minus_HEIGHT);
+                    fixed, 1 1;
+                    image.normal, ./Minus_icon/15.png;
+                }
+                description
+                {
+                    state, show.anim 0.0;
+                    inherit, default 0.0;
+
+                    image.tween, ./Minus_icon/15.png;
+                    image.tween, ./Minus_icon/14.png;
+                    image.tween, ./Minus_icon/13.png;
+                    image.tween, ./Minus_icon/12.png;
+                    image.tween, ./Minus_icon/11.png;
+                    image.tween, ./Minus_icon/10.png;
+                    
+                    image.tween, ./Minus_icon/9.png;
+                    image.tween, ./Minus_icon/8.png;
+                    image.tween, ./Minus_icon/7.png;
+                    image.tween, ./Minus_icon/6.png;
+                    image.tween, ./Minus_icon/5.png;
+                    image.tween, ./Minus_icon/4.png;
+                    image.tween, ./Minus_icon/3.png;
+                    image.tween, ./Minus_icon/2.png;
+                    image.normal, ./Minus_icon/1.png;
+                }
+                description
+                {
+                    state, hide.anim 0.0;
+                    inherit, default 0.0;
+
+                    image.normal, ./Minus_icon/1.png;
+                    image.tween, ./Minus_icon/2.png;
+                    image.tween, ./Minus_icon/3.png;
+                    image.tween, ./Minus_icon/4.png;
+                    image.tween, ./Minus_icon/5.png;
+                    image.tween, ./Minus_icon/6.png;
+                    image.tween, ./Minus_icon/7.png;
+                    image.tween, ./Minus_icon/8.png;
+                    image.tween, ./Minus_icon/9.png;
+                    
+                    image.tween, ./Minus_icon/10.png;
+                    image.tween, ./Minus_icon/11.png;
+                    image.tween, ./Minus_icon/12.png;
+                    image.tween, ./Minus_icon/13.png;
+                    image.tween, ./Minus_icon/14.png;
+                    image.tween, ./Minus_icon/15.png;
+                }
+            } // part
+        } // parts
+        programs
+        {
+            program
+            {
+                signal, show.anim;
+                source, *;
+                action, STATE_SET show.anim 0.0;
+                target, icon;
+                transition: SINUSOIDAL 0.6;
+            }
+            program
+            {
+                signal, hide.anim;
+                source, *;
+                action, STATE_SET hide.anim 0.0;
+                target, icon;
+                transition: SINUSOIDAL 0.6;
+            }
+        }
+    } // Minus group
+
 }
 
