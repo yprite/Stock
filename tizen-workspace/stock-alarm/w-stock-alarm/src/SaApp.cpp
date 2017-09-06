@@ -11,10 +11,7 @@
 #include "WNaviframeController.h"
 #include "SaNoContentViewController.h"
 #include "SaDataConsumer.h"
-#include "SaCompanyDBManager.h"
 #include "RotaryManager.h"
-
-#include "SaCompanyListViewController.h"
 #include "SaDebug.h"
 
 #include <Elementary.h>
@@ -74,7 +71,6 @@ bool SaApp::onCreate()
     // initialize singleton object
     SaDataConsumer::getInstance()->initialize();
     RotaryManager::getInstance()->initialize(getWindowController()->getConformantEvasObject());
-    SaCompanyDBManager::getInstance()->initialize();
     return true;
 }
 
@@ -82,7 +78,6 @@ void SaApp::onTerminate()
 {
     //  ScRotaryManager::getInstance()->finalize();
    	SaDataConsumer::getInstance()->finalize();
-    SaCompanyDBManager::getInstance()->finalize();
 }
 
 void SaApp::onAppControl(app_control_h request, bool firstLaunch)
@@ -90,8 +85,7 @@ void SaApp::onAppControl(app_control_h request, bool firstLaunch)
     if (firstLaunch)
     {
         auto navi = (WNaviframeController *)(getWindowController()->getBaseViewController());
-        //navi->push(new SaNoContentViewController());
-        navi->push(new SaCompanyListViewController());
+        navi->push(new SaNoContentViewController());
     }
 }
 
