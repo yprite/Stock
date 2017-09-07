@@ -81,7 +81,7 @@ bool SaApp::onCreate()
 void SaApp::onTerminate()
 {
     //  ScRotaryManager::getInstance()->finalize();
-   	SaDataConsumer::getInstance()->finalize();
+    SaDataConsumer::getInstance()->finalize();
     SaCompanyDBManager::getInstance()->finalize();
 }
 
@@ -91,6 +91,7 @@ void SaApp::onAppControl(app_control_h request, bool firstLaunch)
     {
         auto navi = (WNaviframeController *)(getWindowController()->getBaseViewController());
         //navi->push(new SaNoContentViewController());
+
         auto companyListView = new SaCompanyListViewController();
         companyListView->setOnItemClicked(
             []()
@@ -98,6 +99,7 @@ void SaApp::onAppControl(app_control_h request, bool firstLaunch)
                 WHIT();
             });
         navi->push(companyListView);
+
     }
 }
 

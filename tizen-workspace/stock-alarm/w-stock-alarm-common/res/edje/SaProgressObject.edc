@@ -1,0 +1,79 @@
+collections
+{
+    base_scale, 1.3;
+    group
+    {
+        name, SaProgressObject;
+        parts
+        {
+            part
+            {
+                name, base;
+                type, RECT;
+                description
+                {
+                    state, default 0.0;
+                    //min, 360 360;
+                    //max, 360 360;
+                    min, 60 60;
+                    max, 60 60;
+                    fixed, 1 1;
+                    //color, 0 0 0 125;
+                    color, 255 0 0 125;
+                }
+                description
+                {
+                    state, expand1 0.0;
+                    inherit, default 0.0;
+                    min, 360 360;
+                    max, 360 360;
+                }
+                description
+                {
+                    state, expand2 0.0;
+                    inherit, default 0.0;
+                    min, 300 300;
+                    max, 300 300;
+                }
+            }
+            part
+            {
+                name, elm.swallow.content;
+                type, SWALLOW;
+                description
+                {
+                    state, default 0.0;
+                    rel1.to, base;
+                    rel2.to, base;
+                }
+            }
+        } // parts
+        programs
+        {
+            program
+            {
+                signal, load;
+                source, *;
+                action, STATE_SET expand1 0.0;
+                target, base;
+                transition, SINUSOIDAL 0.4;
+                after, expand2; 
+            }
+            program
+            {
+                name, expand2;
+                source, *;
+                action, STATE_SET expand2 0.0;
+                target, base;
+                transition, SINUSOIDAL 0.2;
+                after, loaded;
+            }
+            program
+            {
+                name, loaded;
+                source, *;
+                action, SIGNAL_EMIT "loaded" "*";
+            }
+        }
+    }
+}

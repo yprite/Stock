@@ -7,6 +7,8 @@
 
 #include "SaWidget.h"
 #include "SaWidgetInstance.h"
+#include "SaDataConsumer.h"
+#include "SaCompanyDBManager.h"
 #include "SaWidgetDebug.h"
 
 #include <app.h>
@@ -69,7 +71,8 @@ void SaWidget::onCreate()
             WINFO("SYSTEM_SETTINGS_KEY_3G_DATA_NETWORK_ENABLED changed callback!");
         }, this);
     */
-
+    SaDataConsumer::getInstance()->initialize();
+    SaCompanyDBManager::getInstance()->initialize();
     feedback_initialize();
 }
 
@@ -107,6 +110,8 @@ void SaWidget::onTerminate()
             WERROR("SYSTEM_SETTINGS_KEY_TIME_CHANGED unset_changed_cb failed.(%d)", ret);
     } while (0);
 
+    SaDataConsumer::getInstance()->finalize();
+    SaCompanyDBManager::getInstance()->finalize();
     feedback_deinitialize();
 }
 

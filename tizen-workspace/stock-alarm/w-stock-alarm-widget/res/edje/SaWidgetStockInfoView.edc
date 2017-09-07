@@ -3,7 +3,7 @@ collections
     base_scale, 1.3;
 
 #define DF_TITLE_PRICE_INFO_HEIGHT (46)
-#define DF_SUB_PRICE_INFO_HEIGHT (30)
+#define DF_SUB_PRICE_INFO_HEIGHT (34)
     group
     {
         name, SaWidgetStockInfoView/TitlePriceInfoText;

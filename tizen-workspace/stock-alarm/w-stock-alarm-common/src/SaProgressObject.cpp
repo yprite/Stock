@@ -7,8 +7,11 @@
 
 #include "SaProgressObject.h"
 #include "SaUtility.h"
+#include "SaCommonDebug.h"
+
 #include <Elementary.h>
 #include <cairo.h>
+#include <app.h>
 
 static const int DEFAULT_SIZE = 100;
 static const int SCREEN_SIZE = 360;
@@ -55,8 +58,16 @@ bool SaProgressObject::isRunning() const
 
 Evas_Object* SaProgressObject::onCreateView(Evas_Object *parent, void *param)
 {
+    char *resPath = app_get_resource_path();
+    char edjPath[PATH_MAX] = {0, };
+
+    if (resPath)
+    {
+        snprintf(edjPath, sizeof(edjPath), "%s%s", resPath, "edje/SaProgressObject.edj");
+        free(resPath);
+    }
     Evas_Object *layout = elm_layout_add(parent);
-    elm_layout_theme_set(layout, "layout", "application", "default");
+    elm_layout_file_set(layout, edjPath, "SaProgressObject");
     evas_object_size_hint_weight_set(layout, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
     evas_object_show(layout);
 
@@ -66,17 +77,28 @@ Evas_Object* SaProgressObject::onCreateView(Evas_Object *parent, void *param)
 void SaProgressObject::onCreated()
 {
     Evas_Object *layout = getEvasObject();
-    Evas_Object *canvasImg = elm_image_add(layout);
-    Evas_Object *canvas = elm_image_object_get(canvasImg);
 
-    evas_object_image_size_set(canvas, SCREEN_SIZE, SCREEN_SIZE);
-    evas_object_image_alpha_set(canvas, EINA_TRUE);
-    evas_object_image_colorspace_set(canvas, EVAS_COLORSPACE_ARGB8888);
-    evas_object_show(canvas);
+    edje_object_signal_callback_add(elm_layout_edje_get(layout), "loaded", "*",
+            [](void *data, Evas_Object *obj, const char *emission, const char *source)
+            {
+                WINFO("load.finished!");
+                auto self = (SaProgressObject *)data;
 
-    _canvas = canvas;
+                Evas_Object *layout = self->getEvasObject();
+                Evas_Object *canvasImg = elm_image_add(layout);
+                Evas_Object *canvas = elm_image_object_get(canvasImg);
 
-    elm_object_part_content_set(layout, "elm.swallow.content", canvasImg);
+                evas_object_image_size_set(canvas, SCREEN_SIZE, SCREEN_SIZE);
+                evas_object_image_alpha_set(canvas, EINA_TRUE);
+                evas_object_image_colorspace_set(canvas, EVAS_COLORSPACE_ARGB8888);
+                evas_object_show(canvas);
+
+                self->_canvas = canvas;
+
+                elm_object_part_content_set(self->getEvasObject(), "elm.swallow.content", canvasImg);
+                self->run();
+            }, this);
+
 }
 
 void SaProgressObject::onDestroy()

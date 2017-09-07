@@ -28,6 +28,8 @@ SaWidgetStockInfoViewController::SaWidgetStockInfoViewController()
     _titlePriceInfoText = nullptr;
 
     _priceIcon = nullptr;
+    _upDownIcon = nullptr;
+    _plusMinusIcon = nullptr;
 }
 
 SaWidgetStockInfoViewController::~SaWidgetStockInfoViewController()
@@ -88,6 +90,14 @@ void SaWidgetStockInfoViewController::onCreated()
             [](void *data, Evas_Object *obj, void *eventInfo)
             {
                 WHIT();
+                auto self = (SaWidgetStockInfoViewController *)data;
+                Evas_Object *layout = self->getEvasObject();
+                int r = 0, g = 0, b = 0, a = 0;
+                evas_object_color_get(layout, &r, &g, &b, &a);
+                evas_object_color_set(layout, r, g, b, 125);
+                elm_layout_signal_emit(self->_priceIcon, "show.anim", "*");
+                elm_layout_signal_emit(self->_upDownIcon, "show.anim", "*");
+                elm_layout_signal_emit(self->_plusMinusIcon, "show.anim", "*");
                 SaDataConsumer::getInstance()->requestFinanceQuatesList("APPL");
             }, this);
 
@@ -167,7 +177,7 @@ void SaWidgetStockInfoViewController::_createTitlePriceInfo()
     WENTER();
 
     static const int TITLE_PRICE_ICON_SIZE = 50;
-    static const int TITLE_PRICE_INFO_PADDING = 20;
+    static const int TITLE_PRICE_INFO_PADDING = 30;
     char *resPath = app_get_resource_path();
     char edjPath[PATH_MAX] = { 0, };
     char iconEdjPath[PATH_MAX] = { 0, };
@@ -224,16 +234,18 @@ void SaWidgetStockInfoViewController::_createSubPriceInfo()
 {
     //SaWidgetStockInfoView/SubPriceInfoIcon
     //SaWidgetStockInfoView/SubPriceInfoText
-    static const int SUB_PRICE_ICON_SIZE = 30;
+    static const int SUB_PRICE_ICON_SIZE = 34;
     static const int CENTER_PADDING_RECT_WIDTH = 30;
-    static const int PRICE_INFO_PADDING = 10;
+    static const int PRICE_INFO_PADDING = 20;
 
     char *resPath = app_get_resource_path();
     char edjPath[PATH_MAX] = { 0, };
+    char iconEdjPath[PATH_MAX] = {0, };
 
     if (resPath)
     {
         snprintf(edjPath, sizeof(edjPath), "%s%s", resPath, "edje/SaWidgetStockInfoView.edj");
+        snprintf(iconEdjPath, sizeof(iconEdjPath), "%s%s", resPath, "edje/SaWidgetIcon.edj");
         free(resPath);
     }
     Evas_Object *layout = getEvasObject();
@@ -248,13 +260,22 @@ void SaWidgetStockInfoViewController::_createSubPriceInfo()
         elm_layout_file_set(iconLayout, edjPath, "SaWidgetStockInfoView/SubPriceInfoIcon");
         evas_object_show(iconLayout);
 
-        Evas_Object *icon = evas_object_rectangle_add(evas_object_evas_get(box));
+//        Evas_Object *icon = evas_object_rectangle_add(evas_object_evas_get(box));
+//        evas_object_size_hint_min_set(icon, SUB_PRICE_ICON_SIZE, SUB_PRICE_ICON_SIZE);
+//        evas_object_size_hint_max_set(icon, SUB_PRICE_ICON_SIZE, SUB_PRICE_ICON_SIZE);
+//        evas_object_resize(icon, SUB_PRICE_ICON_SIZE, SUB_PRICE_ICON_SIZE);
+//        evas_object_color_set(icon, 0, 0, 255, 255);
+//        evas_object_show(icon);
+//        elm_object_part_content_set(iconLayout, "elm.swallow.content", icon);
+
+        Evas_Object *icon = elm_layout_add(box);
+        elm_layout_file_set(icon, iconEdjPath, "SaWidgetIcon/Up");
         evas_object_size_hint_min_set(icon, SUB_PRICE_ICON_SIZE, SUB_PRICE_ICON_SIZE);
         evas_object_size_hint_max_set(icon, SUB_PRICE_ICON_SIZE, SUB_PRICE_ICON_SIZE);
         evas_object_resize(icon, SUB_PRICE_ICON_SIZE, SUB_PRICE_ICON_SIZE);
-        evas_object_color_set(icon, 0, 0, 255, 255);
         evas_object_show(icon);
         elm_object_part_content_set(iconLayout, "elm.swallow.content", icon);
+        _upDownIcon = icon;
 
         Evas_Object *paddingRect = evas_object_rectangle_add(evas_object_evas_get(box));
         evas_object_size_hint_min_set(paddingRect, PRICE_INFO_PADDING, SUB_PRICE_ICON_SIZE);
@@ -296,13 +317,14 @@ void SaWidgetStockInfoViewController::_createSubPriceInfo()
         elm_layout_file_set(iconLayout, edjPath, "SaWidgetStockInfoView/SubPriceInfoIcon");
         evas_object_show(iconLayout);
 
-        Evas_Object *icon = evas_object_rectangle_add(evas_object_evas_get(box));
+        Evas_Object *icon = elm_layout_add(box);
+        elm_layout_file_set(icon, iconEdjPath, "SaWidgetIcon/Plus");
         evas_object_size_hint_min_set(icon, SUB_PRICE_ICON_SIZE, SUB_PRICE_ICON_SIZE);
         evas_object_size_hint_max_set(icon, SUB_PRICE_ICON_SIZE, SUB_PRICE_ICON_SIZE);
         evas_object_resize(icon, SUB_PRICE_ICON_SIZE, SUB_PRICE_ICON_SIZE);
-        evas_object_color_set(icon, 0, 0, 255, 255);
         evas_object_show(icon);
         elm_object_part_content_set(iconLayout, "elm.swallow.content", icon);
+        _plusMinusIcon = icon;
 
         Evas_Object *paddingRect = evas_object_rectangle_add(evas_object_evas_get(box));
         evas_object_size_hint_min_set(paddingRect, PRICE_INFO_PADDING, SUB_PRICE_ICON_SIZE);

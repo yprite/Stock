@@ -72,10 +72,10 @@ void SaNoContentViewController::onCreated()
 
     SaProgressObject *progressObj = new SaProgressObject();
     progressObj->create(getEvasObject(), nullptr);
-    evas_object_size_hint_weight_set(progressObj->getEvasObject(), EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
+    evas_object_size_hint_weight_set(progressObj->getEvasObject(), 0, 0);
     evas_object_show(progressObj->getEvasObject());
     elm_object_part_content_set(getEvasObject(), "elm.swallow.content", progressObj->getEvasObject());
-    progressObj->run();
+    //progressObj->run();
 
     WENTER();
 #if 0
