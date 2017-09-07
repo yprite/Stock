@@ -21,6 +21,8 @@ SaSearchCompanyViewController::SaSearchCompanyViewController()
     _entry = nullptr;
     _isUnregistered = false;
     _isPopupCreated = false;
+
+    _textSearchedCb = nullptr;
 }
 
 SaSearchCompanyViewController::~SaSearchCompanyViewController()
@@ -78,6 +80,7 @@ void SaSearchCompanyViewController::onPushed(Elm_Object_Item *naviItem)
 
 bool SaSearchCompanyViewController::onPop()
 {
+    WENTER();
     _unregisterEntryCallback();
     return true;
 }
@@ -89,9 +92,14 @@ void SaSearchCompanyViewController::onBecomeTop()
 
 void SaSearchCompanyViewController::onDestroy()
 {
+    WENTER();
     _unregisterEntryCallback();
 }
 
+void SaSearchCompanyViewController::setOnTextSearched(const std::function<void(const std::string& str)>& textSearchedCb)
+{
+    _textSearchedCb = textSearchedCb;
+}
 /*
 Elm_Object_Item* SaSearchCompanyViewController::onPushToNaviframe(Evas_Object* naviFrame)
 {
@@ -221,6 +229,9 @@ void SaSearchCompanyViewController::_onEntryActivated(void *data, Evas_Object *o
     {
         // update company list.
         WINFO("popout!");
+
+        if (self->_textSearchedCb)
+            self->_textSearchedCb(str);
         self->popOut();
     }
 }

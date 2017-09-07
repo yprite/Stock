@@ -91,7 +91,13 @@ void SaApp::onAppControl(app_control_h request, bool firstLaunch)
     {
         auto navi = (WNaviframeController *)(getWindowController()->getBaseViewController());
         //navi->push(new SaNoContentViewController());
-        navi->push(new SaCompanyListViewController());
+        auto companyListView = new SaCompanyListViewController();
+        companyListView->setOnItemClicked(
+            []()
+            {
+                WHIT();
+            });
+        navi->push(companyListView);
     }
 }
 

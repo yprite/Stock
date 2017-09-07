@@ -69,14 +69,14 @@ Evas_Object* SaNoContentViewController::onCreateView(Evas_Object* parent, void* 
 
 void SaNoContentViewController::onCreated()
 {
-    /*
+
     SaProgressObject *progressObj = new SaProgressObject();
     progressObj->create(getEvasObject(), nullptr);
     evas_object_size_hint_weight_set(progressObj->getEvasObject(), EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
     evas_object_show(progressObj->getEvasObject());
     elm_object_part_content_set(getEvasObject(), "elm.swallow.content", progressObj->getEvasObject());
     progressObj->run();
-    */
+
     WENTER();
 #if 0
     Evas_Object *layout = getEvasObject();
@@ -112,6 +112,8 @@ void SaNoContentViewController::onCreated()
     elm_object_part_content_set(layout, "elm.swallow.content", clipper);
 #endif
 
+
+#if 0
     // genlist test.
     Evas_Object *layout = getEvasObject();
     SaListObject *listObj = new SaListObject();
@@ -132,6 +134,7 @@ void SaNoContentViewController::onCreated()
 
     Evas_Object *circleObj = eext_circle_object_genlist_add(listObj->getEvasObject(), RotaryManager::getInstance()->getCircleSurface());
     RotaryManager::getInstance()->setOnRotary(circleObj, ROTARY_MANAGER_DEFAULT_ROTARY_HANDLER);
+#endif
 }
 
 void SaNoContentViewController::onPushed(Elm_Object_Item* naviItem)

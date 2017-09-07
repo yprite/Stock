@@ -7,6 +7,7 @@
 
 #include "SaWidgetStockInfoViewController.h"
 #include "SaWidgetGraphObject.h"
+#include "SaDataConsumer.h"
 #include "SaWidgetDebug.h"
 #include "WTimer.h"
 
@@ -79,13 +80,27 @@ void SaWidgetStockInfoViewController::onCreated()
 
     elm_object_part_content_set(layout, "sw.graph", graphObj->getEvasObject());
 
+    Evas_Object *effectBtn = elm_button_add(layout);
+    elm_object_style_set(effectBtn, "effect/full");
+    evas_object_size_hint_weight_set(effectBtn, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
+    evas_object_show(effectBtn);
+    evas_object_smart_callback_add(effectBtn, "clicked",
+            [](void *data, Evas_Object *obj, void *eventInfo)
+            {
+                WHIT();
+                SaDataConsumer::getInstance()->requestFinanceQuatesList("APPL");
+            }, this);
+
+    elm_object_part_content_set(layout, "sw.touch.refresh.area", effectBtn);
+
+#if 0
     edje_object_signal_callback_add(elm_layout_edje_get(layout), "touch.area.mouse.clicked", "*",
         [](void *data, Evas_Object *obj, const char *emission, const char *source)
         {
             auto self = (SaWidgetStockInfoViewController *)data;
             elm_layout_signal_emit(self->_priceIcon, "show.anim", "*");
 
-#if 0
+
             WINFO("START ANIMATOR!");
             self->_animator = WTimer::addAnimator(
                 [](void *data)->bool
@@ -124,8 +139,9 @@ void SaWidgetStockInfoViewController::onCreated()
                     }
                     return true;
                 }, data);
-#endif
+
         }, this);
+#endif
 }
 
 void SaWidgetStockInfoViewController::onDestroy()

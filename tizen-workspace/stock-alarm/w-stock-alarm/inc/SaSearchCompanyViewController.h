@@ -17,6 +17,8 @@ public:
     SaSearchCompanyViewController();
     virtual ~SaSearchCompanyViewController();
 
+    void setOnTextSearched(const std::function<void(const std::string& str)>& textSearchedCb);
+
 private:
     virtual Evas_Object* onCreateView(Evas_Object *parent, void *viewParam);
     virtual void onCreated();
@@ -41,6 +43,8 @@ private:
     Evas_Object *_entry;
     bool _isUnregistered;
     bool _isPopupCreated;
+
+    std::function<void(const std::string& str)> _textSearchedCb;
 };
 
 #endif /* SASEARCHCOMPANYVIEWCONTROLLER_H_ */

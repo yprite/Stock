@@ -116,7 +116,7 @@ bool SaCompanyDBManager::search(const std::string& s)
                         else
                             WERROR("unknown column name : %s", colName);
 
-                        //WDEBUG("[%d] colName : %s, value : %s", i, colName, (const char *)sqlite3_column_text(stmt, i));
+                        WDEBUG("[%d] colName : %s, value : %s", i, colName, (const char *)sqlite3_column_text(stmt, i));
                     }
 
                     if (companyInfo.code.empty() || companyInfo.name.empty() || companyInfo.market.empty())
@@ -174,7 +174,6 @@ bool SaCompanyDBManager::_loadAllCompanyList()
         ret = sqlite3_step(stmt);
         if (ret != SQLITE_DONE)
         {
-            WHIT();
             switch (ret)
             {
                 case SQLITE_ROW:
@@ -195,13 +194,17 @@ bool SaCompanyDBManager::_loadAllCompanyList()
                         else
                             WERROR("unknown column name : %s", colName);
 
-                        WDEBUG("[%d] colName : %s, value : %s", i, colName, (const char *)sqlite3_column_text(stmt, i));
+                        //WDEBUG("[%d] colName : %s, value : %s", i, colName, (const char *)sqlite3_column_text(stmt, i));
                     }
 
                     if (companyInfo.code.empty() || companyInfo.name.empty() || companyInfo.market.empty())
-                        WERROR("companyinfo is not proper.");
+                    {
+                        //WERROR("companyinfo is not proper.");
+                    }
                     else
+                    {
                         _allCompanyList.push_back(companyInfo);
+                    }
 
                     break;
                 }

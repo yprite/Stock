@@ -18,12 +18,17 @@
 #include "RotaryManager.h"
 #include "SaDebug.h"
 
+#include <string.h>
+#include <algorithm>
+#include <utils_i18n.h>
+
 using namespace app_assist;
 
 SaCompanyListViewController::SaCompanyListViewController()
 {
     // TODO Auto-generated constructor stub
     _listObj = nullptr;
+    _selectedCb = nullptr;
 }
 
 SaCompanyListViewController::~SaCompanyListViewController()
@@ -70,6 +75,11 @@ void SaCompanyListViewController::onCreated()
             auto self = (SaCompanyListViewController *)data;
             auto navi = (WNaviframeController *)(self->getWindowController()->getBaseViewController());
             auto searchView = new SaSearchCompanyViewController();
+            searchView->setOnTextSearched(
+                    [self](const std::string& str)
+                    {
+                        self->_onTextSearched(str);
+                    });
             navi->push(searchView);
         }, this);
 #if 0
@@ -91,7 +101,22 @@ void SaCompanyListViewController::onCreated()
     for (size_t i = 0; i < allCompanyList.size(); ++i)
     {
         SaCompanyListCompanyItem *item = new SaCompanyListCompanyItem(allCompanyList[i]);
-        _listObj->addItem(item);
+        _listObj->addItem(item,
+            [](void *data, Evas_Object *obj, void *event_info)
+            {
+                auto it = (Elm_Object_Item *)event_info;
+                if (!it)
+                {
+                    WERROR("it is nullptr!");
+                    return;
+                }
+                elm_genlist_item_selected_set(it, EINA_FALSE);
+
+                auto self = (SaCompanyListViewController *)data;
+
+                if (self->_selectedCb)
+                    self->_selectedCb();
+            }, this);
     }
     GLPaddingItem *bottomPaddingItem = new GLPaddingItem();
     _listObj->addPaddingItem(bottomPaddingItem);
@@ -117,3 +142,66 @@ void SaCompanyListViewController::onBecomeTop()
 
 }
 
+void SaCompanyListViewController::setOnItemClicked(const std::function<void(void)>& selectedCb)
+{
+    _selectedCb = selectedCb;
+}
+
+void SaCompanyListViewController::_onTextSearched(const std::string& s)
+{
+    WHIT();
+    _listObj->clear();
+
+    //const std::vector<SaCompanyInfo>& allCompanyList = SaCompanyDBManager::getInstance()->getAllComanyList();
+    const std::vector<SaCompanyInfo>& searchedTextList = SaCompanyDBManager::getInstance()->getSearchResultList();
+
+    GLPaddingItem *titlePaddingItem = new GLPaddingItem();
+    _listObj->addPaddingItem(titlePaddingItem);
+
+    SaCompanyListCompanyItem *item = new SaCompanyListCompanyItem(searchedTextList[0]);
+    _listObj->addItem(item,
+        [](void *data, Evas_Object *obj, void *eventInfo)
+        {
+            auto it = (Elm_Object_Item *)eventInfo;
+            if (!it)
+                return;
+            elm_genlist_item_selected_set(it, EINA_FALSE);
+
+            auto self = (SaCompanyListViewController *)data;
+            auto navi = (WNaviframeController *)(self->getWindowController()->getBaseViewController());
+            auto searchView = new SaSearchCompanyViewController();
+            searchView->setOnTextSearched(
+                    [self](const std::string& str)
+                    {
+                        self->_onTextSearched(str);
+                    });
+            navi->push(searchView);
+        }, this);
+
+    for (size_t i = 0; i < searchedTextList.size(); ++i)
+    {
+        SaCompanyListCompanyItem *item = new SaCompanyListCompanyItem(searchedTextList[i]);
+        _listObj->addItem(item,
+            [](void *data, Evas_Object *obj, void *event_info)
+            {
+                auto it = (Elm_Object_Item *)event_info;
+                if (!it)
+                    return;
+                elm_genlist_item_selected_set(it, EINA_FALSE);
+
+                auto self = (SaCompanyListViewController *)data;
+
+                if (self->_selectedCb)
+                    self->_selectedCb();
+            }, this);
+    }
+    GLPaddingItem *bottomPaddingItem = new GLPaddingItem();
+    _listObj->addPaddingItem(bottomPaddingItem);
+}
+
+std::string SaCompanyListViewController::_getHighlightedText(const std::string& originStr, const std::string& searchingText)
+{
+    std::string result;
+
+    return result;
+}

@@ -131,6 +131,10 @@ collections
                 base, "font=Tizen:style=Regular:width=Condensed font_size="30" color=#ffffff align=center text_class=tizen";
             }
         }
+        images
+        {
+            image, refresh.png COMP;
+        }
         parts
         {
             part
@@ -246,7 +250,56 @@ collections
                     align, 0.5 0.0;
                 }
             }
+            part
+            {
+                name, spacer.img.refresh;
+                type, SPACER;
+                description
+                {
+                    state, default 0.0;
+                    min, 360 20;
+                    max, 360 20;
+                    fixed, 1 1;
+                    rel1.to, base;
+                    rel1.relative, 0.0 1.0;
+                    rel2.to, base;
+                    rel2.relative, 1.0 1.0;
+                    align, 0.5 1.0;
+                }
+            }
+            part
+            {
+                name, img.refresh;
+                type, IMAGE;
+                description
+                {
+                    state, default 0.0;
+                    min, 34 34;
+                    max, 34 34;
+                    fixed, 1 1;
 
+                    rel1.to, spacer.img.refresh;
+                    rel1.relative, 0.5 0.0;
+                    rel2.to, spacer.img.refresh;
+                    rel2.relative, 0.5 0.0;
+
+                    align, 0.5 1.0;
+                    image.normal, refresh.png;
+                    
+                }
+            }
+            part
+            {
+                name, sw.touch.refresh.area;
+                type, SWALLOW;
+                description
+                {
+                    state, default 0.0;
+                    rel1.to, img.refresh;
+                    rel2.to, img.refresh;
+                }
+            }
+/*
             part
             {
                 name, touch.area;
@@ -259,6 +312,7 @@ collections
                     color, 0 0 0 0;
                 }
             }
+*/
         } // parts
         programs
         {
