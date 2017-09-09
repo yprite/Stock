@@ -45,8 +45,8 @@ public:
     void clear();
     void setHomogeneousMode(bool value);
     //void setRealizationMode(bool value);
-
     void setCustomTheme(const char *themePath);
+    void updateRealizedItems();
 
 private:
     virtual Evas_Object* onCreateView(Evas_Object *parent, void *param);

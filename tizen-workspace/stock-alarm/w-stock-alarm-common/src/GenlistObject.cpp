@@ -195,6 +195,11 @@ void GenlistObject::setCustomTheme(const char *themePath)
 	_initTheme(themePath);
 }
 
+void GenlistObject::updateRealizedItems()
+{
+    elm_genlist_realized_items_update(getEvasObject());
+}
+
 Evas_Object* GenlistObject::onCreateView(Evas_Object *parent, void *param)
 {
 	Evas_Object* genlist = elm_genlist_add(parent);

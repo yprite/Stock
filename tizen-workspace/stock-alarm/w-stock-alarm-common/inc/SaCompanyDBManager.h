@@ -23,6 +23,11 @@ public:
     bool finalize();
 
     bool search(const std::string& s);
+
+    bool save(const SaCompanyInfo& info);
+    bool remove(const SaCompanyInfo& info);
+
+    const std::vector<SaCompanyInfo>& getSavedList() const;
     const std::vector<SaCompanyInfo>& getSearchResultList() const;
     const std::vector<SaCompanyInfo>& getAllComanyList() const;
 
