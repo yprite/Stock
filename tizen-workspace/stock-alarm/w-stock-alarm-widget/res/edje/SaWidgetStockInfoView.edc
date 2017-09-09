@@ -30,8 +30,29 @@ collections
             }
             part
             {
+                name, clipper.elm.text;
+                type, RECT;
+                description
+                {
+                    state, default 0.0;
+                    rel1.to, base;
+                    rel1.relative, 0.0 0.0;
+                    rel2.to, base;
+                    rel2.relative, 0.0 1.0;
+                    color, 255 255 255 255;
+                }
+                description
+                {
+                    state, show.anim 0.0;
+                    inherit, default 0.0;
+                    rel2.relative, 1.0 1.0;
+                }
+            }
+            part
+            {
                 name, elm.text;
                 type, TEXTBLOCK;
+                clip_to, clipper.elm.text;
                 description
                 {
                     state, default 0.0;
@@ -43,6 +64,25 @@ collections
                     text.text, "2,231,000";
                     text.ellipsis, -1;
                 }
+            }
+        } // parts
+        programs
+        {
+            program
+            {
+                signal, show.anim;
+                source, *;
+                action, STATE_SET show.anim 0.0;
+                target, clipper.elm.text;
+                transition, SINUSOIDAL 0.6;
+            }
+            program
+            {
+                signal, hide.anim;
+                source, *;
+                action, STATE_SET default 0.0;
+                target, clipper.elm.text;
+                transition, SINUSOIDAL 0.6;
             }
         }
     } //
@@ -103,8 +143,29 @@ collections
             }
             part
             {
+                name, clipper.elm.text;
+                type, RECT;
+                description
+                {
+                    state, default 0.0;
+                    rel1.to, base;
+                    rel1.relative, 0.0 0.0;
+                    rel2.to, base;
+                    rel2.relative, 0.0 1.0;
+                    color, 255 255 255 255;
+                }
+                description
+                {
+                    state, show.anim 0.0;
+                    inherit, default 0.0;
+                    rel2.relative, 1.0 1.0;
+                }
+            }
+            part
+            {
                 name, elm.text;
                 type, TEXTBLOCK;
+                clip_to, clipper.elm.text;
                 description
                 {
                     state, default 0.0;
@@ -116,6 +177,25 @@ collections
                     text.text, "2,231,000";
                     text.ellipsis, -1;
                 }
+            }
+        } // parts
+        programs
+        {
+            program
+            {
+                signal, show.anim;
+                source, *;
+                action, STATE_SET show.anim 0.0;
+                target, clipper.elm.text;
+                transition, SINUSOIDAL 0.6;
+            }
+            program
+            {
+                signal, hide.anim;
+                source, *;
+                action, STATE_SET default 0.0;
+                target, clipper.elm.text;
+                transition, SINUSOIDAL 0.6;
             }
         }
     } // SaWidgetStockInfoView/SubPriceInfoText

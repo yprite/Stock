@@ -28,8 +28,11 @@ SaWidgetStockInfoViewController::SaWidgetStockInfoViewController()
     _titlePriceInfoText = nullptr;
 
     _priceIcon = nullptr;
+    _priceInfoText = nullptr;
     _upDownIcon = nullptr;
+    _upDownText = nullptr;
     _plusMinusIcon = nullptr;
+    _plueMinusText = nullptr;
 }
 
 SaWidgetStockInfoViewController::~SaWidgetStockInfoViewController()
@@ -92,13 +95,17 @@ void SaWidgetStockInfoViewController::onCreated()
                 WHIT();
                 auto self = (SaWidgetStockInfoViewController *)data;
                 Evas_Object *layout = self->getEvasObject();
-                int r = 0, g = 0, b = 0, a = 0;
-                evas_object_color_get(layout, &r, &g, &b, &a);
-                evas_object_color_set(layout, r, g, b, 125);
+                //int r = 0, g = 0, b = 0, a = 0;
+                //evas_object_color_get(layout, &r, &g, &b, &a);
+                //evas_object_color_set(layout, r, g, b, 125);
                 elm_layout_signal_emit(self->_priceIcon, "show.anim", "*");
                 elm_layout_signal_emit(self->_upDownIcon, "show.anim", "*");
                 elm_layout_signal_emit(self->_plusMinusIcon, "show.anim", "*");
-                SaDataConsumer::getInstance()->requestFinanceQuatesList("APPL");
+
+                elm_layout_signal_emit(self->_priceInfoText, "show.anim", "*");
+                elm_layout_signal_emit(self->_upDownText, "show.anim", "*");
+                elm_layout_signal_emit(self->_plueMinusText, "show.anim", "*");
+                //SaDataConsumer::getInstance()->requestFinanceQuatesList("APPL");
             }, this);
 
     elm_object_part_content_set(layout, "sw.touch.refresh.area", effectBtn);
@@ -220,6 +227,8 @@ void SaWidgetStockInfoViewController::_createTitlePriceInfo()
     elm_layout_file_set(priceInfoText, edjPath, "SaWidgetStockInfoView/TitlePriceInfoText");
     evas_object_show(priceInfoText);
 
+    _priceInfoText = priceInfoText;
+
     elm_box_pack_end(box, priceInfoIcon);
     elm_box_pack_end(box, paddingRect);
     elm_box_pack_end(box, priceInfoText);
@@ -288,6 +297,7 @@ void SaWidgetStockInfoViewController::_createSubPriceInfo()
         elm_layout_file_set(priceInfoText, edjPath, "SaWidgetStockInfoView/SubPriceInfoText");
         elm_object_part_text_set(priceInfoText, "elm.text", "39,000");
         evas_object_show(priceInfoText);
+        _upDownText = priceInfoText;
 
         elm_box_pack_end(box, iconLayout);
         elm_box_pack_end(box, paddingRect);
@@ -337,6 +347,7 @@ void SaWidgetStockInfoViewController::_createSubPriceInfo()
         elm_layout_file_set(priceInfoText, edjPath, "SaWidgetStockInfoView/SubPriceInfoText");
         elm_object_part_text_set(priceInfoText, "elm.text", "1.78%");
         evas_object_show(priceInfoText);
+        _plueMinusText = priceInfoText;
 
         elm_box_pack_end(box, iconLayout);
         elm_box_pack_end(box, paddingRect);

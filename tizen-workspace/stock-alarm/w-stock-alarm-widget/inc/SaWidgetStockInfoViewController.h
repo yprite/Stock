@@ -40,8 +40,11 @@ private:
     Evas_Object *_titlePriceInfoText;
 
     Evas_Object *_priceIcon;
+    Evas_Object *_priceInfoText;
     Evas_Object *_upDownIcon;
+    Evas_Object *_upDownText;
     Evas_Object *_plusMinusIcon;
+    Evas_Object *_plueMinusText;
 };
 
 #endif /* SAWIDGETSTOCKINFOVIEWCONTROLLER_H_ */
