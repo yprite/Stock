@@ -31,22 +31,39 @@ bool SaCompanyDBManager::initialize()
     WENTER();
     WPRET_VM(_isInit, false, "already init.");
     char dbPath[PATH_MAX] = {0, };
+    char originDbPath[PATH_MAX] = {0, };
     char *resPath = app_get_resource_path();
+    char *sharedDataPath = app_get_shared_data_path();
+
+    int ret = SQLITE_OK;
+    char *errMsg = nullptr;
+    const char *tableName = "savedList";
 
     if (resPath)
     {
-        snprintf(dbPath, sizeof(dbPath), "%s%s", resPath, "db/companyinfo.db");
-        free(resPath);
+	    snprintf(originDbPath, sizeof(originDbPath), "%s%s", resPath, "db/companyinfo.db");
+	    free(resPath);
     }
+    WDEBUG("originDbPath=[%s]", originDbPath);
 
+    if (sharedDataPath)
+    {
+	    snprintf(dbPath, sizeof(dbPath), "%s%s", sharedDataPath, "companyinfo.db");
+	    free(sharedDataPath);
+    }
+    WDEBUG("dbPath=[%s]", dbPath);
+
+    if (!ecore_file_exists(dbPath))
+    {
+	    WINFO("dbPath[%s] is not existed", dbPath);
+	    WPRET_VM(ecore_file_cp(originDbPath, dbPath) == false, false, "ecore_file_cp() is failed, Copy : [%s] -> [%s]", originDbPath, dbPath);
+    }
     WPRET_VM(!ecore_file_exists(dbPath), false, "db is not exist - path : %s", dbPath);
 
-    int ret = SQLITE_OK;
-    ret = sqlite3_open_v2(dbPath, &_dbHandler, SQLITE_OPEN_READONLY, nullptr);
+    ret = sqlite3_open_v2(dbPath, &_dbHandler, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, nullptr);
     WPRET_VM(ret != SQLITE_OK, false, "sqlite3_open_v2 failed.(%s)", sqlite3_errstr(ret));
-
     if (!_loadAllCompanyList())
-        return false;
+	return false;
 
     _isInit = true;
     return true;
@@ -116,7 +133,7 @@ bool SaCompanyDBManager::search(const std::string& s)
                         else
                             WERROR("unknown column name : %s", colName);
 
-                        WDEBUG("[%d] colName : %s, value : %s", i, colName, (const char *)sqlite3_column_text(stmt, i));
+                        //WDEBUG("[%d] colName : %s, value : %s", i, colName, (const char *)sqlite3_column_text(stmt, i));
                     }
 
                     if (companyInfo.code.empty() || companyInfo.name.empty() || companyInfo.market.empty())
@@ -174,6 +191,7 @@ bool SaCompanyDBManager::_loadAllCompanyList()
         ret = sqlite3_step(stmt);
         if (ret != SQLITE_DONE)
         {
+            WHIT();
             switch (ret)
             {
                 case SQLITE_ROW:
@@ -194,17 +212,13 @@ bool SaCompanyDBManager::_loadAllCompanyList()
                         else
                             WERROR("unknown column name : %s", colName);
 
-                        //WDEBUG("[%d] colName : %s, value : %s", i, colName, (const char *)sqlite3_column_text(stmt, i));
+                        WDEBUG("[%d] colName : %s, value : %s", i, colName, (const char *)sqlite3_column_text(stmt, i));
                     }
 
                     if (companyInfo.code.empty() || companyInfo.name.empty() || companyInfo.market.empty())
-                    {
-                        //WERROR("companyinfo is not proper.");
-                    }
+                        WERROR("companyinfo is not proper.");
                     else
-                    {
                         _allCompanyList.push_back(companyInfo);
-                    }
 
                     break;
                 }
