@@ -106,16 +106,20 @@ void SaCompanyListViewController::onCreated()
             {
                 auto it = (Elm_Object_Item *)event_info;
                 if (!it)
-                {
-                    WERROR("it is nullptr!");
                     return;
-                }
                 elm_genlist_item_selected_set(it, EINA_FALSE);
 
+                SaCompanyListCompanyItem *item = (SaCompanyListCompanyItem *)(elm_object_item_data_get(it));
                 auto self = (SaCompanyListViewController *)data;
+                // update database.
+                SaCompanyInfo companyInfo;
+                item->getCompanyInfo(companyInfo);
+                SaCompanyDBManager::getInstance()->add(companyInfo);
 
                 if (self->_selectedCb)
                     self->_selectedCb();
+
+                self->popOut();
             }, this);
     }
     GLPaddingItem *bottomPaddingItem = new GLPaddingItem();
@@ -189,10 +193,17 @@ void SaCompanyListViewController::_onTextSearched(const std::string& s)
                     return;
                 elm_genlist_item_selected_set(it, EINA_FALSE);
 
+                SaCompanyListCompanyItem *item = (SaCompanyListCompanyItem *)(elm_object_item_data_get(it));
                 auto self = (SaCompanyListViewController *)data;
+                // update database.
+                SaCompanyInfo companyInfo;
+                item->getCompanyInfo(companyInfo);
+                SaCompanyDBManager::getInstance()->add(companyInfo);
 
                 if (self->_selectedCb)
                     self->_selectedCb();
+
+                self->popOut();
             }, this);
     }
     GLPaddingItem *bottomPaddingItem = new GLPaddingItem();

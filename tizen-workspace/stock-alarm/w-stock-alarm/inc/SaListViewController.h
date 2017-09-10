@@ -44,6 +44,8 @@ private:
     static void _onCtxPopupPopBacked(void *data, Evas_Object *obj, void *eventInfo);
     static void _onDeleteButtonClicked(void *data, Evas_Object *obj, void *eventInfo);
 
+    static void _onItemClicked(void *data, Evas_Object *obj, void *eventInfo);
+
 private:
     Evas_Object *_floatingButton;
     Evas_Object *_delButton;

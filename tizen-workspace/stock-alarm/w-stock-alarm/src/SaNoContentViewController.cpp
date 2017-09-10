@@ -44,7 +44,6 @@ Evas_Object* SaNoContentViewController::onCreateView(Evas_Object* parent, void* 
 #endif
     //elm_object_part_content_set(layout, "elm.swallow.icon", iconObj);
 
-    /*
     Evas_Object *effectBtn = elm_button_add(layout);
     elm_object_style_set(effectBtn, "effect/full");
     evas_object_size_hint_weight_set(effectBtn, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
@@ -53,11 +52,11 @@ Evas_Object* SaNoContentViewController::onCreateView(Evas_Object* parent, void* 
             [](void *data, Evas_Object *obj, void *eventInfo)
             {
                 WHIT();
-                SaDataConsumer::getInstance()->requestFinanceQuatesList("APPL");
+                //SaDataConsumer::getInstance()->requestFinanceQuatesList("APPL");
             }, this);
 
     elm_object_part_content_set(layout, "elm.swallow.content", effectBtn);
-	*/
+
     //elm_object_part_content_set(layout, "elm.swallow.content", content);
 
     Evas_Object *layout = elm_layout_add(parent);

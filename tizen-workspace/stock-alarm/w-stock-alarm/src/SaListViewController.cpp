@@ -9,7 +9,7 @@
 #include "SaListEditEventManager.h"
 #include "RotaryManager.h"
 #include "SaCompanyDBManager.h"
-
+#include "SaCompanyListViewController.h"
 #include "SaListStockInfoItem.h"
 #include "GLPaddingItem.h"
 #include "GLTitleItem.h"
@@ -25,7 +25,6 @@ SaListViewController::SaListViewController()
     _floatingButton = nullptr;
     _delButton = nullptr;
     _listObj = nullptr;
-
 }
 
 SaListViewController::~SaListViewController()
@@ -64,7 +63,7 @@ void SaListViewController::updateList()
     for (size_t i = 0; i < savedList.size(); ++i)
     {
         SaListStockInfoItem *item = new SaListStockInfoItem(savedList[i]);
-        _listObj->addItem(item);
+        _listObj->addItem(item, _onItemClicked, this);
     }
 
     {
@@ -101,6 +100,9 @@ void SaListViewController::onCreated()
     listObj->create(layout, nullptr);
     elm_object_part_content_set(layout, "sw.list.obj", listObj->getEvasObject());
     _listObj = listObj;
+
+    Evas_Object *circleGenlist = eext_circle_object_genlist_add(_listObj->getEvasObject(), RotaryManager::getInstance()->getCircleSurface());
+    RotaryManager::getInstance()->setOnRotary(circleGenlist, ROTARY_MANAGER_DEFAULT_ROTARY_HANDLER);
 
     updateList();
 }
@@ -285,4 +287,21 @@ void SaListViewController::_onDeleteButtonClicked(void *data, Evas_Object *obj, 
     SaListEditEventManager::getInstance()->stopEditMode();
 }
 
+void SaListViewController::_onItemClicked(void *data, Evas_Object *obj, void *eventInfo)
+{
+    auto it = (Elm_Object_Item *)eventInfo;
+    if (!it)
+        return;
+    elm_genlist_item_selected_set(it, EINA_FALSE);
 
+    auto self = (SaListViewController *)data;
+
+    auto navi = (WNaviframeController *)(self->getWindowController()->getBaseViewController());
+    auto allCompanyListView = new SaCompanyListViewController();
+    allCompanyListView->setOnItemClicked(
+        [self]()
+        {
+            self->updateList();
+        });
+    navi->push(allCompanyListView);
+}

@@ -18,6 +18,7 @@ public:
     SaCompanyListCompanyItem(const SaCompanyInfo& companyInfo);
     virtual ~SaCompanyListCompanyItem();
 
+    void getCompanyInfo(SaCompanyInfo& companyInfo);
 protected:
     virtual Elm_Genlist_Item_Class* getItemClassStatic() const;
 

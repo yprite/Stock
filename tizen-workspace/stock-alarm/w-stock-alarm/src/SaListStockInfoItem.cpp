@@ -22,7 +22,7 @@ Elm_Genlist_Item_Class* SaListStockInfoItem::getItemClassStatic() const
 {
     static Elm_Genlist_Item_Class itcNormal = { };
 
-    itcNormal.item_style = "1text";
+    itcNormal.item_style = "2text";
     itcNormal.func.text_get = _glTextCb;
     itcNormal.func.del = WGENLIST_ITEM_DEL();
 
@@ -36,5 +36,13 @@ WGenlistItemEx::ItemType SaListStockInfoItem::getItemType() const
 
 char* SaListStockInfoItem::_glTextCb(void *data, Evas_Object *obj, const char *part)
 {
+    auto self = (SaListStockInfoItem *)data;
+
+    if (!strcmp(part, "elm.text"))
+        return strdup(self->_companyInfo.name.c_str());
+    else if (!strcmp(part, "elm.text.1"))
+        return strdup(self->_companyInfo.market.c_str());
+    else
+        return strdup(part);
     return strdup("test");
 }

@@ -41,4 +41,7 @@ char* SaCompanyListCompanyItem::_glTextCb(void *data, Evas_Object *obj, const ch
         return strdup(part);
 }
 
-
+void SaCompanyListCompanyItem::getCompanyInfo(SaCompanyInfo& companyInfo)
+{
+    companyInfo = _companyInfo;
+}
