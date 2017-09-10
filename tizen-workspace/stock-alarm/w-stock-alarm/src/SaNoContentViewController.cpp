@@ -45,8 +45,20 @@ Evas_Object* SaNoContentViewController::onCreateView(Evas_Object* parent, void* 
     evas_object_size_hint_weight_set(layout, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
     evas_object_show(layout);
 
-    elm_object_part_text_set(layout, "elm.text.title", "title");
-    elm_object_part_text_set(layout, "elm.text", "text");
+    elm_object_part_text_set(layout, "elm.text.title", "Stock Alarm");
+    elm_object_part_text_set(layout, "elm.text", "추가");
+
+    char *resPath = app_get_resource_path();
+    char imgPath[PATH_MAX] = {0, };
+    if (resPath)
+    {
+        snprintf(imgPath, sizeof(imgPath), "%s%s", resPath, "images/nocontent.png");
+        free(resPath);
+    }
+
+    Evas_Object *image = elm_image_add(layout);
+    elm_image_file_set(image, imgPath, nullptr);
+    elm_object_part_content_set(layout, "elm.swallow.icon", image);
 #endif
     //elm_object_part_content_set(layout, "elm.swallow.icon", iconObj);
 
