@@ -12,6 +12,7 @@
 #include <app.h>
 #include <algorithm>
 #include <linux/limits.h>
+#include <app_preference.h>
 
 #define SAVED_LIST_TABLE "savedList"
 SINGLETON_INSTANCE(SaCompanyDBManager);
@@ -21,6 +22,11 @@ SaCompanyDBManager::SaCompanyDBManager()
     // TODO Auto-generated constructor stub
     _dbHandler = nullptr;
     _isInit = false;
+
+    bool isExist = false;
+    preference_is_existing(SA_COMPANY_DB_SAVED_LIST_CHANDED, &isExist);
+    if (isExist == false)
+        preference_set_boolean(SA_COMPANY_DB_SAVED_LIST_CHANDED, false);
 }
 
 SaCompanyDBManager::~SaCompanyDBManager()
@@ -128,6 +134,10 @@ bool SaCompanyDBManager::add(const SaCompanyInfo& info)
 
     _savedCompanyList.clear();
     _loadSavedCompanyList();
+
+    bool savingValue = false;
+    preference_get_boolean(SA_COMPANY_DB_SAVED_LIST_CHANDED, &savingValue);
+    preference_set_boolean(SA_COMPANY_DB_SAVED_LIST_CHANDED, !savingValue);
 
     return true;
 }

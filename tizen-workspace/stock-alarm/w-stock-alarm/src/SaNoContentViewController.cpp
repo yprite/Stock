@@ -15,10 +15,16 @@
 #include "SaListStockInfoItem.h"
 #include "GLTitleItem.h"
 #include "GLPaddingItem.h"
+
+#include "SaCompanyListViewController.h"
+#include "WWindowController.h"
+#include "WNaviframeController.h"
 #include "SaDebug.h"
 
 #include <Elementary.h>
 #include <app.h>
+
+using namespace app_assist;
 
 SaNoContentViewController::SaNoContentViewController()
 {
@@ -33,7 +39,7 @@ SaNoContentViewController::~SaNoContentViewController()
 
 Evas_Object* SaNoContentViewController::onCreateView(Evas_Object* parent, void* viewParam)
 {
-#if 0
+#if 1
     Evas_Object *layout = elm_layout_add(parent);
     elm_layout_theme_set(layout, "layout", "nocontents", "default");
     evas_object_size_hint_weight_set(layout, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
@@ -53,22 +59,28 @@ Evas_Object* SaNoContentViewController::onCreateView(Evas_Object* parent, void* 
             {
                 WHIT();
                 //SaDataConsumer::getInstance()->requestFinanceQuatesList("APPL");
+                auto self = (SaNoContentViewController *)data;
+                auto navi = (WNaviframeController *)(self->getWindowController()->getBaseViewController());
+                auto allCompanyListView = new SaCompanyListViewController();
+
+                navi->push(allCompanyListView);
             }, this);
 
     elm_object_part_content_set(layout, "elm.swallow.content", effectBtn);
 
     //elm_object_part_content_set(layout, "elm.swallow.content", content);
-
-    Evas_Object *layout = elm_layout_add(parent);
-    elm_layout_theme_set(layout, "layout", "application", "default");
-    evas_object_size_hint_weight_set(layout, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
-    evas_object_show(layout);
+//
+//    Evas_Object *layout = elm_layout_add(parent);
+//    elm_layout_theme_set(layout, "layout", "application", "default");
+//    evas_object_size_hint_weight_set(layout, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
+//    evas_object_show(layout);
+//    return layout;
     return layout;
 }
 
 void SaNoContentViewController::onCreated()
 {
-
+#if 0
     SaProgressObject *progressObj = new SaProgressObject();
     progressObj->create(getEvasObject(), nullptr);
     evas_object_size_hint_weight_set(progressObj->getEvasObject(), 0, 0);
@@ -77,6 +89,7 @@ void SaNoContentViewController::onCreated()
     //progressObj->run();
 
     WENTER();
+#endif
 #if 0
     Evas_Object *layout = getEvasObject();
     Evas *e = evas_object_evas_get(layout);

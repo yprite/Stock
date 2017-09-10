@@ -55,6 +55,7 @@ private:
     static void _onMoreOptionClosed(void *data, Evas_Object *obj, void *eventInfo);
     static void _onMoreOptionClicked(void *data, Evas_Object *obj, void *eventInfo);
 
+    static void _onDbDataChanged(const char *key, void *user_data);
 private:
     app_assist::WViewController *_viewController;
     Eext_Object_Item *_addMoreOptionItem;

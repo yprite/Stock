@@ -76,10 +76,10 @@ bool SaApp::onCreate()
     RotaryManager::getInstance()->initialize(getWindowController()->getConformantEvasObject());
     SaCompanyDBManager::getInstance()->initialize();
 
-    SaCompanyInfo info = {"aaa", "bbb", "ccc"};
-    SaCompanyDBManager::getInstance()->add(info);
-    SaCompanyDBManager::getInstance()->add(info);
-    SaCompanyDBManager::getInstance()->add(info);
+//    SaCompanyInfo info = {"aaa", "bbb", "ccc"};
+//    SaCompanyDBManager::getInstance()->add(info);
+//    SaCompanyDBManager::getInstance()->add(info);
+//    SaCompanyDBManager::getInstance()->add(info);
 
     return true;
 }
@@ -93,6 +93,7 @@ void SaApp::onTerminate()
 
 void SaApp::onAppControl(app_control_h request, bool firstLaunch)
 {
+    WENTER();
     if (firstLaunch)
     {
         auto navi = (WNaviframeController *)(getWindowController()->getBaseViewController());

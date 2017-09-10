@@ -14,6 +14,8 @@
 #include <sqlite3.h>
 #include <vector>
 
+#define SA_COMPANY_DB_SAVED_LIST_CHANDED    ".savedListChanged"
+
 class WAPP_ASSIST_EXPORT SaCompanyDBManager
 {
     SINGLETON_IDIOM(SaCompanyDBManager);

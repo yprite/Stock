@@ -11,7 +11,11 @@
 #include "SaNoContentViewController.h"
 #include "SaListViewController.h"
 #include "SaCompanyDBManager.h"
+
 #include "RotaryManager.h"
+
+#include <app_preference.h>
+//
 
 #include <app.h>
 #include <Elementary.h>
@@ -83,6 +87,10 @@ void SaBaseListViewController::onCreated()
 
         elm_layout_signal_emit(layout, "cue,show", "elm");
     }
+
+    int preferenceRet = preference_set_changed_cb(SA_COMPANY_DB_SAVED_LIST_CHANDED, _onDbDataChanged, this);
+
+    WPRET_M(preferenceRet != PREFERENCE_ERROR_NONE, "preference_set_changed_cb failed.(%d)", preferenceRet);
 }
 
 void SaBaseListViewController::onPushed(Elm_Object_Item *naviItem)
@@ -92,7 +100,7 @@ void SaBaseListViewController::onPushed(Elm_Object_Item *naviItem)
 
 void SaBaseListViewController::onDestroy()
 {
-
+    preference_unset_changed_cb(SA_COMPANY_DB_SAVED_LIST_CHANDED);
 }
 
 bool SaBaseListViewController::onPop()
@@ -231,4 +239,87 @@ void SaBaseListViewController::_onMoreOptionClicked(void *data, Evas_Object *obj
     {
         eext_more_option_opened_set(self->getEvasObject(), EINA_FALSE);
     }
+}
+
+void SaBaseListViewController::_onDbDataChanged(const char *key, void *data)
+{
+    WENTER();
+    auto self = (SaBaseListViewController *)data;
+    Evas_Object *layout = self->getEvasObject();
+    const std::vector<SaCompanyInfo>& savedList = SaCompanyDBManager::getInstance()->getSavedList();
+
+    if (savedList.empty())
+    {
+        // show nocontent.
+        if (self->_viewType == ViewType::NOCONTENT)
+        {
+            // to do nothing.
+        }
+        else
+        {
+            if (self->_viewController)
+            {
+                elm_object_part_content_unset(layout, "elm.swallow.content");
+                self->_viewController->destroy();
+                self->_viewController = nullptr;
+            }
+
+            self->_viewType = ViewType::NOCONTENT;
+            auto viewController = new SaNoContentViewController();
+            viewController->create(layout, nullptr);
+            elm_object_part_content_set(layout, "elm.swallow.content", viewController->getEvasObject());
+            self->_viewController = viewController;
+
+            elm_layout_signal_emit(layout, "cue,hide", "elm");
+            eext_more_option_opened_set(layout, EINA_FALSE);
+        }
+    }
+    else
+    {
+        if (self->_viewType == ViewType::LIST)
+        {
+            // to do update.
+        }
+        else
+        {
+            if (self->_viewController)
+            {
+                elm_object_part_content_unset(layout, "elm.swallow.content");
+                self->_viewController->destroy();
+                self->_viewController = nullptr;
+            }
+
+            self->_viewType = ViewType::LIST;
+            auto viewController = new SaListViewController();
+            viewController->create(layout, nullptr);
+            elm_object_part_content_set(layout, "elm.swallow.content", viewController->getEvasObject());
+            self->_viewController = viewController;
+
+            elm_layout_signal_emit(layout, "cue,show", "elm");
+        }
+    }
+#if 0
+    if (savedList.empty())
+    {
+
+        _viewType = ViewType::NOCONTENT;
+        auto viewController = new SaNoContentViewController();
+        viewController->create(layout, nullptr);
+        elm_object_part_content_set(layout, "elm.swallow.content", viewController->getEvasObject());
+        _viewController = viewController;
+
+        elm_layout_signal_emit(layout, "cue,hide", "elm");
+        eext_more_option_opened_set(layout, EINA_FALSE);
+    }
+    else
+    {
+        _viewType = ViewType::LIST;
+        auto viewController = new SaListViewController();
+        viewController->create(layout, nullptr);
+        elm_object_part_content_set(layout, "elm.swallow.content", viewController->getEvasObject());
+        _viewController = viewController;
+
+        elm_layout_signal_emit(layout, "cue,show", "elm");
+    }
+#endif
 }
