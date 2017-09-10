@@ -61,8 +61,6 @@ private:
     Eext_Object_Item *_removeMoreOptionItem;
     Eext_Object_Item *_settingMoreOptionItem;
     ViewType _viewType;
-
-    std::vector<SaCompanyInfo> _savedList;
 };
 
 #endif /* SABASELISTVIEWCONTROLLER_H_ */

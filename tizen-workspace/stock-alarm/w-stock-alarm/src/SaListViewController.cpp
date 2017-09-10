@@ -8,6 +8,12 @@
 #include "SaListViewController.h"
 #include "SaListEditEventManager.h"
 #include "RotaryManager.h"
+#include "SaCompanyDBManager.h"
+
+#include "SaListStockInfoItem.h"
+#include "GLPaddingItem.h"
+#include "GLTitleItem.h"
+
 #include <app.h>
 #include <Elementary.h>
 
@@ -46,7 +52,25 @@ void SaListViewController::removeCtxPopup()
 
 void SaListViewController::updateList()
 {
+    _listObj->clear();
 
+    const std::vector<SaCompanyInfo>& savedList = SaCompanyDBManager::getInstance()->getSavedList();
+
+    {
+        GLPaddingItem *paddingItem = new GLPaddingItem();
+        _listObj->addPaddingItem(paddingItem);
+    }
+
+    for (size_t i = 0; i < savedList.size(); ++i)
+    {
+        SaListStockInfoItem *item = new SaListStockInfoItem(savedList[i]);
+        _listObj->addItem(item);
+    }
+
+    {
+        GLPaddingItem *paddingItem = new GLPaddingItem();
+        _listObj->addPaddingItem(paddingItem);
+    }
 }
 
 
@@ -76,8 +100,9 @@ void SaListViewController::onCreated()
     SaListObject *listObj = new SaListObject();
     listObj->create(layout, nullptr);
     elm_object_part_content_set(layout, "sw.list.obj", listObj->getEvasObject());
-
     _listObj = listObj;
+
+    updateList();
 }
 void SaListViewController::onDestroy()
 {

@@ -24,7 +24,7 @@ public:
 
     bool search(const std::string& s);
 
-    bool save(const SaCompanyInfo& info);
+    bool add(const SaCompanyInfo& info);
     bool remove(const SaCompanyInfo& info);
 
     const std::vector<SaCompanyInfo>& getSavedList() const;
@@ -37,12 +37,14 @@ protected:
 
 private:
     bool _loadAllCompanyList();
+    bool _loadSavedCompanyList();
 
 private:
     sqlite3 *_dbHandler;
     bool _isInit;
     std::vector<SaCompanyInfo> _searchResultList;
     std::vector<SaCompanyInfo> _allCompanyList;
+    std::vector<SaCompanyInfo> _savedCompanyList;
 };
 
 #endif /* SACOMPANYDBMANAGER_H_ */

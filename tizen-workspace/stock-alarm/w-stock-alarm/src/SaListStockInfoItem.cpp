@@ -7,10 +7,10 @@
 
 #include "SaListStockInfoItem.h"
 
-SaListStockInfoItem::SaListStockInfoItem()
+SaListStockInfoItem::SaListStockInfoItem(const SaCompanyInfo& info)
 {
     // TODO Auto-generated constructor stub
-
+    _companyInfo = info;
 }
 
 SaListStockInfoItem::~SaListStockInfoItem()

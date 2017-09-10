@@ -10,8 +10,10 @@
 
 #include <Ecore_File.h>
 #include <app.h>
+#include <algorithm>
 #include <linux/limits.h>
 
+#define SAVED_LIST_TABLE "savedList"
 SINGLETON_INSTANCE(SaCompanyDBManager);
 
 SaCompanyDBManager::SaCompanyDBManager()
@@ -37,33 +39,47 @@ bool SaCompanyDBManager::initialize()
 
     int ret = SQLITE_OK;
     char *errMsg = nullptr;
-    const char *tableName = "savedList";
 
     if (resPath)
     {
-	    snprintf(originDbPath, sizeof(originDbPath), "%s%s", resPath, "db/companyinfo.db");
-	    free(resPath);
+        snprintf(originDbPath, sizeof(originDbPath), "%s%s", resPath, "db/companyinfo.db");
+        free(resPath);
     }
-    WDEBUG("originDbPath=[%s]", originDbPath);
 
     if (sharedDataPath)
     {
-	    snprintf(dbPath, sizeof(dbPath), "%s%s", sharedDataPath, "companyinfo.db");
-	    free(sharedDataPath);
+        snprintf(dbPath, sizeof(dbPath), "%s%s", sharedDataPath, "companyinfo.db");
+        free(sharedDataPath);
     }
     WDEBUG("dbPath=[%s]", dbPath);
 
     if (!ecore_file_exists(dbPath))
     {
-	    WINFO("dbPath[%s] is not existed", dbPath);
-	    WPRET_VM(ecore_file_cp(originDbPath, dbPath) == false, false, "ecore_file_cp() is failed, Copy : [%s] -> [%s]", originDbPath, dbPath);
+        WINFO("dbPath[%s] is not existed", dbPath);
+        WPRET_VM(ecore_file_cp(originDbPath, dbPath) == false, false, "ecore_file_cp() is failed, Copy : [%s] -> [%s]", originDbPath, dbPath);
     }
     WPRET_VM(!ecore_file_exists(dbPath), false, "db is not exist - path : %s", dbPath);
 
     ret = sqlite3_open_v2(dbPath, &_dbHandler, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, nullptr);
     WPRET_VM(ret != SQLITE_OK, false, "sqlite3_open_v2 failed.(%s)", sqlite3_errstr(ret));
+
     if (!_loadAllCompanyList())
-	return false;
+        return false;
+
+    {
+        std::string query = "CREATE TABLE IF NOT EXISTS " + std::string(SAVED_LIST_TABLE) + "("
+                + "id INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + "Code TEXT NOT NULL, "
+                + "Name TEXT NOT NULL, "
+                + "Market TEXT NOT NULL);";
+        WINFO("query : %s", query.c_str());
+        ret = sqlite3_exec(_dbHandler, query.c_str(), nullptr, nullptr, &errMsg);
+        if (ret != SQLITE_OK)
+            WERROR("sqlite3_exec failed.(%s)", errMsg);
+    }
+
+    if (!_loadSavedCompanyList())
+        return false;
 
     _isInit = true;
     return true;
@@ -80,6 +96,45 @@ bool SaCompanyDBManager::finalize()
         _dbHandler = nullptr;
     }
     return true;
+}
+
+bool SaCompanyDBManager::add(const SaCompanyInfo& info)
+{
+    if (_savedCompanyList.size() != 0)
+    {
+        auto ptr = std::find_if(_savedCompanyList.begin(), _savedCompanyList.end(),
+            [info](const SaCompanyInfo& companyInfo)->bool
+            {
+                return companyInfo.code == info.code;
+            });
+
+        if (ptr != _savedCompanyList.end())
+        {
+            WERROR("already exist!");
+            return false;
+        }
+    }
+    char *errMsg = nullptr;
+    std::string query = "INSERT INTO " + std::string(SAVED_LIST_TABLE) + "(Code, Name, Market) " + "VALUES("
+            + "\"" + info.code + "\"" + ", "
+            + "\"" + info.name + "\"" + ", "
+            + "\"" + info.market + "\"" + ");";
+    WINFO("query : %s", query.c_str());
+    int ret = SQLITE_OK;
+
+    ret = sqlite3_exec(_dbHandler, query.c_str(), nullptr, nullptr, &errMsg);
+    if (ret != SQLITE_OK)
+        WERROR("sqlite3_exec failed.(%s)", errMsg);
+
+    _savedCompanyList.clear();
+    _loadSavedCompanyList();
+
+    return true;
+}
+
+bool SaCompanyDBManager::remove(const SaCompanyInfo& info)
+{
+    return false;
 }
 
 bool SaCompanyDBManager::search(const std::string& s)
@@ -132,8 +187,6 @@ bool SaCompanyDBManager::search(const std::string& s)
                             companyInfo.market = value ? std::string(value) : std::string("");
                         else
                             WERROR("unknown column name : %s", colName);
-
-                        //WDEBUG("[%d] colName : %s, value : %s", i, colName, (const char *)sqlite3_column_text(stmt, i));
                     }
 
                     if (companyInfo.code.empty() || companyInfo.name.empty() || companyInfo.market.empty())
@@ -158,6 +211,11 @@ bool SaCompanyDBManager::search(const std::string& s)
     if (stmt)
         sqlite3_finalize(stmt);
     return true;
+}
+
+const std::vector<SaCompanyInfo>& SaCompanyDBManager::getSavedList() const
+{
+    return _savedCompanyList;
 }
 
 const std::vector<SaCompanyInfo>& SaCompanyDBManager::getSearchResultList() const
@@ -191,7 +249,6 @@ bool SaCompanyDBManager::_loadAllCompanyList()
         ret = sqlite3_step(stmt);
         if (ret != SQLITE_DONE)
         {
-            WHIT();
             switch (ret)
             {
                 case SQLITE_ROW:
@@ -212,13 +269,91 @@ bool SaCompanyDBManager::_loadAllCompanyList()
                         else
                             WERROR("unknown column name : %s", colName);
 
-                        WDEBUG("[%d] colName : %s, value : %s", i, colName, (const char *)sqlite3_column_text(stmt, i));
                     }
 
                     if (companyInfo.code.empty() || companyInfo.name.empty() || companyInfo.market.empty())
                         WERROR("companyinfo is not proper.");
                     else
                         _allCompanyList.push_back(companyInfo);
+
+                    break;
+                }
+                default:
+                {
+                    break;
+                }
+            }
+        }
+        else
+        {
+            WINFO("FINISH!");
+            break;
+        }
+    }
+    if (stmt)
+        sqlite3_finalize(stmt);
+    return true;
+}
+
+bool SaCompanyDBManager::_loadSavedCompanyList()
+{
+    WENTER();
+
+    sqlite3_stmt *stmt = nullptr;
+    char *query = nullptr;
+    int ret = SQLITE_OK;
+
+    query = sqlite3_mprintf("SELECT * FROM %q;", SAVED_LIST_TABLE);
+    //query = sqlite3_mprintf("select Code, Name from info where Name LIKE '%%%q%%'", s.c_str());
+    WINFO("query : %s", query);
+    ret = sqlite3_prepare_v2(_dbHandler, query, strlen(query), &stmt, nullptr);
+    WPRET_VM(ret != SQLITE_OK, false, "sqlite3_prepare_v2 failed.(%s)", sqlite3_errstr(ret));
+    sqlite3_free(query);
+
+    while (true)
+    {
+        ret = sqlite3_step(stmt);
+        if (ret != SQLITE_DONE)
+        {
+            switch (ret)
+            {
+                case SQLITE_ROW:
+                {
+                    int n = sqlite3_column_count(stmt);
+                    SaCompanyInfo companyInfo = { };
+
+                    for (int i = 0; i < n; ++i)
+                    {
+                        const char *colName = sqlite3_column_name(stmt, i);
+                        const char *value = (const char *)sqlite3_column_text(stmt, i);
+
+                        if (colName && !strcmp(colName, "Code"))
+                        {
+                            companyInfo.code = value ? std::string(value) : std::string("");
+                        }
+                        else if (colName && !strcmp(colName, "Name"))
+                        {
+                            companyInfo.name = value ? std::string(value) : std::string("");
+                        }
+                        else if (colName && !strcmp(colName, "Market"))
+                        {
+                            companyInfo.market = value ? std::string(value) : std::string("");
+                        }
+                        else if (colName && !strcmp(colName, "id"))
+                        {
+                            // skip.
+                        }
+                        else
+                        {
+                            WERROR("unknown column name : %s", colName);
+                        }
+
+                    }
+
+                    if (companyInfo.code.empty() || companyInfo.name.empty() || companyInfo.market.empty())
+                        WERROR("companyinfo is not proper.");
+                    else
+                        _savedCompanyList.push_back(companyInfo);
 
                     break;
                 }

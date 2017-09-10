@@ -10,6 +10,7 @@
 #include "SaListEditEventManager.h"
 #include "SaNoContentViewController.h"
 #include "SaListViewController.h"
+#include "SaCompanyDBManager.h"
 #include "RotaryManager.h"
 
 #include <app.h>
@@ -59,7 +60,9 @@ void SaBaseListViewController::onCreated()
     Evas_Object *layout = getEvasObject();
     _createPanel();
 
-    if (_savedList.empty())
+    const std::vector<SaCompanyInfo>& savedList = SaCompanyDBManager::getInstance()->getSavedList();
+
+    if (savedList.empty())
     {
         _viewType = ViewType::NOCONTENT;
         auto viewController = new SaNoContentViewController();
@@ -67,8 +70,18 @@ void SaBaseListViewController::onCreated()
         elm_object_part_content_set(layout, "elm.swallow.content", viewController->getEvasObject());
         _viewController = viewController;
 
-        //elm_layout_signal_emit(layout, "cue,hide", "elm");
+        elm_layout_signal_emit(layout, "cue,hide", "elm");
         eext_more_option_opened_set(layout, EINA_FALSE);
+    }
+    else
+    {
+        _viewType = ViewType::LIST;
+        auto viewController = new SaListViewController();
+        viewController->create(layout, nullptr);
+        elm_object_part_content_set(layout, "elm.swallow.content", viewController->getEvasObject());
+        _viewController = viewController;
+
+        elm_layout_signal_emit(layout, "cue,show", "elm");
     }
 }
 

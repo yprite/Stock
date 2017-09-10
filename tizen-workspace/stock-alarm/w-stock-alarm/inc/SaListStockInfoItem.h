@@ -9,11 +9,12 @@
 #define SALISTSTOCKINFOITEM_H_
 
 #include "WGenlistItemEx.h"
+#include "SaCompanyInfo.h"
 
 class SaListStockInfoItem : public WGenlistItemEx
 {
 public:
-    SaListStockInfoItem();
+    SaListStockInfoItem(const SaCompanyInfo& info);
     virtual ~SaListStockInfoItem();
 
 protected:
@@ -22,6 +23,9 @@ protected:
 
 private:
     static char* _glTextCb(void *data, Evas_Object *obj, const char *part);
+
+private:
+    SaCompanyInfo _companyInfo;
 };
 
 #endif /* SALISTSTOCKINFOITEM_H_ */
