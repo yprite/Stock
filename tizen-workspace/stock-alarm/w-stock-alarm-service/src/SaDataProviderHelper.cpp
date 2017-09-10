@@ -69,6 +69,8 @@ bundle* SaDataProviderHelper::getFinanceDividenHistory(const char *encodedBundle
 bundle* SaDataProviderHelper::getFinanceHistorycalData(const char *encodedBundle)
 {
     WENTER();
+    //http://www.google.com/finance/historical?q=NASDAQ:ADBE&startdate=Jan+01%2C+2009&enddate=Aug+2%2C+2012&output=csv
+
     return nullptr;
 }
 
@@ -230,6 +232,38 @@ bool SaDataProviderHelper::_execute(const std::string &query, std::string &outpu
     return false;
 }
 
+#if YDEBUG
+bool SaDataProviderHelper::_executeForHistorycalData(const std::string &code)
+{
+	WENTER();
+
+	const std::string baseUrl = "http://www.google.com/finance/historical?q=KRX:" + code +"&startdate=Jan+01%2C+2009&enddate=Aug+2%2C+2012&output=csv";
+
+	CURL *curl = nullptr;
+	std::string response;
+
+	curl = curl_easy_init();
+
+	if (curl)
+	{
+		curl_easy_setopt(curl, CURLOPT_URL, baseUrl.c_str());
+		curl_easy_setopt(curl, CURLOPT_TIMEOUT, 10L);
+		curl_easy_setopt(curl, CURLOPT_NOPROGRESS, 1L);
+		curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, _onDataReceived);
+		curl_easy_setopt(curl, CURLOPT_WRITEDATA, &response);
+
+		CURLcode ret = curl_easy_perform(curl);
+		std::string errMsg = curl_easy_strerror(ret);
+		WINFO("response : %s", response.c_str());
+		WINFO("errMsg : %s", errMsg.c_str());
+		output = response;
+		curl_easy_cleanup(curl);
+		return ret == CURLE_OK;
+	}
+	return false;
+}
+#endif
+
 size_t SaDataProviderHelper::_onDataReceived(void* contents, size_t size, size_t nmemb, void* userData)
 {
     WENTER();
@@ -237,3 +271,113 @@ size_t SaDataProviderHelper::_onDataReceived(void* contents, size_t size, size_t
 
     return size * nmemb;
 }
+
+
+struct HistoricalData
+{
+    std::string date;
+    std::string closedPrice;
+    std::string volume;
+};
+
+static const int dummyDataSize = 10;
+static HistoricalData dummyData[dummyDataSize] =
+{
+    {"date 0", "closed price 0", "volume 0"},
+    {"date 1", "closed price 1", "volume 1"},
+    {"date 2", "closed price 2", "volume 2"},
+    {"date 3", "closed price 3", "volume 3"},
+    {"date 4", "closed price 4", "volume 4"},
+    {"date 5", "closed price 5", "volume 5"},
+    {"date 6", "closed price 6", "volume 6"},
+    {"date 7", "closed price 7", "volume 7"},
+    {"date 8", "closed price 8", "volume 8"},
+    {"date 9", "closed price 9", "volume 9"}
+};
+
+static bundle* convertHistoricalData2Bundle(const HistoricalData& historicalData)
+{
+    bundle *b = bundle_create();
+    bundle_add_str(b, "date", historicalData.date.c_str());
+    bundle_add_str(b, "closedPrice", historicalData.closedPrice.c_str());
+    bundle_add_str(b, "volume", historicalData.volume.c_str());
+
+    return b;
+}
+
+static void convertBundle2HistoricalData(bundle *b, HistoricalData& historicalData)
+{
+    char *tmp = nullptr;
+
+    bundle_get_str(b, "date", &tmp);
+    historicalData.date = std::string(tmp);
+
+    bundle_get_str(b, "closedPrice", &tmp);
+    historicalData.closedPrice = std::string(tmp);
+
+    bundle_get_str(b, "volume", &tmp);
+    historicalData.volume = std::string(tmp);
+}
+
+static void bundle_test()
+{
+    std::string savingData;
+    // encode bundle
+    {
+        int totSize = dummyDataSize;
+        char **valueArr = (char **)calloc(totSize, sizeof(char *));
+        for (int i = 0; i < totSize; ++i)
+        {
+            bundle *subBundle = convertHistoricalData2Bundle(dummyData[i]);
+            bundle_raw *encodedStr = nullptr;
+            int len = 0;
+            bundle_encode(subBundle, &encodedStr, &len);
+            valueArr[i] = strdup((char *)encodedStr);
+            bundle_free(subBundle);
+            free(encodedStr);
+        }
+
+        bundle *b = bundle_create();
+        bundle_add_str_array(b, "historicalData", (const char **)valueArr, totSize);
+        {
+            int len = 0;
+            bundle_raw *encodedStr = nullptr;
+            bundle_encode(b, &encodedStr, &len);
+
+            savingData = std::string((char *)encodedStr);
+
+            free(encodedStr);
+        }
+        bundle_free(b);
+
+        for (int i = 0; i < totSize; ++i)
+            free(valueArr[i]);
+        free(valueArr);
+    }
+    dlog_print(DLOG_INFO, LOG_TAG, "saving data : %s", savingData.c_str());
+    // ======================================================================
+    // decode bundle
+    {
+        bundle *b = bundle_decode((const bundle_raw *)savingData.c_str(), savingData.size());
+
+        int len = 0;
+        const char **array = bundle_get_str_array(b, "historicalData", &len);
+
+
+        for (int i = 0; i < len; ++i)
+        {
+            bundle *sub = bundle_decode((const bundle_raw *)array[i], strlen(array[i]));
+            HistoricalData historicalData;
+            convertBundle2HistoricalData(sub, historicalData);
+            dlog_print(DLOG_INFO, LOG_TAG, "%s %s %s",
+                    historicalData.date.c_str(),
+                    historicalData.closedPrice.c_str(),
+                    historicalData.volume.c_str());
+            bundle_free(sub);
+        }
+
+        if (b)
+            bundle_free(b);
+    }
+}
+
