@@ -379,6 +379,15 @@ collections
                     rel2.to, img.refresh;
                 }
             }
+            part
+            {
+                name, sw.resume.effect;
+                type, SWALLOW;
+                description
+                {
+                    state, default 0.0;
+                }
+            }
 /*
             part
             {

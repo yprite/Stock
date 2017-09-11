@@ -18,14 +18,14 @@ public:
     virtual ~SaWidgetMainViewController();
 
 private:
-	virtual Evas_Object* onCreateView(Evas_Object *parent, void *viewParam) override;
-	virtual void onCreated() override;
-	virtual void onDestroy() override;
+    virtual Evas_Object* onCreateView(Evas_Object *parent, void *viewParam) override;
+    virtual void onCreated() override;
+    virtual void onDestroy() override;
 
 private:
-	app_assist::WTimerWeakPtr _animator;
-	bool _isAnimatorRunning;
-	double _animationStartTime;
+    app_assist::WTimerWeakPtr _animator;
+    bool _isAnimatorRunning;
+    double _animationStartTime;
 };
 
 #endif /* SAWIDGETMAINVIEWCONTROLLER_H_ */

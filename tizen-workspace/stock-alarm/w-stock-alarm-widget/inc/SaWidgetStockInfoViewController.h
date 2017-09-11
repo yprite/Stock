@@ -11,6 +11,7 @@
 #include "WViewController.h"
 #include "AppEventListener.h"
 #include "WTimer.h"
+#include "SaWidgetResumeEffectViewController.h"
 
 class SaWidgetStockInfoViewController : public app_assist::WViewController
                                       , public AppEventListener
@@ -45,6 +46,9 @@ private:
     Evas_Object *_upDownText;
     Evas_Object *_plusMinusIcon;
     Evas_Object *_plueMinusText;
+
+    SaWidgetResumeEffectViewController *_resumeEffectViewController;
+    app_assist::WTimerWeakPtr _resumeTimer;
 };
 
 #endif /* SAWIDGETSTOCKINFOVIEWCONTROLLER_H_ */

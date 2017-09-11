@@ -8,6 +8,7 @@
 #include "SaWidgetInstance.h"
 #include "WWidgetWindowController.h"
 #include "SaWidgetMainViewController.h"
+#include "AppEventManager.h"
 #include "SaWidgetDebug.h"
 
 #include <app.h>
@@ -50,13 +51,14 @@ bool SaWidgetInstance::onDestroy(widget_context_h context, widget_app_destroy_ty
 bool SaWidgetInstance::onPause(widget_context_h context)
 {
     WENTER();
+    AppEventManager::getInstance()->propagateEvent(AppEventListener::EventType::APP_PAUSE);
     return true;
 }
 
 bool SaWidgetInstance::onResume(widget_context_h context)
 {
     WENTER();
-
+    AppEventManager::getInstance()->propagateEvent(AppEventListener::EventType::APP_RESUME);
     return true;
 }
 

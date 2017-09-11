@@ -1,0 +1,105 @@
+collections
+{
+    base_scale, 1.3;
+    group
+    {
+        name, SaWidgetResumeEffectView;
+        
+        images
+        {
+            image, resume_effect_bg.png COMP;
+        }
+        parts
+        {
+            part
+            {
+                name, base;
+                type, RECT;
+                description
+                {
+                    state, default 0.0;
+                    min, 360 360;
+                    max, 360 360;
+                    color, 0 0 0 0;
+                }
+            }
+            part
+            {
+                name, bg.area;
+                type, RECT;
+                description
+                {
+                    state, default 0.0;
+                    min, 30 30;
+                    rel1.to, base;
+                    rel1.relative, 0.5 1.0;
+                    rel2.to, base;
+                    rel2.relative, 0.5 1.0;
+                    align, 0.5 1.0;
+                    color, 0 0 0 0;
+                }
+                description
+                {
+                    state, show.bg 0.0;
+                    inherit, default 0.0;
+                    min, 360 360;
+                    rel1.relative, 0.0 0.0;
+                    rel2.relative, 1.0 1.0;
+                }
+            }
+            part
+            {
+                name,sw.img.bg;
+                type, SWALLOW;
+                description
+                {
+                    state, default 0.0;
+                    rel1.to, bg.area;
+                    rel2.to, bg.area;
+                }
+            }
+            part
+            {
+                name, elm.swallow.content;
+                type, SWALLOW;
+                description
+                {
+                    state, default 0.0;
+                    rel1.to, base;
+                    rel2.to, base;
+                }
+            }
+        } // parts
+        programs
+        {
+            program
+            {
+                signal, load;
+                source, *;
+                action, STATE_SET show.bg 0.0;
+                target, bg.area;
+                transition, SINUSOIDAL 0.4;
+                after, loaded;
+            }
+            program
+            {
+                name, loaded;
+                action, SIGNAL_EMIT "loaded" "*";
+            }
+            program
+            {
+                signal, show.hide.anim;
+                source, *;
+                action, STATE_SET default 0.0;
+                target, bg.area;
+                transition, SINUSOIDAL 0.4;
+                after, hide.anim.finished;
+            }
+            program
+            {
+                name, hide.anim.finished;
+                action, SIGNAL_EMIT "finished" "*";
+            }
+        }
+    }
+}
