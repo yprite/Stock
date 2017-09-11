@@ -12,6 +12,7 @@
 #include "AppEventListener.h"
 #include "WTimer.h"
 #include "SaWidgetResumeEffectViewController.h"
+#include "SaWidgetGraphObject.h"
 
 class SaWidgetStockInfoViewController : public app_assist::WViewController
                                       , public AppEventListener
@@ -34,10 +35,17 @@ private:
 
     void _updateText();
 
+    void _hideGraphAnimation();
+    void _showGraphAnimation();
+    void _moveUpSubPriceInfoAndShowDetailAnimation();
+    void _moveDownSubPriceInfoAndHideDetailAnimation();
+
 private:
     app_assist::WTimerWeakPtr _animator;
     bool _isAnimatorRunning;
     double _animationStartTime;
+    Evas_Coord_Rectangle _subPriceInfoStartPos;
+    Evas_Coord_Rectangle _subPriceInfoEndPos;
 
     Evas_Object *_titlePriceInfoBox;
     Evas_Object *_titlePriceInfoIcon;
@@ -51,6 +59,7 @@ private:
     Evas_Object *_plueMinusText;
 
     SaWidgetResumeEffectViewController *_resumeEffectViewController;
+    SaWidgetGraphObject *_graphObject;
     app_assist::WTimerWeakPtr _resumeTimer;
 };
 

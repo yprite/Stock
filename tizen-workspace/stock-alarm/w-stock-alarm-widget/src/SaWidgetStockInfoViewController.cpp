@@ -18,6 +18,8 @@
 
 using namespace app_assist;
 
+static const int gSubPriceInfoYDistance = 130;
+
 SaWidgetStockInfoViewController::SaWidgetStockInfoViewController()
 {
     // TODO Auto-generated constructor stub
@@ -36,6 +38,7 @@ SaWidgetStockInfoViewController::SaWidgetStockInfoViewController()
     _plueMinusText = nullptr;
 
     _resumeEffectViewController = nullptr;
+    _graphObject = nullptr;
 }
 
 SaWidgetStockInfoViewController::~SaWidgetStockInfoViewController()
@@ -85,94 +88,126 @@ void SaWidgetStockInfoViewController::onCreated()
     graphObj->addPoint(2);
 
     graphObj->drawGraph();
-
     elm_object_part_content_set(layout, "sw.graph", graphObj->getEvasObject());
+    _graphObject = graphObj;
 
     Evas_Object *effectBtn = elm_button_add(layout);
     elm_object_style_set(effectBtn, "effect/full");
     evas_object_size_hint_weight_set(effectBtn, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
     evas_object_show(effectBtn);
+
+    elm_layout_signal_emit(_priceIcon, "show.anim", "*");
+    elm_layout_signal_emit(_upDownIcon, "show.anim", "*");
+    elm_layout_signal_emit(_plusMinusIcon, "show.anim", "*");
+
+    elm_layout_signal_emit(_priceInfoText, "show.anim", "*");
+    elm_layout_signal_emit(_upDownText, "show.anim", "*");
+    elm_layout_signal_emit(_plueMinusText, "show.anim", "*");
+
     evas_object_smart_callback_add(effectBtn, "clicked",
             [](void *data, Evas_Object *obj, void *eventInfo)
             {
                 WHIT();
                 auto self = (SaWidgetStockInfoViewController *)data;
-                Evas_Object *layout = self->getEvasObject();
+                if (self->_isAnimatorRunning)
+                    return;
+                //Evas_Object *layout = self->getEvasObject();
 
-                elm_layout_signal_emit(self->_priceIcon, "show.anim", "*");
-                elm_layout_signal_emit(self->_upDownIcon, "show.anim", "*");
-                elm_layout_signal_emit(self->_plusMinusIcon, "show.anim", "*");
+                //elm_layout_signal_emit(self->_priceIcon, "show.anim", "*");
+                //elm_layout_signal_emit(self->_upDownIcon, "show.anim", "*");
+                //elm_layout_signal_emit(self->_plusMinusIcon, "show.anim", "*");
 
-                elm_layout_signal_emit(self->_priceInfoText, "show.anim", "*");
-                elm_layout_signal_emit(self->_upDownText, "show.anim", "*");
-                elm_layout_signal_emit(self->_plueMinusText, "show.anim", "*");
-/*
-                char *resPath = app_get_resource_path();
-                char edjPath[PATH_MAX] = {0, };
-                if (resPath)
-                {
-                    snprintf(edjPath, sizeof(edjPath), "%s%s", resPath, "edje/SaWidgetResumeEffectView.edj");
-                    free(resPath);
-                }
-                Evas_Object *resumeEffectObj = elm_layout_add(layout);
-                elm_layout_file_set(resumeEffectObj, edjPath, "SaWidgetResumeEffectView");
-                evas_object_show(resumeEffectObj);
-                elm_object_part_content_set(layout, "sw.resume.effect", resumeEffectObj);
-*/
+                //elm_layout_signal_emit(self->_priceInfoText, "show.anim", "*");
+                //elm_layout_signal_emit(self->_upDownText, "show.anim", "*");
+                //elm_layout_signal_emit(self->_plueMinusText, "show.anim", "*");
+                self->_isAnimatorRunning = true;
+                self->_hideGraphAnimation();
+
             }, this);
 
     elm_object_part_content_set(layout, "sw.touch.refresh.area", effectBtn);
+}
 
-#if 0
-    edje_object_signal_callback_add(elm_layout_edje_get(layout), "touch.area.mouse.clicked", "*",
-        [](void *data, Evas_Object *obj, const char *emission, const char *source)
+void SaWidgetStockInfoViewController::_hideGraphAnimation()
+{
+    _animationStartTime = ecore_loop_time_get();
+    Evas_Object *subPriceInfoObj = elm_object_part_content_get(getEvasObject(), "sw.sub.price.info");
+    evas_object_geometry_get(subPriceInfoObj, &_subPriceInfoStartPos.x, &_subPriceInfoStartPos.y, &_subPriceInfoStartPos.w, &_subPriceInfoStartPos.h);
+    _animator = WTimer::addAnimator(
+        [](void *data)->bool
         {
             auto self = (SaWidgetStockInfoViewController *)data;
-            elm_layout_signal_emit(self->_priceIcon, "show.anim", "*");
+            double time = ecore_loop_time_get();
+            double timeDiff = (time - self->_animationStartTime);
 
+            double ratio = ecore_animator_pos_map(timeDiff, ECORE_POS_MAP_SINUSOIDAL, 0.0, 1.0);
+            Evas_Object *subPriceInfoObj = elm_object_part_content_get(self->getEvasObject(), "sw.sub.price.info");
 
-            WINFO("START ANIMATOR!");
-            self->_animator = WTimer::addAnimator(
-                [](void *data)->bool
-                {
-                    auto self = (SaWidgetStockInfoViewController *)data;
-                    double duration = 10.0f;
-                    double time = ecore_loop_time_get();
-                    double t = (time - self->_animationStartTime) / duration;
+            if (ratio >= 1.0f)
+            {
+                evas_object_color_set(self->_graphObject->getEvasObject(), 0, 0, 0, 0);
+                evas_object_move(subPriceInfoObj, self->_subPriceInfoStartPos.x, self->_subPriceInfoStartPos.y - gSubPriceInfoYDistance);
+                self->_subPriceInfoEndPos = self->_subPriceInfoStartPos;
+                self->_subPriceInfoEndPos.y = self->_subPriceInfoStartPos.y - gSubPriceInfoYDistance;
+                if (!self->_animator.expired())
+                    WTimer::destroy(self->_animator);
 
-                    if (t >= 0.2f)
-                    {
-                        if (!self->_animator.expired())
-                            WTimer::destroy(self->_animator);
-                        self->_isAnimatorRunning = false;
+                self->_showGraphAnimation();
+                //self->_moveUpSubPriceInfoAndShowDetailAnimation();
+                return false;
+            }
+            int colorRatio = 255 - ratio * 255;
+            evas_object_color_set(self->_graphObject->getEvasObject(), colorRatio, colorRatio, colorRatio, colorRatio);
 
-                        WINFO("FINISH ANIMATOR!");
-                        return false;
-                    }
+            int deltaY = self->_subPriceInfoStartPos.y - ratio * gSubPriceInfoYDistance;
+            evas_object_move(subPriceInfoObj, self->_subPriceInfoStartPos.x, deltaY);
 
-                    double deltaX = 30.0f;
-                    double deltaY = 100.0f;
-                    double ratio = ecore_animator_pos_map(t, ECORE_POS_MAP_LINEAR, 0.0, 1.0);
-                    //WINFO("ratio - %lf", ratio);
-                    // TODO
-                    {
-                        Evas_Object *layout = self->getEvasObject();
-                        Evas_Coord x = 0, y = 0, w = 0, h = 0;
-                        evas_object_geometry_get(layout, &x, &y, &w, &h);
-                        WINFO("%d %d %d %d", x, y, w, h);
-                        Evas_Map *m = evas_map_new(4);
-                        evas_map_util_points_populate_from_object(m, layout);
-                        evas_map_util_zoom(m, 1 - ratio, 1 - ratio, w/2, 0);
-                        evas_object_map_set(layout, m);
-                        evas_object_map_enable_set(layout, EINA_TRUE);
-                        evas_map_free(m);
-                    }
-                    return true;
-                }, data);
-
+            return true;
         }, this);
-#endif
 }
+
+void SaWidgetStockInfoViewController::_showGraphAnimation()
+{
+    _animationStartTime = ecore_loop_time_get();
+    Evas_Object *subPriceInfoObj = elm_object_part_content_get(getEvasObject(), "sw.sub.price.info");
+    evas_object_geometry_get(subPriceInfoObj, &_subPriceInfoStartPos.x, &_subPriceInfoStartPos.y, &_subPriceInfoStartPos.w, &_subPriceInfoStartPos.h);
+    _animator = WTimer::addAnimator(
+        [](void *data)->bool
+        {
+            auto self = (SaWidgetStockInfoViewController *)data;
+            double time = ecore_loop_time_get();
+            double timeDiff = (time - self->_animationStartTime);
+
+            double ratio = ecore_animator_pos_map(timeDiff, ECORE_POS_MAP_SINUSOIDAL, 0.0, 1.0);
+            Evas_Object *subPriceInfoObj = elm_object_part_content_get(self->getEvasObject(), "sw.sub.price.info");
+
+            if (ratio >= 1.0f)
+            {
+                evas_object_color_set(self->_graphObject->getEvasObject(), 255, 255, 255, 255);
+                evas_object_move(subPriceInfoObj, self->_subPriceInfoEndPos.x, self->_subPriceInfoEndPos.y + gSubPriceInfoYDistance);
+                self->_isAnimatorRunning = false;
+                if (!self->_animator.expired())
+                    WTimer::destroy(self->_animator);
+
+                //self->_moveUpSubPriceInfoAndShowDetailAnimation();
+                return false;
+            }
+            int colorRatio = 0 + ratio * 255;
+            evas_object_color_set(self->_graphObject->getEvasObject(), colorRatio, colorRatio, colorRatio, colorRatio);
+
+            int deltaY = self->_subPriceInfoEndPos.y + ratio * gSubPriceInfoYDistance;
+            evas_object_move(subPriceInfoObj, self->_subPriceInfoStartPos.x, deltaY);
+
+            return true;
+        }, this);
+}
+
+#if 0
+./ecore/ecore_animator_example.c:64:   frame = ecore_animator_pos_map(pos, ECORE_POS_MAP_SPRING, 1.2, 15);
+./ecore/ecore_animator_example.c:84:   frame = ecore_animator_pos_map(pos, ECORE_POS_MAP_BOUNCE, 1.2, 50);
+./evas/evas-vg-batman.c:85:                                   ecore_animator_pos_map(pos, ECORE_POS_MAP_SINUSOIDAL, 0.0, 0.0));
+./evas/evas-vg-simple.c:230:   pos = ecore_animator_pos_map((now - start_time) / 3, ECORE_POS_MAP_SINUSOIDAL, 0, 0);
+#endif
 
 void SaWidgetStockInfoViewController::onDestroy()
 {

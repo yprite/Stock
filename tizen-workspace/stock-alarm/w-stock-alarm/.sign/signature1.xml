@@ -4,7 +4,7 @@
 <SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"></SignatureMethod>
 <Reference URI="author-signature.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>DVhehvt3r4OMJKAr9mjgjW8Nzb5rN+m8xfljc27QKbY=</DigestValue>
+<DigestValue>OM7kc82goQqzQtW+2j1nROTn5CVuP8uQB0U7N/f+fFM=</DigestValue>
 </Reference>
 <Reference URI="bin%2Fw-stock-alarm">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -16,7 +16,7 @@
 </Reference>
 <Reference URI="bin%2Fw-stock-alarm-widget">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>MqjrxdCae8TJ552Zsm9oeGgTZx1FDPyYZQI5jlPsR3E=</DigestValue>
+<DigestValue>xeK7LrnZ5mzSCeJgwQv2Nu221f3V9jod1U4E/ET5OL4=</DigestValue>
 </Reference>
 <Reference URI="lib%2Flibw-stock-alarm-common.so">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -151,9 +151,9 @@
 </Reference>
 </SignedInfo>
 <SignatureValue>
-qMkKzvNNAnu5pKcoUE9vrdr/GRclOWK4Z9v6bJTtZsRxir/vrwl49G4HiA6VyE6o9aZeQeNjEUhL
-X59WP1211zLbZT9d8QD0y8eP6G5oggKKl88N+l/8PDHZ/bt2e9D+pehkqNC55u6bpVS1oPqzCC5p
-1lwVYVIjR5la228OtTs=
+M7OZVNwelmMSBnbgQQ3DZEyH/wfvxLDU2DXneEzBlz8x3ubByCI7pzT3qrup6+n9l4aRUQH0UcuJ
+GYp3lw89LpxWbV1VfZzbGRDpz7l7HyUM3hH7wp7rCGQr6SnoLMGcW3bqPwcPAIs1E9LKD3LkzAxz
+yI83cEwbRPNxS9R5Shw=
 </SignatureValue>
 <KeyInfo>
 <X509Data>
