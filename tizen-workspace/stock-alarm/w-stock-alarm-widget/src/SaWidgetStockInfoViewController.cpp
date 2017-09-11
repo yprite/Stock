@@ -182,7 +182,7 @@ void SaWidgetStockInfoViewController::onDestroy()
 void SaWidgetStockInfoViewController::onEventOccured(AppEventListener::EventType eventType)
 {
     WENTER();
-    Evas_Object *layout = getEvasObject();
+
     if (eventType == AppEventListener::EventType::FONT_CHANGED ||
         eventType == AppEventListener::EventType::COLOR_CHANGED ||
         eventType == AppEventListener::EventType::LANGUAGE_CHANGED ||
@@ -193,59 +193,71 @@ void SaWidgetStockInfoViewController::onEventOccured(AppEventListener::EventType
 
     else if (eventType == AppEventListener::EventType::APP_PAUSE)
     {
-        if (_resumeEffectViewController)
-        {
-            elm_object_part_content_unset(layout, "sw.resume.effect");
-            _resumeEffectViewController->destroy();
-            _resumeEffectViewController = nullptr;
-        }
-        if (!_resumeTimer.expired())
-        {
-            WTimer::destroy(_resumeTimer);
-        }
+
     }
     else if (eventType == AppEventListener::EventType::APP_RESUME)
     {
-        if (_resumeEffectViewController)
-        {
-            _resumeEffectViewController->destroy();
-            _resumeEffectViewController = nullptr;
-        }
-        SaWidgetResumeEffectViewController *viewController = new SaWidgetResumeEffectViewController();
-        viewController->create(layout, nullptr);
-        elm_object_part_content_set(layout, "sw.resume.effect", viewController->getEvasObject());
-        _resumeEffectViewController = viewController;
 
-        edje_object_signal_callback_add(elm_layout_edje_get(_resumeEffectViewController->getEvasObject()), "finished", "*",
-            [](void *data, Evas_Object *obj, const char *emission, const char *source)
-            {
-                WHIT();
-                auto self = (SaWidgetStockInfoViewController *)data;
-                if (self->_resumeEffectViewController)
-                {
-                    elm_object_part_content_unset(self->getEvasObject(), "sw.resume.effect");
-                    self->_resumeEffectViewController->destroy();
-                    self->_resumeEffectViewController = nullptr;
-                }
-            }, this);
-
-        _resumeTimer = WTimer::addTimer(2.5, [](void *data)->bool
-            {
-                WINFO("destroy timer!");
-                auto self = (SaWidgetStockInfoViewController *)data;
-                if (self->_resumeEffectViewController)
-                {
-                    self->_resumeEffectViewController->removeIcon();
-                    elm_layout_signal_emit(self->_resumeEffectViewController->getEvasObject(), "show.hide.anim", "*");
-                }
-
-                if (!self->_resumeTimer.expired())
-                {
-                    WTimer::destroy(self->_resumeTimer);
-                }
-                return false;
-            }, this);
     }
+}
+
+void SaWidgetStockInfoViewController::pause()
+{
+    Evas_Object *layout = getEvasObject();
+    if (_resumeEffectViewController)
+    {
+        elm_object_part_content_unset(layout, "sw.resume.effect");
+        _resumeEffectViewController->destroy();
+        _resumeEffectViewController = nullptr;
+    }
+    if (!_resumeTimer.expired())
+    {
+        WTimer::destroy(_resumeTimer);
+    }
+}
+
+void SaWidgetStockInfoViewController::resume()
+{
+    Evas_Object *layout = getEvasObject();
+    if (_resumeEffectViewController)
+    {
+        _resumeEffectViewController->destroy();
+        _resumeEffectViewController = nullptr;
+    }
+    SaWidgetResumeEffectViewController *viewController = new SaWidgetResumeEffectViewController();
+    viewController->create(layout, nullptr);
+    elm_object_part_content_set(layout, "sw.resume.effect", viewController->getEvasObject());
+    _resumeEffectViewController = viewController;
+
+    edje_object_signal_callback_add(elm_layout_edje_get(_resumeEffectViewController->getEvasObject()), "finished", "*",
+        [](void *data, Evas_Object *obj, const char *emission, const char *source)
+        {
+            WHIT();
+            auto self = (SaWidgetStockInfoViewController *)data;
+            if (self->_resumeEffectViewController)
+            {
+                elm_object_part_content_unset(self->getEvasObject(), "sw.resume.effect");
+                self->_resumeEffectViewController->destroy();
+                self->_resumeEffectViewController = nullptr;
+            }
+        }, this);
+
+    _resumeTimer = WTimer::addTimer(2.5, [](void *data)->bool
+        {
+            WINFO("destroy timer!");
+            auto self = (SaWidgetStockInfoViewController *)data;
+            if (self->_resumeEffectViewController)
+            {
+                self->_resumeEffectViewController->removeIcon();
+                elm_layout_signal_emit(self->_resumeEffectViewController->getEvasObject(), "show.hide.anim", "*");
+            }
+
+            if (!self->_resumeTimer.expired())
+            {
+                WTimer::destroy(self->_resumeTimer);
+            }
+            return false;
+        }, this);
 }
 
 void SaWidgetStockInfoViewController::_createTitlePriceInfo()

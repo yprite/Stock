@@ -10,12 +10,17 @@
 
 #include "WViewController.h"
 #include "WTimer.h"
+#include <widget_app.h>
+#include "SaWidgetStockInfoViewController.h"
 
 class SaWidgetMainViewController : public app_assist::WViewController
 {
 public:
     SaWidgetMainViewController();
     virtual ~SaWidgetMainViewController();
+
+    void pause();
+    void resume();
 
 private:
     virtual Evas_Object* onCreateView(Evas_Object *parent, void *viewParam) override;
@@ -26,6 +31,9 @@ private:
     app_assist::WTimerWeakPtr _animator;
     bool _isAnimatorRunning;
     double _animationStartTime;
+    widget_context_h _context;
+
+    SaWidgetStockInfoViewController *_stockInfoViewController;
 };
 
 #endif /* SAWIDGETMAINVIEWCONTROLLER_H_ */

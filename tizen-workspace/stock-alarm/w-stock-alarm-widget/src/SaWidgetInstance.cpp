@@ -51,14 +51,14 @@ bool SaWidgetInstance::onDestroy(widget_context_h context, widget_app_destroy_ty
 bool SaWidgetInstance::onPause(widget_context_h context)
 {
     WENTER();
-    AppEventManager::getInstance()->propagateEvent(AppEventListener::EventType::APP_PAUSE);
+    _baseView->pause();
     return true;
 }
 
 bool SaWidgetInstance::onResume(widget_context_h context)
 {
     WENTER();
-    AppEventManager::getInstance()->propagateEvent(AppEventListener::EventType::APP_RESUME);
+    _baseView->resume();
     return true;
 }
 

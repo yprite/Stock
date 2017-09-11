@@ -12,7 +12,7 @@
 </Reference>
 <Reference URI="bin%2Fw-stock-alarm-widget">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>D0aFxrBoNQ64MbsoVqRLYSVQ94MgMYeXA599L36K2Kk=</DigestValue>
+<DigestValue>MqjrxdCae8TJ552Zsm9oeGgTZx1FDPyYZQI5jlPsR3E=</DigestValue>
 </Reference>
 <Reference URI="lib%2Flibw-stock-alarm-common.so">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -40,7 +40,7 @@
 </Reference>
 <Reference URI="res%2Fedje%2FSaProgressObject.edj">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>JeSuT0sEZHPZFQdIIKl0WqKFM5w9VVT23Y91EIw2vfc=</DigestValue>
+<DigestValue>iktWcTLLyTxax+sRBewQNeEGlBDTEjB/Rj990Hmn3G0=</DigestValue>
 </Reference>
 <Reference URI="res%2Fedje%2FSaSearchCompanyView.edj">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -48,7 +48,7 @@
 </Reference>
 <Reference URI="res%2Fedje%2FSaWidgetIcon.edj">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>T3Y5L7yn7XRel3fm5oIN12/PPF94ZtSwzAx+34AsGYw=</DigestValue>
+<DigestValue>QDOd5ahoS63dvzy+nVZKyD/pkHSpuBlUI66W4NzGiKM=</DigestValue>
 </Reference>
 <Reference URI="res%2Fedje%2FSaWidgetMainView.edj">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -56,11 +56,11 @@
 </Reference>
 <Reference URI="res%2Fedje%2FSaWidgetResumeEffectView.edj">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>EgG2ZWaRiy1xPstOAn9NixwfJwuC6rjThEUnL6mCjnM=</DigestValue>
+<DigestValue>TDoRkylOu6diYfyn4rmZNGRIz1quysjQoQYMqpNwX9o=</DigestValue>
 </Reference>
 <Reference URI="res%2Fedje%2FSaWidgetStockInfoView.edj">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>QVlYKwKYAeYLX3eacCl/tRNH7sE+yL+31udpCeDe5II=</DigestValue>
+<DigestValue>tpw8OKgEzsk0+GOFr1KDCKGMFT5Q4DEGACvxeJ4wsVc=</DigestValue>
 </Reference>
 <Reference URI="res%2Fedje%2Fapp-assist-efl.edj">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -147,9 +147,9 @@
 </Reference>
 </SignedInfo>
 <SignatureValue>
-jlf37eg3u+AoxlusuvdD6eKy1YCKuQObeHNQC9au0MQw5Oy/Sz4wUdhK3LcNCkgopTjpTqevtEGr
-fr8v1DKPNZdlsijIijPGuUdWWtW67Yazte0etpzgA5GTnXoN7kGgSgzXlzJUxQxpbU2FdIRQQGtT
-mbI7U5uC57i1Uwd9iks=
+LFMy7dAG+/0K8/j41McINT4+8GE4IIO0rQnyG4ppHw06/rYDeep38L1zIWAgDqM4pXQFVIuA2iAo
+p6phfl1zd/TdcOJbgbm73GBZNdN3NnjJuScZydZ7/3GSN8jFPJbBJIOijT46MUtzELNwYctUDacS
+kYff88qmdwp97bevnyk=
 </SignatureValue>
 <KeyInfo>
 <X509Data>

@@ -17,6 +17,7 @@ SaWidgetMainViewController::SaWidgetMainViewController()
     // TODO Auto-generated constructor stub
     _isAnimatorRunning = false;
     _animationStartTime = 0.0f;
+    _stockInfoViewController = nullptr;
 }
 
 SaWidgetMainViewController::~SaWidgetMainViewController()
@@ -53,6 +54,7 @@ void SaWidgetMainViewController::onCreated()
     viewController->create(layout, nullptr);
 
     elm_object_part_content_set(layout, "sw.content", viewController->getEvasObject());
+    _stockInfoViewController = viewController;
 }
 
 void SaWidgetMainViewController::onDestroy()
@@ -61,5 +63,13 @@ void SaWidgetMainViewController::onDestroy()
 }
 
 
+void SaWidgetMainViewController::pause()
+{
+    _stockInfoViewController->pause();
+}
 
+void SaWidgetMainViewController::resume()
+{
+    _stockInfoViewController->resume();
+}
 

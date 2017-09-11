@@ -20,6 +20,9 @@ public:
     SaWidgetStockInfoViewController();
     virtual ~SaWidgetStockInfoViewController();
 
+    void pause();
+    void resume();
+
 private:
     virtual Evas_Object* onCreateView(Evas_Object *parent, void *viewParam) override;
     virtual void onCreated() override;
