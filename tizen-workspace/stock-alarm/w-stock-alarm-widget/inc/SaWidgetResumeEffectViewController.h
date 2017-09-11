@@ -16,6 +16,8 @@ public:
     SaWidgetResumeEffectViewController();
     virtual ~SaWidgetResumeEffectViewController();
 
+    void removeIcon();
+
 private:
     virtual Evas_Object* onCreateView(Evas_Object *parent, void *viewParam) override;
     virtual void onCreated() override;
@@ -23,6 +25,7 @@ private:
 
 private:
     Evas_Object *_bgImg;
+    Evas_Object *_icon;
 };
 
 #endif /* SAWIDGETRESUMEEFFECTVIEWCONTROLLER_H_ */

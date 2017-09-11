@@ -60,11 +60,13 @@ collections
             }
             part
             {
-                name, elm.swallow.content;
+                name, sw.icon;
                 type, SWALLOW;
                 description
                 {
                     state, default 0.0;
+                    min, 115 115;
+                    max, 115 115;
                     rel1.to, base;
                     rel2.to, base;
                 }

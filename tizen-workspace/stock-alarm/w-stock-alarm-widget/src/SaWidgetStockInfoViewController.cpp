@@ -235,6 +235,7 @@ void SaWidgetStockInfoViewController::onEventOccured(AppEventListener::EventType
                 auto self = (SaWidgetStockInfoViewController *)data;
                 if (self->_resumeEffectViewController)
                 {
+                    self->_resumeEffectViewController->removeIcon();
                     elm_layout_signal_emit(self->_resumeEffectViewController->getEvasObject(), "show.hide.anim", "*");
                 }
 

@@ -10,61 +10,61 @@ collections
 #define W_WIDTH (50)
 #define W_HEIGHT (50)
 
-	    images
-	    {
-	        image, ./W_icon/1.png COMP;
-	        image, ./W_icon/2.png COMP;
-	        image, ./W_icon/3.png COMP;
-	        image, ./W_icon/4.png COMP;
-	        image, ./W_icon/5.png COMP;
-	        image, ./W_icon/6.png COMP;
-	        image, ./W_icon/7.png COMP;
-	        image, ./W_icon/8.png COMP;
-	        image, ./W_icon/9.png COMP;
-	        image, ./W_icon/10.png COMP;
-	        image, ./W_icon/11.png COMP;
-	        image, ./W_icon/12.png COMP;
-	        image, ./W_icon/13.png COMP;
-	        image, ./W_icon/14.png COMP;
-	        image, ./W_icon/15.png COMP;
-	        image, ./W_icon/16.png COMP;
-	        image, ./W_icon/17.png COMP;
-	        image, ./W_icon/18.png COMP;
-	        image, ./W_icon/19.png COMP;
-	        image, ./W_icon/20.png COMP;
-	        image, ./W_icon/21.png COMP;
-	        image, ./W_icon/22.png COMP;
-	        image, ./W_icon/23.png COMP;
-	        image, ./W_icon/24.png COMP;
-	        image, ./W_icon/25.png COMP;
-	        image, ./W_icon/26.png COMP;
-	        image, ./W_icon/27.png COMP;
-	        image, ./W_icon/28.png COMP;
-	        image, ./W_icon/29.png COMP;
-	        image, ./W_icon/30.png COMP;
-	        image, ./W_icon/31.png COMP;
-	        image, ./W_icon/32.png COMP;
-	        image, ./W_icon/33.png COMP;
-	        image, ./W_icon/34.png COMP;
-	        image, ./W_icon/35.png COMP;
-	        image, ./W_icon/36.png COMP;
-	        image, ./W_icon/37.png COMP;
-	        image, ./W_icon/38.png COMP;
-	        image, ./W_icon/39.png COMP;
-	        image, ./W_icon/40.png COMP;
-	        image, ./W_icon/41.png COMP;
-	        image, ./W_icon/42.png COMP;
-	        image, ./W_icon/43.png COMP;
-	        image, ./W_icon/44.png COMP;
-	        image, ./W_icon/45.png COMP;
-	        image, ./W_icon/46.png COMP;
-	        image, ./W_icon/47.png COMP;
-	        image, ./W_icon/48.png COMP;
-	        image, ./W_icon/49.png COMP;
-	        image, ./W_icon/50.png COMP;
-	        image, ./W_icon/51.png COMP;
-	        image, ./W_icon/52.png COMP;
-	    }
+        images
+        {
+            image, ./W_icon/1.png COMP;
+            image, ./W_icon/2.png COMP;
+            image, ./W_icon/3.png COMP;
+            image, ./W_icon/4.png COMP;
+            image, ./W_icon/5.png COMP;
+            image, ./W_icon/6.png COMP;
+            image, ./W_icon/7.png COMP;
+            image, ./W_icon/8.png COMP;
+            image, ./W_icon/9.png COMP;
+            image, ./W_icon/10.png COMP;
+            image, ./W_icon/11.png COMP;
+            image, ./W_icon/12.png COMP;
+            image, ./W_icon/13.png COMP;
+            image, ./W_icon/14.png COMP;
+            image, ./W_icon/15.png COMP;
+            image, ./W_icon/16.png COMP;
+            image, ./W_icon/17.png COMP;
+            image, ./W_icon/18.png COMP;
+            image, ./W_icon/19.png COMP;
+            image, ./W_icon/20.png COMP;
+            image, ./W_icon/21.png COMP;
+            image, ./W_icon/22.png COMP;
+            image, ./W_icon/23.png COMP;
+            image, ./W_icon/24.png COMP;
+            image, ./W_icon/25.png COMP;
+            image, ./W_icon/26.png COMP;
+            image, ./W_icon/27.png COMP;
+            image, ./W_icon/28.png COMP;
+            image, ./W_icon/29.png COMP;
+            image, ./W_icon/30.png COMP;
+            image, ./W_icon/31.png COMP;
+            image, ./W_icon/32.png COMP;
+            image, ./W_icon/33.png COMP;
+            image, ./W_icon/34.png COMP;
+            image, ./W_icon/35.png COMP;
+            image, ./W_icon/36.png COMP;
+            image, ./W_icon/37.png COMP;
+            image, ./W_icon/38.png COMP;
+            image, ./W_icon/39.png COMP;
+            image, ./W_icon/40.png COMP;
+            image, ./W_icon/41.png COMP;
+            image, ./W_icon/42.png COMP;
+            image, ./W_icon/43.png COMP;
+            image, ./W_icon/44.png COMP;
+            image, ./W_icon/45.png COMP;
+            image, ./W_icon/46.png COMP;
+            image, ./W_icon/47.png COMP;
+            image, ./W_icon/48.png COMP;
+            image, ./W_icon/49.png COMP;
+            image, ./W_icon/50.png COMP;
+            image, ./W_icon/51.png COMP;
+            image, ./W_icon/52.png COMP;
+        }
         parts
         {
             part
@@ -249,39 +249,39 @@ collections
 #define Up_WIDTH (34)
 #define Up_HEIGHT (34)
 
-	    images
-	    {
-	        image, ./Up_icon/1.png COMP;
-	        image, ./Up_icon/2.png COMP;
-	        image, ./Up_icon/3.png COMP;
-	        image, ./Up_icon/4.png COMP;
-	        image, ./Up_icon/5.png COMP;
-	        image, ./Up_icon/6.png COMP;
-	        image, ./Up_icon/7.png COMP;
-	        image, ./Up_icon/8.png COMP;
-	        image, ./Up_icon/9.png COMP;
-	        image, ./Up_icon/10.png COMP;
-	        image, ./Up_icon/11.png COMP;
-	        image, ./Up_icon/12.png COMP;
-	        image, ./Up_icon/13.png COMP;
-	        image, ./Up_icon/14.png COMP;
-	        image, ./Up_icon/15.png COMP;
-	        image, ./Up_icon/16.png COMP;
-	        image, ./Up_icon/17.png COMP;
-	        image, ./Up_icon/18.png COMP;
-	        image, ./Up_icon/19.png COMP;
-	        image, ./Up_icon/20.png COMP;
-	        image, ./Up_icon/21.png COMP;
-	        image, ./Up_icon/22.png COMP;
-	        image, ./Up_icon/23.png COMP;
-	        image, ./Up_icon/24.png COMP;
-	        image, ./Up_icon/25.png COMP;
-	        image, ./Up_icon/26.png COMP;
-	        image, ./Up_icon/27.png COMP;
-	        image, ./Up_icon/28.png COMP;
-	        image, ./Up_icon/29.png COMP;
-	        image, ./Up_icon/30.png COMP;
-	    }
+        images
+        {
+            image, ./Up_icon/1.png COMP;
+            image, ./Up_icon/2.png COMP;
+            image, ./Up_icon/3.png COMP;
+            image, ./Up_icon/4.png COMP;
+            image, ./Up_icon/5.png COMP;
+            image, ./Up_icon/6.png COMP;
+            image, ./Up_icon/7.png COMP;
+            image, ./Up_icon/8.png COMP;
+            image, ./Up_icon/9.png COMP;
+            image, ./Up_icon/10.png COMP;
+            image, ./Up_icon/11.png COMP;
+            image, ./Up_icon/12.png COMP;
+            image, ./Up_icon/13.png COMP;
+            image, ./Up_icon/14.png COMP;
+            image, ./Up_icon/15.png COMP;
+            image, ./Up_icon/16.png COMP;
+            image, ./Up_icon/17.png COMP;
+            image, ./Up_icon/18.png COMP;
+            image, ./Up_icon/19.png COMP;
+            image, ./Up_icon/20.png COMP;
+            image, ./Up_icon/21.png COMP;
+            image, ./Up_icon/22.png COMP;
+            image, ./Up_icon/23.png COMP;
+            image, ./Up_icon/24.png COMP;
+            image, ./Up_icon/25.png COMP;
+            image, ./Up_icon/26.png COMP;
+            image, ./Up_icon/27.png COMP;
+            image, ./Up_icon/28.png COMP;
+            image, ./Up_icon/29.png COMP;
+            image, ./Up_icon/30.png COMP;
+        }
         parts
         {
             part
@@ -417,39 +417,39 @@ collections
 #define Down_WIDTH (34)
 #define Down_HEIGHT (34)
 
-	    images
-	    {
-	        image, ./Down_icon/1.png COMP;
-	        image, ./Down_icon/2.png COMP;
-	        image, ./Down_icon/3.png COMP;
-	        image, ./Down_icon/4.png COMP;
-	        image, ./Down_icon/5.png COMP;
-	        image, ./Down_icon/6.png COMP;
-	        image, ./Down_icon/7.png COMP;
-	        image, ./Down_icon/8.png COMP;
-	        image, ./Down_icon/9.png COMP;
-	        image, ./Down_icon/10.png COMP;
-	        image, ./Down_icon/11.png COMP;
-	        image, ./Down_icon/12.png COMP;
-	        image, ./Down_icon/13.png COMP;
-	        image, ./Down_icon/14.png COMP;
-	        image, ./Down_icon/15.png COMP;
-	        image, ./Down_icon/16.png COMP;
-	        image, ./Down_icon/17.png COMP;
-	        image, ./Down_icon/18.png COMP;
-	        image, ./Down_icon/19.png COMP;
-	        image, ./Down_icon/20.png COMP;
-	        image, ./Down_icon/21.png COMP;
-	        image, ./Down_icon/22.png COMP;
-	        image, ./Down_icon/23.png COMP;
-	        image, ./Down_icon/24.png COMP;
-	        image, ./Down_icon/25.png COMP;
-	        image, ./Down_icon/26.png COMP;
-	        image, ./Down_icon/27.png COMP;
-	        image, ./Down_icon/28.png COMP;
-	        image, ./Down_icon/29.png COMP;
-	        image, ./Down_icon/30.png COMP;
-	    }
+        images
+        {
+            image, ./Down_icon/1.png COMP;
+            image, ./Down_icon/2.png COMP;
+            image, ./Down_icon/3.png COMP;
+            image, ./Down_icon/4.png COMP;
+            image, ./Down_icon/5.png COMP;
+            image, ./Down_icon/6.png COMP;
+            image, ./Down_icon/7.png COMP;
+            image, ./Down_icon/8.png COMP;
+            image, ./Down_icon/9.png COMP;
+            image, ./Down_icon/10.png COMP;
+            image, ./Down_icon/11.png COMP;
+            image, ./Down_icon/12.png COMP;
+            image, ./Down_icon/13.png COMP;
+            image, ./Down_icon/14.png COMP;
+            image, ./Down_icon/15.png COMP;
+            image, ./Down_icon/16.png COMP;
+            image, ./Down_icon/17.png COMP;
+            image, ./Down_icon/18.png COMP;
+            image, ./Down_icon/19.png COMP;
+            image, ./Down_icon/20.png COMP;
+            image, ./Down_icon/21.png COMP;
+            image, ./Down_icon/22.png COMP;
+            image, ./Down_icon/23.png COMP;
+            image, ./Down_icon/24.png COMP;
+            image, ./Down_icon/25.png COMP;
+            image, ./Down_icon/26.png COMP;
+            image, ./Down_icon/27.png COMP;
+            image, ./Down_icon/28.png COMP;
+            image, ./Down_icon/29.png COMP;
+            image, ./Down_icon/30.png COMP;
+        }
         parts
         {
             part
@@ -586,35 +586,35 @@ collections
 #define Plus_WIDTH (34)
 #define Plus_HEIGHT (34)
 
-	    images
-	    {
-	        image, ./Plus_icon/1.png COMP;
-	        image, ./Plus_icon/2.png COMP;
-	        image, ./Plus_icon/3.png COMP;
-	        image, ./Plus_icon/4.png COMP;
-	        image, ./Plus_icon/5.png COMP;
-	        image, ./Plus_icon/6.png COMP;
-	        image, ./Plus_icon/7.png COMP;
-	        image, ./Plus_icon/8.png COMP;
-	        image, ./Plus_icon/9.png COMP;
-	        image, ./Plus_icon/10.png COMP;
-	        image, ./Plus_icon/11.png COMP;
-	        image, ./Plus_icon/12.png COMP;
-	        image, ./Plus_icon/13.png COMP;
-	        image, ./Plus_icon/14.png COMP;
-	        image, ./Plus_icon/15.png COMP;
-	        image, ./Plus_icon/16.png COMP;
-	        image, ./Plus_icon/17.png COMP;
-	        image, ./Plus_icon/18.png COMP;
-	        image, ./Plus_icon/19.png COMP;
-	        image, ./Plus_icon/20.png COMP;
-	        image, ./Plus_icon/21.png COMP;
-	        image, ./Plus_icon/22.png COMP;
-	        image, ./Plus_icon/23.png COMP;
-	        image, ./Plus_icon/24.png COMP;
-	        image, ./Plus_icon/25.png COMP;
-	        image, ./Plus_icon/26.png COMP;
-	    }
+        images
+        {
+            image, ./Plus_icon/1.png COMP;
+            image, ./Plus_icon/2.png COMP;
+            image, ./Plus_icon/3.png COMP;
+            image, ./Plus_icon/4.png COMP;
+            image, ./Plus_icon/5.png COMP;
+            image, ./Plus_icon/6.png COMP;
+            image, ./Plus_icon/7.png COMP;
+            image, ./Plus_icon/8.png COMP;
+            image, ./Plus_icon/9.png COMP;
+            image, ./Plus_icon/10.png COMP;
+            image, ./Plus_icon/11.png COMP;
+            image, ./Plus_icon/12.png COMP;
+            image, ./Plus_icon/13.png COMP;
+            image, ./Plus_icon/14.png COMP;
+            image, ./Plus_icon/15.png COMP;
+            image, ./Plus_icon/16.png COMP;
+            image, ./Plus_icon/17.png COMP;
+            image, ./Plus_icon/18.png COMP;
+            image, ./Plus_icon/19.png COMP;
+            image, ./Plus_icon/20.png COMP;
+            image, ./Plus_icon/21.png COMP;
+            image, ./Plus_icon/22.png COMP;
+            image, ./Plus_icon/23.png COMP;
+            image, ./Plus_icon/24.png COMP;
+            image, ./Plus_icon/25.png COMP;
+            image, ./Plus_icon/26.png COMP;
+        }
         parts
         {
             part
@@ -741,24 +741,24 @@ collections
 #define Minus_WIDTH (34)
 #define Minus_HEIGHT (34)
 
-	    images
-	    {
-	        image, ./Minus_icon/1.png COMP;
-	        image, ./Minus_icon/2.png COMP;
-	        image, ./Minus_icon/3.png COMP;
-	        image, ./Minus_icon/4.png COMP;
-	        image, ./Minus_icon/5.png COMP;
-	        image, ./Minus_icon/6.png COMP;
-	        image, ./Minus_icon/7.png COMP;
-	        image, ./Minus_icon/8.png COMP;
-	        image, ./Minus_icon/9.png COMP;
-	        image, ./Minus_icon/10.png COMP;
-	        image, ./Minus_icon/11.png COMP;
-	        image, ./Minus_icon/12.png COMP;
-	        image, ./Minus_icon/13.png COMP;
-	        image, ./Minus_icon/14.png COMP;
-	        image, ./Minus_icon/15.png COMP;
-	    }
+        images
+        {
+            image, ./Minus_icon/1.png COMP;
+            image, ./Minus_icon/2.png COMP;
+            image, ./Minus_icon/3.png COMP;
+            image, ./Minus_icon/4.png COMP;
+            image, ./Minus_icon/5.png COMP;
+            image, ./Minus_icon/6.png COMP;
+            image, ./Minus_icon/7.png COMP;
+            image, ./Minus_icon/8.png COMP;
+            image, ./Minus_icon/9.png COMP;
+            image, ./Minus_icon/10.png COMP;
+            image, ./Minus_icon/11.png COMP;
+            image, ./Minus_icon/12.png COMP;
+            image, ./Minus_icon/13.png COMP;
+            image, ./Minus_icon/14.png COMP;
+            image, ./Minus_icon/15.png COMP;
+        }
         parts
         {
             part
@@ -853,5 +853,531 @@ collections
         }
     } // Minus group
 
+    // ===============================================================================================================================================================================================================================
+    // Up Big Group==================================================================
+    group
+    {
+        name, SaWidgetIcon/Up_Big;
+        
+#define Up_Big_WIDTH (115)
+#define Up_Big_HEIGHT (115)
+
+        images
+        {
+            image, ./Up_Big_icon/1.png COMP;
+            image, ./Up_Big_icon/2.png COMP;
+            image, ./Up_Big_icon/3.png COMP;
+            image, ./Up_Big_icon/4.png COMP;
+            image, ./Up_Big_icon/5.png COMP;
+            image, ./Up_Big_icon/6.png COMP;
+            image, ./Up_Big_icon/7.png COMP;
+            image, ./Up_Big_icon/8.png COMP;
+            image, ./Up_Big_icon/9.png COMP;
+            image, ./Up_Big_icon/10.png COMP;
+            image, ./Up_Big_icon/11.png COMP;
+            image, ./Up_Big_icon/12.png COMP;
+            image, ./Up_Big_icon/13.png COMP;
+            image, ./Up_Big_icon/14.png COMP;
+            image, ./Up_Big_icon/15.png COMP;
+            image, ./Up_Big_icon/16.png COMP;
+            image, ./Up_Big_icon/17.png COMP;
+            image, ./Up_Big_icon/18.png COMP;
+            image, ./Up_Big_icon/19.png COMP;
+            image, ./Up_Big_icon/20.png COMP;
+            image, ./Up_Big_icon/21.png COMP;
+            image, ./Up_Big_icon/22.png COMP;
+            image, ./Up_Big_icon/23.png COMP;
+            image, ./Up_Big_icon/24.png COMP;
+            image, ./Up_Big_icon/25.png COMP;
+            image, ./Up_Big_icon/26.png COMP;
+            image, ./Up_Big_icon/27.png COMP;
+            image, ./Up_Big_icon/28.png COMP;
+            image, ./Up_Big_icon/29.png COMP;
+            image, ./Up_Big_icon/30.png COMP;
+            image, ./Up_Big_icon/31.png COMP;
+            image, ./Up_Big_icon/32.png COMP;
+            image, ./Up_Big_icon/33.png COMP;
+            image, ./Up_Big_icon/34.png COMP;
+            image, ./Up_Big_icon/35.png COMP;
+            image, ./Up_Big_icon/36.png COMP;
+            image, ./Up_Big_icon/37.png COMP;
+            image, ./Up_Big_icon/38.png COMP;
+            image, ./Up_Big_icon/39.png COMP;
+            image, ./Up_Big_icon/40.png COMP;
+            image, ./Up_Big_icon/41.png COMP;
+            image, ./Up_Big_icon/42.png COMP;
+            image, ./Up_Big_icon/43.png COMP;
+            image, ./Up_Big_icon/44.png COMP;
+            image, ./Up_Big_icon/45.png COMP;
+            image, ./Up_Big_icon/46.png COMP;
+            image, ./Up_Big_icon/47.png COMP;
+            image, ./Up_Big_icon/48.png COMP;
+            image, ./Up_Big_icon/49.png COMP;
+            image, ./Up_Big_icon/50.png COMP;
+            image, ./Up_Big_icon/51.png COMP;
+            image, ./Up_Big_icon/52.png COMP;
+            image, ./Up_Big_icon/53.png COMP;
+            image, ./Up_Big_icon/54.png COMP;
+            image, ./Up_Big_icon/55.png COMP;
+            image, ./Up_Big_icon/56.png COMP;
+            image, ./Up_Big_icon/57.png COMP;
+            image, ./Up_Big_icon/58.png COMP;
+            image, ./Up_Big_icon/59.png COMP;
+            image, ./Up_Big_icon/60.png COMP;
+        }
+        parts
+        {
+            part
+            {
+                name, base;
+                type, RECT;
+                description
+                {
+                    state, default 0.0;
+                    min, (Up_Big_WIDTH) (Up_Big_HEIGHT);
+                    max, (Up_Big_WIDTH) (Up_Big_HEIGHT);
+                    fixed, 1 1;
+                    color, 0 0 0 0;
+                }
+            }
+            part
+            {
+                name, icon;
+                type, IMAGE;
+                description
+                {
+                    state, default 0.0;
+                    min, (Up_Big_WIDTH) (Up_Big_HEIGHT);
+                    max, (Up_Big_WIDTH) (Up_Big_HEIGHT);
+                    fixed, 1 1;
+                    image.normal, ./Up_Big_icon/60.png;
+                }
+                description
+                {
+                    state, show.anim 0.0;
+                    inherit, default 0.0;
+
+                    image.normal, ./Up_Big_icon/60.png;
+                    image.tween, ./Up_Big_icon/59.png;
+                    image.tween, ./Up_Big_icon/58.png;
+                    image.tween, ./Up_Big_icon/57.png;
+                    image.tween, ./Up_Big_icon/56.png;
+                    image.tween, ./Up_Big_icon/55.png;
+                    image.tween, ./Up_Big_icon/54.png;
+                    image.tween, ./Up_Big_icon/53.png;
+                    image.tween, ./Up_Big_icon/52.png;
+                    image.tween, ./Up_Big_icon/51.png;
+                    
+                    image.tween, ./Up_Big_icon/50.png;
+                    image.tween, ./Up_Big_icon/49.png;
+                    image.tween, ./Up_Big_icon/48.png;
+                    image.tween, ./Up_Big_icon/47.png;
+                    image.tween, ./Up_Big_icon/46.png;
+                    image.tween, ./Up_Big_icon/45.png;
+                    image.tween, ./Up_Big_icon/44.png;
+                    image.tween, ./Up_Big_icon/43.png;
+                    image.tween, ./Up_Big_icon/42.png;
+                    image.tween, ./Up_Big_icon/41.png;
+                    
+                    image.tween, ./Up_Big_icon/40.png;
+                    image.tween, ./Up_Big_icon/39.png;
+                    image.tween, ./Up_Big_icon/38.png;
+                    image.tween, ./Up_Big_icon/37.png;
+                    image.tween, ./Up_Big_icon/36.png;
+                    image.tween, ./Up_Big_icon/35.png;
+                    image.tween, ./Up_Big_icon/34.png;
+                    image.tween, ./Up_Big_icon/33.png;
+                    image.tween, ./Up_Big_icon/32.png;
+                    image.tween, ./Up_Big_icon/31.png;
+                    
+                    image.tween, ./Up_Big_icon/30.png;
+                    image.tween, ./Up_Big_icon/29.png;
+                    image.tween, ./Up_Big_icon/28.png;
+                    image.tween, ./Up_Big_icon/27.png;
+                    image.tween, ./Up_Big_icon/26.png;
+                    image.tween, ./Up_Big_icon/25.png;
+                    image.tween, ./Up_Big_icon/24.png;
+                    image.tween, ./Up_Big_icon/23.png;
+                    image.tween, ./Up_Big_icon/22.png;
+                    image.tween, ./Up_Big_icon/21.png;
+
+                    image.tween, ./Up_Big_icon/20.png;
+                    image.tween, ./Up_Big_icon/19.png;
+                    image.tween, ./Up_Big_icon/18.png;
+                    image.tween, ./Up_Big_icon/17.png;
+                    image.tween, ./Up_Big_icon/16.png;
+                    image.tween, ./Up_Big_icon/15.png;
+                    image.tween, ./Up_Big_icon/14.png;
+                    image.tween, ./Up_Big_icon/13.png;
+                    image.tween, ./Up_Big_icon/12.png;
+                    image.tween, ./Up_Big_icon/11.png;
+
+                    image.tween, ./Up_Big_icon/10.png;
+                    image.tween, ./Up_Big_icon/9.png;
+                    image.tween, ./Up_Big_icon/8.png;
+                    image.tween, ./Up_Big_icon/7.png;
+                    image.tween, ./Up_Big_icon/6.png;
+                    image.tween, ./Up_Big_icon/5.png;
+                    image.tween, ./Up_Big_icon/4.png;
+                    image.tween, ./Up_Big_icon/3.png;
+                    image.tween, ./Up_Big_icon/2.png;
+                    image.normal, ./Up_Big_icon/1.png;
+                }
+                description
+                {
+                    state, hide.anim 0.0;
+                    inherit, default 0.0;
+
+                    image.normal, ./Up_Big_icon/1.png;
+                    image.tween, ./Up_Big_icon/2.png;
+                    image.tween, ./Up_Big_icon/3.png;
+                    image.tween, ./Up_Big_icon/4.png;
+                    image.tween, ./Up_Big_icon/5.png;
+                    image.tween, ./Up_Big_icon/6.png;
+                    image.tween, ./Up_Big_icon/7.png;
+                    image.tween, ./Up_Big_icon/8.png;
+                    image.tween, ./Up_Big_icon/9.png;
+                    image.tween, ./Up_Big_icon/10.png;
+
+                    image.tween, ./Up_Big_icon/11.png;
+                    image.tween, ./Up_Big_icon/12.png;
+                    image.tween, ./Up_Big_icon/13.png;
+                    image.tween, ./Up_Big_icon/14.png;
+                    image.tween, ./Up_Big_icon/15.png;
+                    image.tween, ./Up_Big_icon/16.png;
+                    image.tween, ./Up_Big_icon/17.png;
+                    image.tween, ./Up_Big_icon/18.png;
+                    image.tween, ./Up_Big_icon/19.png;
+                    image.tween, ./Up_Big_icon/20.png;
+
+                    image.tween, ./Up_Big_icon/21.png;
+                    image.tween, ./Up_Big_icon/22.png;
+                    image.tween, ./Up_Big_icon/23.png;
+                    image.tween, ./Up_Big_icon/24.png;
+                    image.tween, ./Up_Big_icon/25.png;
+                    image.tween, ./Up_Big_icon/26.png;
+                    image.tween, ./Up_Big_icon/27.png;
+                    image.tween, ./Up_Big_icon/28.png;
+                    image.tween, ./Up_Big_icon/29.png;
+                    image.tween, ./Up_Big_icon/30.png;
+
+                    image.tween, ./Up_Big_icon/31.png;
+                    image.tween, ./Up_Big_icon/32.png;
+                    image.tween, ./Up_Big_icon/33.png;
+                    image.tween, ./Up_Big_icon/34.png;
+                    image.tween, ./Up_Big_icon/35.png;
+                    image.tween, ./Up_Big_icon/36.png;
+                    image.tween, ./Up_Big_icon/37.png;
+                    image.tween, ./Up_Big_icon/38.png;
+                    image.tween, ./Up_Big_icon/39.png;
+                    image.tween, ./Up_Big_icon/40.png;
+
+                    image.tween, ./Up_Big_icon/41.png;
+                    image.tween, ./Up_Big_icon/42.png;
+                    image.tween, ./Up_Big_icon/43.png;
+                    image.tween, ./Up_Big_icon/44.png;
+                    image.tween, ./Up_Big_icon/45.png;
+                    image.tween, ./Up_Big_icon/46.png;
+                    image.tween, ./Up_Big_icon/47.png;
+                    image.tween, ./Up_Big_icon/48.png;
+                    image.tween, ./Up_Big_icon/49.png;
+                    image.tween, ./Up_Big_icon/50.png;
+
+                    image.tween, ./Up_Big_icon/51.png;
+                    image.tween, ./Up_Big_icon/52.png;
+                    image.tween, ./Up_Big_icon/53.png;
+                    image.tween, ./Up_Big_icon/54.png;
+                    image.tween, ./Up_Big_icon/55.png;
+                    image.tween, ./Up_Big_icon/56.png;
+                    image.tween, ./Up_Big_icon/57.png;
+                    image.tween, ./Up_Big_icon/58.png;
+                    image.tween, ./Up_Big_icon/59.png;
+                    image.normal, ./Up_Big_icon/60.png;
+                }
+            } // part
+        } // parts
+        programs
+        {
+            program
+            {
+                signal, show.anim;
+                source, *;
+                action, STATE_SET show.anim 0.0;
+                target, icon;
+                transition: SINUSOIDAL 0.6;
+            }
+            program
+            {
+                signal, hide.anim;
+                source, *;
+                action, STATE_SET hide.anim 0.0;
+                target, icon;
+                transition: SINUSOIDAL 0.6;
+            }
+        }
+    } // Up group
+    
+    // Up Big Group==================================================================
+    group
+    {
+        name, SaWidgetIcon/Down_Big;
+        
+#define Down_Big_WIDTH (115)
+#define Down_Big_HEIGHT (115)
+
+        images
+        {
+            image, ./Down_Big_icon/1.png COMP;
+            image, ./Down_Big_icon/2.png COMP;
+            image, ./Down_Big_icon/3.png COMP;
+            image, ./Down_Big_icon/4.png COMP;
+            image, ./Down_Big_icon/5.png COMP;
+            image, ./Down_Big_icon/6.png COMP;
+            image, ./Down_Big_icon/7.png COMP;
+            image, ./Down_Big_icon/8.png COMP;
+            image, ./Down_Big_icon/9.png COMP;
+            image, ./Down_Big_icon/10.png COMP;
+            image, ./Down_Big_icon/11.png COMP;
+            image, ./Down_Big_icon/12.png COMP;
+            image, ./Down_Big_icon/13.png COMP;
+            image, ./Down_Big_icon/14.png COMP;
+            image, ./Down_Big_icon/15.png COMP;
+            image, ./Down_Big_icon/16.png COMP;
+            image, ./Down_Big_icon/17.png COMP;
+            image, ./Down_Big_icon/18.png COMP;
+            image, ./Down_Big_icon/19.png COMP;
+            image, ./Down_Big_icon/20.png COMP;
+            image, ./Down_Big_icon/21.png COMP;
+            image, ./Down_Big_icon/22.png COMP;
+            image, ./Down_Big_icon/23.png COMP;
+            image, ./Down_Big_icon/24.png COMP;
+            image, ./Down_Big_icon/25.png COMP;
+            image, ./Down_Big_icon/26.png COMP;
+            image, ./Down_Big_icon/27.png COMP;
+            image, ./Down_Big_icon/28.png COMP;
+            image, ./Down_Big_icon/29.png COMP;
+            image, ./Down_Big_icon/30.png COMP;
+            image, ./Down_Big_icon/31.png COMP;
+            image, ./Down_Big_icon/32.png COMP;
+            image, ./Down_Big_icon/33.png COMP;
+            image, ./Down_Big_icon/34.png COMP;
+            image, ./Down_Big_icon/35.png COMP;
+            image, ./Down_Big_icon/36.png COMP;
+            image, ./Down_Big_icon/37.png COMP;
+            image, ./Down_Big_icon/38.png COMP;
+            image, ./Down_Big_icon/39.png COMP;
+            image, ./Down_Big_icon/40.png COMP;
+            image, ./Down_Big_icon/41.png COMP;
+            image, ./Down_Big_icon/42.png COMP;
+            image, ./Down_Big_icon/43.png COMP;
+            image, ./Down_Big_icon/44.png COMP;
+            image, ./Down_Big_icon/45.png COMP;
+            image, ./Down_Big_icon/46.png COMP;
+            image, ./Down_Big_icon/47.png COMP;
+            image, ./Down_Big_icon/48.png COMP;
+            image, ./Down_Big_icon/49.png COMP;
+            image, ./Down_Big_icon/50.png COMP;
+            image, ./Down_Big_icon/51.png COMP;
+            image, ./Down_Big_icon/52.png COMP;
+            image, ./Down_Big_icon/53.png COMP;
+            image, ./Down_Big_icon/54.png COMP;
+            image, ./Down_Big_icon/55.png COMP;
+            image, ./Down_Big_icon/56.png COMP;
+            image, ./Down_Big_icon/57.png COMP;
+            image, ./Down_Big_icon/58.png COMP;
+            image, ./Down_Big_icon/59.png COMP;
+            image, ./Down_Big_icon/60.png COMP;
+        }
+        parts
+        {
+            part
+            {
+                name, base;
+                type, RECT;
+                description
+                {
+                    state, default 0.0;
+                    min, (Down_Big_WIDTH) (Down_Big_HEIGHT);
+                    max, (Down_Big_WIDTH) (Down_Big_HEIGHT);
+                    fixed, 1 1;
+                    color, 0 0 0 0;
+                }
+            }
+            part
+            {
+                name, icon;
+                type, IMAGE;
+                description
+                {
+                    state, default 0.0;
+                    min, (Down_Big_WIDTH) (Down_Big_HEIGHT);
+                    max, (Down_Big_WIDTH) (Down_Big_HEIGHT);
+                    fixed, 1 1;
+                    image.normal, ./Down_Big_icon/60.png;
+                }
+                description
+                {
+                    state, show.anim 0.0;
+                    inherit, default 0.0;
+
+                    image.normal, ./Down_Big_icon/60.png;
+                    image.tween, ./Down_Big_icon/59.png;
+                    image.tween, ./Down_Big_icon/58.png;
+                    image.tween, ./Down_Big_icon/57.png;
+                    image.tween, ./Down_Big_icon/56.png;
+                    image.tween, ./Down_Big_icon/55.png;
+                    image.tween, ./Down_Big_icon/54.png;
+                    image.tween, ./Down_Big_icon/53.png;
+                    image.tween, ./Down_Big_icon/52.png;
+                    image.tween, ./Down_Big_icon/51.png;
+                    
+                    image.tween, ./Down_Big_icon/50.png;
+                    image.tween, ./Down_Big_icon/49.png;
+                    image.tween, ./Down_Big_icon/48.png;
+                    image.tween, ./Down_Big_icon/47.png;
+                    image.tween, ./Down_Big_icon/46.png;
+                    image.tween, ./Down_Big_icon/45.png;
+                    image.tween, ./Down_Big_icon/44.png;
+                    image.tween, ./Down_Big_icon/43.png;
+                    image.tween, ./Down_Big_icon/42.png;
+                    image.tween, ./Down_Big_icon/41.png;
+                    
+                    image.tween, ./Down_Big_icon/40.png;
+                    image.tween, ./Down_Big_icon/39.png;
+                    image.tween, ./Down_Big_icon/38.png;
+                    image.tween, ./Down_Big_icon/37.png;
+                    image.tween, ./Down_Big_icon/36.png;
+                    image.tween, ./Down_Big_icon/35.png;
+                    image.tween, ./Down_Big_icon/34.png;
+                    image.tween, ./Down_Big_icon/33.png;
+                    image.tween, ./Down_Big_icon/32.png;
+                    image.tween, ./Down_Big_icon/31.png;
+                    
+                    image.tween, ./Down_Big_icon/30.png;
+                    image.tween, ./Down_Big_icon/29.png;
+                    image.tween, ./Down_Big_icon/28.png;
+                    image.tween, ./Down_Big_icon/27.png;
+                    image.tween, ./Down_Big_icon/26.png;
+                    image.tween, ./Down_Big_icon/25.png;
+                    image.tween, ./Down_Big_icon/24.png;
+                    image.tween, ./Down_Big_icon/23.png;
+                    image.tween, ./Down_Big_icon/22.png;
+                    image.tween, ./Down_Big_icon/21.png;
+
+                    image.tween, ./Down_Big_icon/20.png;
+                    image.tween, ./Down_Big_icon/19.png;
+                    image.tween, ./Down_Big_icon/18.png;
+                    image.tween, ./Down_Big_icon/17.png;
+                    image.tween, ./Down_Big_icon/16.png;
+                    image.tween, ./Down_Big_icon/15.png;
+                    image.tween, ./Down_Big_icon/14.png;
+                    image.tween, ./Down_Big_icon/13.png;
+                    image.tween, ./Down_Big_icon/12.png;
+                    image.tween, ./Down_Big_icon/11.png;
+
+                    image.tween, ./Down_Big_icon/10.png;
+                    image.tween, ./Down_Big_icon/9.png;
+                    image.tween, ./Down_Big_icon/8.png;
+                    image.tween, ./Down_Big_icon/7.png;
+                    image.tween, ./Down_Big_icon/6.png;
+                    image.tween, ./Down_Big_icon/5.png;
+                    image.tween, ./Down_Big_icon/4.png;
+                    image.tween, ./Down_Big_icon/3.png;
+                    image.tween, ./Down_Big_icon/2.png;
+                    image.normal, ./Down_Big_icon/1.png;
+                }
+                description
+                {
+                    state, hide.anim 0.0;
+                    inherit, default 0.0;
+
+                    image.normal, ./Down_Big_icon/1.png;
+                    image.tween, ./Down_Big_icon/2.png;
+                    image.tween, ./Down_Big_icon/3.png;
+                    image.tween, ./Down_Big_icon/4.png;
+                    image.tween, ./Down_Big_icon/5.png;
+                    image.tween, ./Down_Big_icon/6.png;
+                    image.tween, ./Down_Big_icon/7.png;
+                    image.tween, ./Down_Big_icon/8.png;
+                    image.tween, ./Down_Big_icon/9.png;
+                    image.tween, ./Down_Big_icon/10.png;
+
+                    image.tween, ./Down_Big_icon/11.png;
+                    image.tween, ./Down_Big_icon/12.png;
+                    image.tween, ./Down_Big_icon/13.png;
+                    image.tween, ./Down_Big_icon/14.png;
+                    image.tween, ./Down_Big_icon/15.png;
+                    image.tween, ./Down_Big_icon/16.png;
+                    image.tween, ./Down_Big_icon/17.png;
+                    image.tween, ./Down_Big_icon/18.png;
+                    image.tween, ./Down_Big_icon/19.png;
+                    image.tween, ./Down_Big_icon/20.png;
+
+                    image.tween, ./Down_Big_icon/21.png;
+                    image.tween, ./Down_Big_icon/22.png;
+                    image.tween, ./Down_Big_icon/23.png;
+                    image.tween, ./Down_Big_icon/24.png;
+                    image.tween, ./Down_Big_icon/25.png;
+                    image.tween, ./Down_Big_icon/26.png;
+                    image.tween, ./Down_Big_icon/27.png;
+                    image.tween, ./Down_Big_icon/28.png;
+                    image.tween, ./Down_Big_icon/29.png;
+                    image.tween, ./Down_Big_icon/30.png;
+
+                    image.tween, ./Down_Big_icon/31.png;
+                    image.tween, ./Down_Big_icon/32.png;
+                    image.tween, ./Down_Big_icon/33.png;
+                    image.tween, ./Down_Big_icon/34.png;
+                    image.tween, ./Down_Big_icon/35.png;
+                    image.tween, ./Down_Big_icon/36.png;
+                    image.tween, ./Down_Big_icon/37.png;
+                    image.tween, ./Down_Big_icon/38.png;
+                    image.tween, ./Down_Big_icon/39.png;
+                    image.tween, ./Down_Big_icon/40.png;
+
+                    image.tween, ./Down_Big_icon/41.png;
+                    image.tween, ./Down_Big_icon/42.png;
+                    image.tween, ./Down_Big_icon/43.png;
+                    image.tween, ./Down_Big_icon/44.png;
+                    image.tween, ./Down_Big_icon/45.png;
+                    image.tween, ./Down_Big_icon/46.png;
+                    image.tween, ./Down_Big_icon/47.png;
+                    image.tween, ./Down_Big_icon/48.png;
+                    image.tween, ./Down_Big_icon/49.png;
+                    image.tween, ./Down_Big_icon/50.png;
+
+                    image.tween, ./Down_Big_icon/51.png;
+                    image.tween, ./Down_Big_icon/52.png;
+                    image.tween, ./Down_Big_icon/53.png;
+                    image.tween, ./Down_Big_icon/54.png;
+                    image.tween, ./Down_Big_icon/55.png;
+                    image.tween, ./Down_Big_icon/56.png;
+                    image.tween, ./Down_Big_icon/57.png;
+                    image.tween, ./Down_Big_icon/58.png;
+                    image.tween, ./Down_Big_icon/59.png;
+                    image.normal, ./Down_Big_icon/60.png;
+                }
+            } // part
+        } // parts
+        programs
+        {
+            program
+            {
+                signal, show.anim;
+                source, *;
+                action, STATE_SET show.anim 0.0;
+                target, icon;
+                transition: SINUSOIDAL 0.6;
+            }
+            program
+            {
+                signal, hide.anim;
+                source, *;
+                action, STATE_SET hide.anim 0.0;
+                target, icon;
+                transition: SINUSOIDAL 0.6;
+            }
+        }
+    } // Up group
 }
 
