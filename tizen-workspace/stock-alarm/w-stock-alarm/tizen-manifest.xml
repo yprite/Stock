@@ -2,7 +2,7 @@
 <manifest xmlns="http://tizen.org/ns/packages" api-version="3.0" package="team.tizenia.w-stock-alarm" version="1.0.0">
     <profile name="wearable"/>
     <ui-application appid="team.tizenia.w-stock-alarm" exec="w-stock-alarm" hw-acceleration="on" multiple="false" nodisplay="false" taskmanage="true" type="capp">
-        <label>Stock Alarm</label>
+        <label>Gear Stock</label>
         <icon>app_icon.png</icon>
         <background-category value="background-network"/>
     </ui-application>

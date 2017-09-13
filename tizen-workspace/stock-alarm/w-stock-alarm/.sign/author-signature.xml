@@ -4,7 +4,7 @@
 <SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"></SignatureMethod>
 <Reference URI="bin%2Fw-stock-alarm">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>Kp1N3I5hujP0kwgakBBLunCyGkgki49EZEYXqamOM7w=</DigestValue>
+<DigestValue>d0lKL0VIfED7ncjdMuwgLjM5eueRkgqBaTT9+GIpEg4=</DigestValue>
 </Reference>
 <Reference URI="bin%2Fw-stock-alarm-service">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -12,7 +12,7 @@
 </Reference>
 <Reference URI="bin%2Fw-stock-alarm-widget">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>kS0nrjc0XjJ2+sDjQ6mtKbPhR+WbMbl9+vV58xzXQkA=</DigestValue>
+<DigestValue>gG1jJbZoFLh32e4yBDg/czTvD+XIBpxeRzyH60wsn6o=</DigestValue>
 </Reference>
 <Reference URI="lib%2Flibw-stock-alarm-common.so">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -69,10 +69,6 @@
 <Reference URI="res%2Fedje%2FSaWidgetStockInfoView.edj">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
 <DigestValue>Xck7+YYw/LfhYPE7w8bTuwm4OnCCaySN/QwYq00O+9I=</DigestValue>
-</Reference>
-<Reference URI="res%2Fedje%2F__CustomGenlist2.txt">
-<DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>Yzv/StiFJAGnywgvSkEGqE2Vk2dwFzRh91xZNXeQMI8=</DigestValue>
 </Reference>
 <Reference URI="res%2Fedje%2Fapp-assist-efl.edj">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -150,6 +146,10 @@
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
 <DigestValue>3S2wqsyIQa6TfFI/g4OhYbcOMGmwLq4Htei2dAAgeqc=</DigestValue>
 </Reference>
+<Reference URI="shared%2Fres%2Fstock_preveiw.png">
+<DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
+<DigestValue>YuNw/GtwaibSlhiAJ3jb4cjvTO1NzP3xKb3drxL3zhQ=</DigestValue>
+</Reference>
 <Reference URI="shared%2Fres%2Fw-stock-alarm-service.png">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
 <DigestValue>1d0oEZHqPn+QzNzGIHwj9ODby6x9ggFs9uOsav6jPNs=</DigestValue>
@@ -160,7 +160,7 @@
 </Reference>
 <Reference URI="tizen-manifest.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>aNQloO3VNTBO5irhwOrj6j/r3I47KFAAeieljqtbVtY=</DigestValue>
+<DigestValue>lrX9gG/qu6ULINFyMd4xrI+Wa187nVKDZ8kwQ/TduSk=</DigestValue>
 </Reference>
 <Reference URI="#prop">
 <Transforms>
@@ -171,9 +171,9 @@
 </Reference>
 </SignedInfo>
 <SignatureValue>
-W+rb0xqj4J6pLZ2Ph+I7J7R/dhmfeZR1P8lXx4rv3m8EOragQa7IVHq36ao6FliKWqWO6g5A/d/s
-AsCc18RhxaLm36rUoDZ/5xZwLBbtoFz+o+L4Sxth1aRCFs76uLhLlTyQ3arW2O7f28wZuLIUcdET
-DMeRSYH3n8HaALy7lvE=
+Gsb74Hi6gQOqaDGRTc5agAg5QYrCXEbPx72s2jFUq+5mYlZvod9H5vl/ErDq6ZSgcE8bmnsIjo6Q
+4+qGcBeTj9GZI8IxCAOTxImA1y0vHFCyzgf6avsktZlEeA1tHvXcoPbnUAy+/IFg9gRyhqTEx4eh
+O52+GE2LFn5zcQqhd/8=
 </SignatureValue>
 <KeyInfo>
 <X509Data>

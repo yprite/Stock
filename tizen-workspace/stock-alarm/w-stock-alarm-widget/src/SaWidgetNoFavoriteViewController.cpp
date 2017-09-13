@@ -36,7 +36,7 @@ Evas_Object* SaWidgetNoFavoriteViewController::onCreateView(Evas_Object *parent,
     evas_object_size_hint_weight_set(layout, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
     evas_object_show(layout);
 
-    elm_object_part_text_set(layout, "elm.text.title", "Stock Alarm");
+    elm_object_part_text_set(layout, "elm.text.title", "Gear Stock");
     elm_object_part_text_set(layout, "elm.text", "추가");
 
     char *resPath = app_get_resource_path();
