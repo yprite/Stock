@@ -38,8 +38,12 @@ SaWidgetStockInfoViewController::SaWidgetStockInfoViewController(const SaCompany
 
     _priceIcon = nullptr;
     _priceInfoText = nullptr;
+
+    _upDownIconView = nullptr;
     _upDownIcon = nullptr;
     _upDownText = nullptr;
+
+    _plusMinusIconView = nullptr;
     _plusMinusIcon = nullptr;
     _plueMinusText = nullptr;
 
@@ -351,75 +355,6 @@ void SaWidgetStockInfoViewController::onEventOccured(AppEventListener::EventType
     }
 }
 
-#if 0
-void SaWidgetStockInfoViewController::pause()
-{
-    WENTER();
-    Evas_Object *layout = getEvasObject();
-    if (_resumeEffectViewController)
-    {
-        elm_object_part_content_unset(layout, "sw.resume.effect");
-        _resumeEffectViewController->destroy();
-        _resumeEffectViewController = nullptr;
-    }
-    if (!_resumeTimer.expired())
-    {
-        WTimer::destroy(_resumeTimer);
-    }
-}
-
-void SaWidgetStockInfoViewController::resume()
-{
-    WENTER();
-    time_t t = time(nullptr);
-    //if (t - _resumeTime < 60)
-    //    return;
-
-    _resumeTime = t;
-
-    Evas_Object *layout = getEvasObject();
-    SaDataConsumer::getInstance()->reqeuestFinanceAllInfo(_companyInfo.code.c_str());
-    if (_resumeEffectViewController)
-    {
-        _resumeEffectViewController->destroy();
-        _resumeEffectViewController = nullptr;
-    }
-    SaWidgetResumeEffectViewController *viewController = new SaWidgetResumeEffectViewController();
-    viewController->create(layout, nullptr);
-    elm_object_part_content_set(layout, "sw.resume.effect", viewController->getEvasObject());
-    _resumeEffectViewController = viewController;
-
-    edje_object_signal_callback_add(elm_layout_edje_get(_resumeEffectViewController->getEvasObject()), "finished", "*",
-        [](void *data, Evas_Object *obj, const char *emission, const char *source)
-        {
-            WHIT();
-            auto self = (SaWidgetStockInfoViewController *)data;
-            if (self->_resumeEffectViewController)
-            {
-                elm_object_part_content_unset(self->getEvasObject(), "sw.resume.effect");
-                self->_resumeEffectViewController->destroy();
-                self->_resumeEffectViewController = nullptr;
-            }
-        }, this);
-
-    _resumeTimer = WTimer::addTimer(2.5, [](void *data)->bool
-        {
-            WINFO("destroy timer!");
-            auto self = (SaWidgetStockInfoViewController *)data;
-            if (self->_resumeEffectViewController)
-            {
-                self->_resumeEffectViewController->removeIcon();
-                elm_layout_signal_emit(self->_resumeEffectViewController->getEvasObject(), "show.hide.anim", "*");
-            }
-
-            if (!self->_resumeTimer.expired())
-            {
-                WTimer::destroy(self->_resumeTimer);
-            }
-            return false;
-        }, this);
-}
-#endif
 void SaWidgetStockInfoViewController::_createTitlePriceInfo()
 {
     WENTER();
@@ -501,15 +436,9 @@ void SaWidgetStockInfoViewController::_createSubPriceInfo()
         Evas_Object *iconLayout = elm_layout_add(box);
         elm_layout_file_set(iconLayout, edjPath, "SaWidgetStockInfoView/SubPriceInfoIcon");
         evas_object_show(iconLayout);
+        _upDownIconView = iconLayout;
 
-//        Evas_Object *icon = evas_object_rectangle_add(evas_object_evas_get(box));
-//        evas_object_size_hint_min_set(icon, SUB_PRICE_ICON_SIZE, SUB_PRICE_ICON_SIZE);
-//        evas_object_size_hint_max_set(icon, SUB_PRICE_ICON_SIZE, SUB_PRICE_ICON_SIZE);
-//        evas_object_resize(icon, SUB_PRICE_ICON_SIZE, SUB_PRICE_ICON_SIZE);
-//        evas_object_color_set(icon, 0, 0, 255, 255);
-//        evas_object_show(icon);
-//        elm_object_part_content_set(iconLayout, "elm.swallow.content", icon);
-
+        /*
         Evas_Object *icon = elm_layout_add(box);
         elm_layout_file_set(icon, iconEdjPath, "SaWidgetIcon/Up");
         evas_object_size_hint_min_set(icon, SUB_PRICE_ICON_SIZE, SUB_PRICE_ICON_SIZE);
@@ -518,6 +447,7 @@ void SaWidgetStockInfoViewController::_createSubPriceInfo()
         evas_object_show(icon);
         elm_object_part_content_set(iconLayout, "elm.swallow.content", icon);
         _upDownIcon = icon;
+        */
 
         Evas_Object *paddingRect = evas_object_rectangle_add(evas_object_evas_get(box));
         evas_object_size_hint_min_set(paddingRect, PRICE_INFO_PADDING, SUB_PRICE_ICON_SIZE);
@@ -559,7 +489,9 @@ void SaWidgetStockInfoViewController::_createSubPriceInfo()
         Evas_Object *iconLayout = elm_layout_add(box);
         elm_layout_file_set(iconLayout, edjPath, "SaWidgetStockInfoView/SubPriceInfoIcon");
         evas_object_show(iconLayout);
+        _plusMinusIconView = iconLayout;
 
+        /*
         Evas_Object *icon = elm_layout_add(box);
         elm_layout_file_set(icon, iconEdjPath, "SaWidgetIcon/Plus");
         evas_object_size_hint_min_set(icon, SUB_PRICE_ICON_SIZE, SUB_PRICE_ICON_SIZE);
@@ -568,6 +500,7 @@ void SaWidgetStockInfoViewController::_createSubPriceInfo()
         evas_object_show(icon);
         elm_object_part_content_set(iconLayout, "elm.swallow.content", icon);
         _plusMinusIcon = icon;
+        */
 
         Evas_Object *paddingRect = evas_object_rectangle_add(evas_object_evas_get(box));
         evas_object_size_hint_min_set(paddingRect, PRICE_INFO_PADDING, SUB_PRICE_ICON_SIZE);
@@ -618,6 +551,53 @@ void SaWidgetStockInfoViewController::updateInfo(const SaCompanyInfo& companyInf
     elm_object_part_text_set(_plueMinusText, "elm.text", _companyInfo.percent.c_str());
     _detailObject->updateInfo(_companyInfo);
 
+    static const int SUB_PRICE_ICON_SIZE = 34;
+    char *resPath = app_get_resource_path();
+    char iconEdjPath[PATH_MAX] = {0, };
+
+    if (resPath)
+    {
+        snprintf(iconEdjPath, sizeof(iconEdjPath), "%s%s", resPath, "edje/SaWidgetIcon.edj");
+        free(resPath);
+    }
+    // update upDownIcon.
+    {
+        if (_upDownIcon)
+        {
+            elm_object_part_content_unset(_upDownIconView, "elm.swallow.content");
+            evas_object_del(_upDownIcon);
+        }
+        Evas_Object *icon = elm_layout_add(_upDownIconView);
+        if (_companyInfo.percent[0] == '+')
+            elm_layout_file_set(icon, iconEdjPath, "SaWidgetIcon/Up");
+        else if (_companyInfo.percent[0] == '-')
+            elm_layout_file_set(icon, iconEdjPath, "SaWidgetIcon/Down");
+        evas_object_size_hint_min_set(icon, SUB_PRICE_ICON_SIZE, SUB_PRICE_ICON_SIZE);
+        evas_object_size_hint_max_set(icon, SUB_PRICE_ICON_SIZE, SUB_PRICE_ICON_SIZE);
+        evas_object_resize(icon, SUB_PRICE_ICON_SIZE, SUB_PRICE_ICON_SIZE);
+        evas_object_show(icon);
+        elm_object_part_content_set(_upDownIconView, "elm.swallow.content", icon);
+        _upDownIcon = icon;
+    }
+    // update plusMinusIcon
+    {
+        if (_plusMinusIcon)
+        {
+            elm_object_part_content_unset(_plusMinusIconView, "elm.swallow.content");
+            evas_object_del(_plusMinusIcon);
+        }
+        Evas_Object *icon = elm_layout_add(_plusMinusIconView);
+        if (_companyInfo.percent[0] == '+')
+            elm_layout_file_set(icon, iconEdjPath, "SaWidgetIcon/Plus");
+        else if (_companyInfo.percent[0] == '-')
+            elm_layout_file_set(icon, iconEdjPath, "SaWidgetIcon/Minus");
+        evas_object_size_hint_min_set(icon, SUB_PRICE_ICON_SIZE, SUB_PRICE_ICON_SIZE);
+        evas_object_size_hint_max_set(icon, SUB_PRICE_ICON_SIZE, SUB_PRICE_ICON_SIZE);
+        evas_object_resize(icon, SUB_PRICE_ICON_SIZE, SUB_PRICE_ICON_SIZE);
+        evas_object_show(icon);
+        elm_object_part_content_set(_plusMinusIconView, "elm.swallow.content", icon);
+        _plusMinusIcon = icon;
+    }
     // update graph.
     bundle *b = bundle_decode((const bundle_raw *)_companyInfo.histroicaldata.c_str(), _companyInfo.histroicaldata.size());
     std::vector<HistoricalData> vec;
