@@ -13,7 +13,13 @@
 class SaWidgetResumeEffectViewController : public app_assist::WViewController
 {
 public:
-    SaWidgetResumeEffectViewController();
+    enum class ViewType
+    {
+        PLUS,
+        MINUS
+    };
+public:
+    SaWidgetResumeEffectViewController(SaWidgetResumeEffectViewController::ViewType viewType);
     virtual ~SaWidgetResumeEffectViewController();
 
     void removeIcon();
@@ -26,6 +32,8 @@ private:
 private:
     Evas_Object *_bgImg;
     Evas_Object *_icon;
+
+    ViewType _viewType;
 };
 
 #endif /* SAWIDGETRESUMEEFFECTVIEWCONTROLLER_H_ */

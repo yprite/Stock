@@ -14,6 +14,7 @@
 #include "SaWidgetStockInfoViewController.h"
 #include "SaWidgetNoFavoriteViewController.h"
 #include "SaUtility.h"
+#include "SaWidgetResumeEffectViewController.h"
 #include "SaDataConsumer.h"
 #include "SaWidgetDebug.h"
 
@@ -116,6 +117,7 @@ bool SaWidgetInstance::onCreate(widget_context_h context, bundle* content, int w
                     _code = code;
                     SaCompanyInfo companyInfo;
                     SaCompanyDBManager::getInstance()->getCompanyInfo(_code, companyInfo);
+                    /*
                     WINFO("companyinfo : %s %s %s %s %s %s %s %s %s %s %s",
                         companyInfo.code.c_str(),
                         companyInfo.name.c_str(),
@@ -128,7 +130,7 @@ bool SaWidgetInstance::onCreate(widget_context_h context, bundle* content, int w
                         companyInfo.volume.c_str(),
                         companyInfo.previous.c_str(),
                         companyInfo.histroicaldata.c_str());
-
+                    */
                     _viewType = ViewType::COMPANY_INFO;
                     auto viewController = new SaWidgetStockInfoViewController(companyInfo);
                     viewController->create(_baseView->getEvasObject(), nullptr);
@@ -235,6 +237,7 @@ void SaWidgetInstance::onMessageReceived(const std::string& key, const std::stri
     SaCompanyInfo companyInfo;
     SaCompanyDBManager::getInstance()->getCompanyInfo(code.c_str(), companyInfo);
     //SaCompanyDBManager::getInstance()->getCompanyInfo("005930", companyInfo);
+    /*
     WINFO("companyinfo : %s %s %s %s %s %s %s %s %s %s %s",
         companyInfo.code.c_str(),
         companyInfo.name.c_str(),
@@ -256,7 +259,7 @@ void SaWidgetInstance::onMessageReceived(const std::string& key, const std::stri
     {
         WDEBUG("[%3d] : %s %s %s", i, historicalVec[i].date.c_str(), historicalVec[i].closedPrice.c_str(), historicalVec[i].volume.c_str());
     }
-
+    */
     if (_instanceState == InstanceState::PAUSE)
     {
         if (_viewType == ViewType::COMPANY_INFO)
@@ -269,7 +272,11 @@ void SaWidgetInstance::onMessageReceived(const std::string& key, const std::stri
     else if (_instanceState == InstanceState::RESUME)
     {
         _baseView->removeProgress();
-        _baseView->showResumeEffect();
+
+        if (companyInfo.percent[0] == '+')
+            _baseView->showResumeEffect(SaWidgetResumeEffectViewController::ViewType::PLUS);
+        else if (companyInfo.percent[0] == '-')
+            _baseView->showResumeEffect(SaWidgetResumeEffectViewController::ViewType::MINUS);
         _baseView->setOnResumeEffectFullyShown(
             [this, code]()
             {

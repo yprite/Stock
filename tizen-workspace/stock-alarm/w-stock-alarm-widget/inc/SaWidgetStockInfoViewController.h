@@ -65,6 +65,7 @@ private:
     SaWidgetGraphObject *_graphObject;
     SaWidgetDetailInfoViewController *_detailObject;
     SaCompanyInfo _companyInfo;
+    bool _isDetailMode;
 };
 
 #endif /* SAWIDGETSTOCKINFOVIEWCONTROLLER_H_ */

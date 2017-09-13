@@ -24,6 +24,7 @@
 using namespace app_assist;
 
 static const int gSubPriceInfoYDistance = 115;
+static const int gAnimDuration = 1;
 
 SaWidgetStockInfoViewController::SaWidgetStockInfoViewController(const SaCompanyInfo& companyInfo)
 {
@@ -45,6 +46,8 @@ SaWidgetStockInfoViewController::SaWidgetStockInfoViewController(const SaCompany
     _graphObject = nullptr;
     _detailObject = nullptr;
     _companyInfo = companyInfo;
+
+    _isDetailMode = false;
 }
 
 SaWidgetStockInfoViewController::~SaWidgetStockInfoViewController()
@@ -131,8 +134,16 @@ void SaWidgetStockInfoViewController::onCreated()
                 //elm_layout_signal_emit(self->_upDownText, "show.anim", "*");
                 //elm_layout_signal_emit(self->_plueMinusText, "show.anim", "*");
                 self->_isAnimatorRunning = true;
-                self->_hideGraphAnimation();
-
+                if (self->_isDetailMode == false)
+                {
+                    self->_hideGraphAnimation();
+                    self->_isDetailMode = true;
+                }
+                else
+                {
+                    self->_hideDetailInfoAnimation();
+                    self->_isDetailMode = false;
+                }
             }, this);
 
     elm_object_part_content_set(layout, "sw.touch.refresh.area", effectBtn);
@@ -191,7 +202,7 @@ void SaWidgetStockInfoViewController::_hideGraphAnimation()
             double time = ecore_loop_time_get();
             double timeDiff = (time - self->_animationStartTime);
 
-            double ratio = ecore_animator_pos_map(timeDiff, ECORE_POS_MAP_SINUSOIDAL, 0.0, 1.0);
+            double ratio = ecore_animator_pos_map(timeDiff / gAnimDuration, ECORE_POS_MAP_SINUSOIDAL, 0.0, 1.0);
             Evas_Object *subPriceInfoObj = elm_object_part_content_get(self->getEvasObject(), "sw.sub.price.info");
 
             if (ratio >= 1.0f)
@@ -200,6 +211,7 @@ void SaWidgetStockInfoViewController::_hideGraphAnimation()
                 evas_object_move(subPriceInfoObj, self->_subPriceInfoStartPos.x, self->_subPriceInfoStartPos.y - gSubPriceInfoYDistance);
                 self->_subPriceInfoEndPos = self->_subPriceInfoStartPos;
                 self->_subPriceInfoEndPos.y = self->_subPriceInfoStartPos.y - gSubPriceInfoYDistance;
+                self->_isAnimatorRunning = false;
                 if (!self->_animator.expired())
                     WTimer::destroy(self->_animator);
 
@@ -231,7 +243,7 @@ void SaWidgetStockInfoViewController::_showGraphAnimation()
             double time = ecore_loop_time_get();
             double timeDiff = (time - self->_animationStartTime);
 
-            double ratio = ecore_animator_pos_map(timeDiff, ECORE_POS_MAP_SINUSOIDAL, 0.0, 1.0);
+            double ratio = ecore_animator_pos_map(timeDiff / gAnimDuration, ECORE_POS_MAP_SINUSOIDAL, 0.0, 1.0);
             Evas_Object *subPriceInfoObj = elm_object_part_content_get(self->getEvasObject(), "sw.sub.price.info");
 
             if (ratio >= 1.0f)
@@ -274,6 +286,7 @@ void SaWidgetStockInfoViewController::_showDetailInfoAnimation()
                     WTimer::destroy(self->_animator);
 
                 //self->_hideDetailInfoAnimation();
+                //self->_showGraphAnimation();
                 return false;
             }
 

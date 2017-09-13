@@ -25,7 +25,7 @@ public:
 
     void showProgress();
     void removeProgress();
-    void showResumeEffect();
+    void showResumeEffect(SaWidgetResumeEffectViewController::ViewType viewType);
     void removeResumeEffect();
 
     void setOnResumeEffectFullyShown(const std::function<void(void)>& effectFullyShownCb);

@@ -87,7 +87,7 @@ void SaWidgetMainViewController::removeProgress()
 }
 
 
-void SaWidgetMainViewController::showResumeEffect()
+void SaWidgetMainViewController::showResumeEffect(SaWidgetResumeEffectViewController::ViewType viewType)
 {
     WENTER();
 
@@ -98,7 +98,7 @@ void SaWidgetMainViewController::showResumeEffect()
         _resumeEffectViewController->destroy();
         _resumeEffectViewController = nullptr;
     }
-    SaWidgetResumeEffectViewController *viewController = new SaWidgetResumeEffectViewController();
+    SaWidgetResumeEffectViewController *viewController = new SaWidgetResumeEffectViewController(viewType);
     viewController->create(layout, nullptr);
     elm_object_part_content_set(layout, "sw.resume.effect", viewController->getEvasObject());
     _resumeEffectViewController = viewController;

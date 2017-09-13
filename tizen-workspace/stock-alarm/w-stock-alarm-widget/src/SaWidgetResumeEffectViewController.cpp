@@ -15,11 +15,12 @@
 
 using namespace app_assist;
 
-SaWidgetResumeEffectViewController::SaWidgetResumeEffectViewController()
+SaWidgetResumeEffectViewController::SaWidgetResumeEffectViewController(SaWidgetResumeEffectViewController::ViewType viewType)
 {
     // TODO Auto-generated constructor stub
     _bgImg = nullptr;
     _icon = nullptr;
+    _viewType = viewType;
 }
 
 SaWidgetResumeEffectViewController::~SaWidgetResumeEffectViewController()
@@ -51,16 +52,17 @@ Evas_Object* SaWidgetResumeEffectViewController::onCreateView(Evas_Object *paren
     elm_image_file_set(bgImg, bgImgPath, nullptr);
     elm_object_part_content_set(layout, "sw.img.bg", bgImg);
     evas_object_show(bgImg);
-    // red
-    //evas_object_color_set(bgImg, 215, 54, 122, 255);
-    // green
-    evas_object_color_set(bgImg, 169, 224, 84, 255);
-
+    if (_viewType == ViewType::PLUS)
+        evas_object_color_set(bgImg, 169, 224, 84, 255);
+    else
+        evas_object_color_set(bgImg, 215, 54, 122, 255);
     _bgImg = bgImg;
 
     Evas_Object *icon = elm_layout_add(layout);
-    //elm_layout_file_set(icon, iconPath, "SaWidgetIcon/Down_Big");
-    elm_layout_file_set(icon, iconPath, "SaWidgetIcon/Up_Big");
+    if (_viewType == ViewType::PLUS)
+        elm_layout_file_set(icon, iconPath, "SaWidgetIcon/Up_Big");
+    else
+        elm_layout_file_set(icon, iconPath, "SaWidgetIcon/Down_Big");
     elm_object_part_content_set(layout, "sw.icon", icon);
     evas_object_show(icon);
     _icon = icon;

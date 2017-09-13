@@ -514,6 +514,7 @@ bool SaDataProviderHelper::_execute(const std::string &query, std::string &outpu
         curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, _onDataReceived);
         curl_easy_setopt(curl, CURLOPT_WRITEDATA, &response);
         curl_easy_setopt(curl, CURLOPT_PROXY, NetConnection::getInstance()->getProxyAddress().c_str());
+        curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);
 
         CURLcode ret = curl_easy_perform(curl);
         std::string errMsg = curl_easy_strerror(ret);
@@ -547,6 +548,7 @@ bool SaDataProviderHelper::_executeForHistorycalData(const std::string &query, s
         curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, _onDataReceived);
         curl_easy_setopt(curl, CURLOPT_WRITEDATA, &response);
         curl_easy_setopt(curl, CURLOPT_PROXY, NetConnection::getInstance()->getProxyAddress().c_str());
+        curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);
 
         CURLcode ret = curl_easy_perform(curl);
         std::string errMsg = curl_easy_strerror(ret);
