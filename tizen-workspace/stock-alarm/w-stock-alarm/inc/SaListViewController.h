@@ -38,6 +38,7 @@ private:
     virtual void onStopEdit();
     virtual void onUpdateEdit();
 
+    void _pushAllCompanyListView();
 private:
     static void _onFloatingButtonClicked(void *data, Evas_Object *obj, void *eventInfo);
     static void _onCtxPopupDismissed(void *data, Evas_Object *obj, void *eventInfo);

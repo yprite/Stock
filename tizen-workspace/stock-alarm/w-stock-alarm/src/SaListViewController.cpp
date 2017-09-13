@@ -65,6 +65,11 @@ void SaListViewController::updateList()
 
     {
         SaListTitleItem *titleItem = new SaListTitleItem();
+        titleItem->setOnAddButtonClicked(
+            [this]()
+            {
+                _pushAllCompanyListView();
+            });
         _listObj->addTitleItem(titleItem);
     }
 
@@ -323,13 +328,16 @@ void SaListViewController::_onItemClicked(void *data, Evas_Object *obj, void *ev
             elm_win_lower(self->getWindowController()->getEvasObject());
         return;
     }
+}
 
-    auto navi = (WNaviframeController *)(self->getWindowController()->getBaseViewController());
+void SaListViewController::_pushAllCompanyListView()
+{
+    auto navi = (WNaviframeController *)(getWindowController()->getBaseViewController());
     auto allCompanyListView = new SaCompanyListViewController();
     allCompanyListView->setOnItemClicked(
-        [self]()
+        [this]()
         {
-            self->updateList();
+            updateList();
         });
     navi->push(allCompanyListView);
 }

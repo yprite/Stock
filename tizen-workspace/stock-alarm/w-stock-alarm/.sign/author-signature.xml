@@ -4,7 +4,7 @@
 <SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"></SignatureMethod>
 <Reference URI="bin%2Fw-stock-alarm">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>Ova3EwQPELpRWPGCycwjoIOR/sDbYlkhmJ2/jg/Bxx4=</DigestValue>
+<DigestValue>Kp1N3I5hujP0kwgakBBLunCyGkgki49EZEYXqamOM7w=</DigestValue>
 </Reference>
 <Reference URI="bin%2Fw-stock-alarm-service">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -36,7 +36,7 @@
 </Reference>
 <Reference URI="res%2Fedje%2FCustomGenlist.edj">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>QeSeZ6jvLBmVzim/LTRMmdNpHzzQngeItLrBmrjWHuw=</DigestValue>
+<DigestValue>p0H9qNBUuShj+Hd97UbOZjfFXL6hRh8yJMglOVsTLKU=</DigestValue>
 </Reference>
 <Reference URI="res%2Fedje%2FSaListView.edj">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -69,6 +69,10 @@
 <Reference URI="res%2Fedje%2FSaWidgetStockInfoView.edj">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
 <DigestValue>Xck7+YYw/LfhYPE7w8bTuwm4OnCCaySN/QwYq00O+9I=</DigestValue>
+</Reference>
+<Reference URI="res%2Fedje%2F__CustomGenlist2.txt">
+<DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
+<DigestValue>Yzv/StiFJAGnywgvSkEGqE2Vk2dwFzRh91xZNXeQMI8=</DigestValue>
 </Reference>
 <Reference URI="res%2Fedje%2Fapp-assist-efl.edj">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -167,9 +171,9 @@
 </Reference>
 </SignedInfo>
 <SignatureValue>
-SgpsMGCxu6IZL37VOFnt7C1APClxna+Xi9aSN9ZTvW/a6Hb2c8DgABR7SQtEvhs3cEfVqdD60yeX
-RrMUhrK1mDEXLO7RZcKUK8UCh4lCsJtf2n08ldZ5Z/ukfwlbb0jdITx/9CqpasQnXTIa5fBSTZzH
-9YQNc6gS1tdF0iI4Yxo=
+W+rb0xqj4J6pLZ2Ph+I7J7R/dhmfeZR1P8lXx4rv3m8EOragQa7IVHq36ao6FliKWqWO6g5A/d/s
+AsCc18RhxaLm36rUoDZ/5xZwLBbtoFz+o+L4Sxth1aRCFs76uLhLlTyQ3arW2O7f28wZuLIUcdET
+DMeRSYH3n8HaALy7lvE=
 </SignatureValue>
 <KeyInfo>
 <X509Data>

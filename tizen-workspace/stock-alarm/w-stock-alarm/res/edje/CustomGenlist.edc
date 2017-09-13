@@ -4,14 +4,103 @@
 collections
 {
     base_scale, 1.3;
+    
+    group
+    {
+        name, elm/genlist/item/stock-alarm/search/default;
+        images.image, search.png COMP;
+        data.item, "contents" "search.icon";
+        data.item, "vi_effect" "on";
+        data.item, "focus_bg" "off";
+        data.item, "scroll_to" "on";
+        data.item, "treesize" 0;
+        parts
+        {
+            //PART_LIST_BG
+            part
+            {
+                name, bg;
+                type, RECT;
+                description
+                {
+                    state, default 0.0;
+                    min, 360 131;
+                    color, 0 0 0 0;
+                }
+            }
+            PART_LIST_PADDINGS(0, 0, 65, 65)
 
+            part
+            {
+                name, clipper.search.icon;
+                type, RECT;
+                description
+                {
+                    state, default 0.0;
+                    min, 256 76;
+                    max, 256 76;
+                    fixed, 1 1;
+                    //rel1.to_x, elm.padding.left;
+                    //rel1.to_y, elm.padding.top;
+                    //rel2.to_x, elm.padding.right;
+                    //rel2.to_y, elm.padding.bottom;
+                    rel1.to, bg;
+                    rel2.to, bg;
+                    color, 255 255 255 255;
+                }
+                description
+                {
+                    state, pressed 0.0;
+                    inherit, default 0.0;
+                    color, 255 255 255 125;
+                }
+            }
+            part
+            {
+                name, search.icon;
+                type, IMAGE;
+                clip_to, clipper.search.icon;
+                description
+                {
+                    state, default 0.0;
+                    min, 256 76;
+                    max, 256 76;
+                    fixed, 1 1;
+                    //rel1.to_x, elm.padding.left;
+                    //rel1.to_y, elm.padding.top;
+                    //rel2.to_x, elm.padding.right;
+                    //rel2.to_y, elm.padding.bottom;
+                    rel1.to, bg;
+                    rel2.to, bg;
+                    image.normal, search.png;
+                }
+            }
+        } // parts
+        programs
+        {
+            program
+            {
+                signal, "mouse,down,*";
+                source, search.icon;
+                action, STATE_SET pressed 0.0;
+                target, clipper.search.icon;
+            }
+            program
+            {
+                signal, "mouse,up,*";
+                source, search.icon;
+                action, STATE_SET default 0.0;
+                target, clipper.search.icon;
+            }
+        }
+    }
     group
     {
         name, elm/genlist/item/stock-alarm/title.2icon/default;
-        data.item, "contents" "elm.icon.1 elm.icon.2";
+        data.item, "contents" "elm.icon.1 elm.icon.2 sw.icon.1.effect sw.icon.2.effect";
         data.item, "vi_effect" "on";
         data.item, "focus_bg" "off";
-        data.item, "scroll_to" "off";
+        data.item, "scroll_to" "on";
         data.item, "treesize" 0;
         parts
         {
@@ -61,6 +150,35 @@ collections
                     rel2.to, spacer.center;
                     rel2.relative, 1.0 0.5;
                     align, 0.0 0.5;
+                    //color, 0 255 0 255;
+                }
+            }
+            part
+            {
+                name, sw.icon.1.effect;
+                type, SWALLOW;
+                description
+                {
+                    state, default 0.0;
+                    min, 90 90;
+                    max, 90 90;
+                    fixed, 1 1;
+                    rel1.to, elm.icon.1;
+                    rel2.to, elm.icon.1;
+                }
+            }
+            part
+            {
+                name, sw.icon.2.effect;
+                type, SWALLOW;
+                description
+                {
+                    state, default 0.0;
+                    min, 90 90;
+                    max, 90 90;
+                    fixed, 1 1;
+                    rel1.to, elm.icon.2;
+                    rel2.to, elm.icon.2;
                     //color, 0 255 0 255;
                 }
             }

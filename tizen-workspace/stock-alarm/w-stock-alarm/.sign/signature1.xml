@@ -4,11 +4,11 @@
 <SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"></SignatureMethod>
 <Reference URI="author-signature.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>NEpeyxblnW190HpzOuPQ0vjfYl7ilvQzvIETtvYw1Jc=</DigestValue>
+<DigestValue>NgBNuy7SA8QyErH6apOyHFADL6jW0ZJT6UenJd2nsZU=</DigestValue>
 </Reference>
 <Reference URI="bin%2Fw-stock-alarm">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>Ova3EwQPELpRWPGCycwjoIOR/sDbYlkhmJ2/jg/Bxx4=</DigestValue>
+<DigestValue>Kp1N3I5hujP0kwgakBBLunCyGkgki49EZEYXqamOM7w=</DigestValue>
 </Reference>
 <Reference URI="bin%2Fw-stock-alarm-service">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -40,7 +40,7 @@
 </Reference>
 <Reference URI="res%2Fedje%2FCustomGenlist.edj">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>QeSeZ6jvLBmVzim/LTRMmdNpHzzQngeItLrBmrjWHuw=</DigestValue>
+<DigestValue>p0H9qNBUuShj+Hd97UbOZjfFXL6hRh8yJMglOVsTLKU=</DigestValue>
 </Reference>
 <Reference URI="res%2Fedje%2FSaListView.edj">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -73,6 +73,10 @@
 <Reference URI="res%2Fedje%2FSaWidgetStockInfoView.edj">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
 <DigestValue>Xck7+YYw/LfhYPE7w8bTuwm4OnCCaySN/QwYq00O+9I=</DigestValue>
+</Reference>
+<Reference URI="res%2Fedje%2F__CustomGenlist2.txt">
+<DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
+<DigestValue>Yzv/StiFJAGnywgvSkEGqE2Vk2dwFzRh91xZNXeQMI8=</DigestValue>
 </Reference>
 <Reference URI="res%2Fedje%2Fapp-assist-efl.edj">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -171,9 +175,9 @@
 </Reference>
 </SignedInfo>
 <SignatureValue>
-hIwWTydMqxk1P2UpXXXv3ERM6lcR8ukwgC709ffYSvEh2j8eeUyIWUWMeJxcOGgGZJrrrG3dKL/Z
-qKmlvmEKRceeoUZNnFMJzYMOqLDxEj+OyZGTSAFYM6XtzVtu5xfSTM8QdidaqT55LblXnboI7n0I
-PUVrxi8W7+iv5mQ4uIs=
+XIYT1z8hsnHSSaE53UFkigy6ODy5V38RvexCluDM/IuvgiYkEj/sTU0YcntrIrksCQ3wIWr7v0IF
+vCefCRunNZEh0TEdpcjC2670u7A6Bi63bgC6U7qwnCO3oq57qOl+31lGw6vTGv+rQ+vxbS3zJejx
+6Ruf7lYBPYIVTE8UOJs=
 </SignatureValue>
 <KeyInfo>
 <X509Data>

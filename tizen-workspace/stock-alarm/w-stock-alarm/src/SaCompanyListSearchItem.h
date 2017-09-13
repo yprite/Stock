@@ -8,11 +8,16 @@
 #ifndef SACOMPANYLISTSEARCHITEM_H_
 #define SACOMPANYLISTSEARCHITEM_H_
 
-class SaCompanyListSearchItem
+#include "WGenlistItem.h"
+
+class SaCompanyListSearchItem : public app_assist::WGenlistItem
 {
 public:
     SaCompanyListSearchItem();
     virtual ~SaCompanyListSearchItem();
+
+protected:
+    virtual Elm_Genlist_Item_Class* getItemClassStatic() const;
 };
 
 #endif /* SACOMPANYLISTSEARCHITEM_H_ */

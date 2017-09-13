@@ -21,6 +21,7 @@
 #include <string.h>
 #include <algorithm>
 #include <utils_i18n.h>
+#include <app.h>
 
 using namespace app_assist;
 
@@ -51,9 +52,19 @@ void SaCompanyListViewController::onCreated()
     WENTER();
     Evas_Object *layout = getEvasObject();
 
-    _listObj = new GenlistObject();
-    _listObj->create(layout, nullptr);
-    elm_object_part_content_set(layout, "elm.swallow.content", _listObj->getEvasObject());
+    char *resPath = app_get_resource_path();
+    char themePath[PATH_MAX] = {0, };
+    if (resPath)
+    {
+        snprintf(themePath, sizeof(themePath), "%s%s", resPath, "edje/CustomGenlist.edj");
+        free(resPath);
+    }
+
+    GenlistObject *listObj = new GenlistObject();
+    listObj->setCustomTheme(themePath);
+    listObj->create(layout, nullptr);
+    elm_object_part_content_set(layout, "elm.swallow.content", listObj->getEvasObject());
+    _listObj = listObj;
 
     Evas_Object *circleGenlist = eext_circle_object_genlist_add(_listObj->getEvasObject(), RotaryManager::getInstance()->getCircleSurface());
     RotaryManager::getInstance()->setOnRotary(circleGenlist, ROTARY_MANAGER_DEFAULT_ROTARY_HANDLER);
@@ -63,6 +74,26 @@ void SaCompanyListViewController::onCreated()
     GLPaddingItem *titlePaddingItem = new GLPaddingItem();
     _listObj->addPaddingItem(titlePaddingItem);
 
+    SaCompanyListSearchItem *titleItem = new SaCompanyListSearchItem();
+    _listObj->addItem(titleItem,
+        [](void *data, Evas_Object *obj, void *eventInfo)
+        {
+            auto it = (Elm_Object_Item *)eventInfo;
+            if (!it)
+                return;
+            elm_genlist_item_selected_set(it, EINA_FALSE);
+
+            auto self = (SaCompanyListViewController *)data;
+            auto navi = (WNaviframeController *)(self->getWindowController()->getBaseViewController());
+            auto searchView = new SaSearchCompanyViewController();
+            searchView->setOnTextSearched(
+                    [self](const std::string& str)
+                    {
+                        self->_onTextSearched(str);
+                    });
+            navi->push(searchView);
+        }, this);
+/*
     SaCompanyListCompanyItem *item = new SaCompanyListCompanyItem(allCompanyList[0]);
     _listObj->addItem(item,
         [](void *data, Evas_Object *obj, void *eventInfo)
@@ -82,6 +113,7 @@ void SaCompanyListViewController::onCreated()
                     });
             navi->push(searchView);
         }, this);
+        */
 #if 0
     GLTitleItem *titleItem = new GLTitleItem("title");
     _listObj->addTitleItem(titleItem,
