@@ -29,6 +29,11 @@ Elm_Genlist_Item_Class* SaListStockInfoItem::getItemClassStatic() const
     return &itcNormal;
 }
 
+SaCompanyInfo SaListStockInfoItem::getCompanyInfo() const
+{
+    return _companyInfo;
+}
+
 WGenlistItemEx::ItemType SaListStockInfoItem::getItemType() const
 {
     return WGenlistItemEx::ItemType::NORMAL;

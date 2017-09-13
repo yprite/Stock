@@ -31,7 +31,7 @@ SaDataProvider::SaDataProvider()
     _functionTable[SaDataExchangeKeys::cashFlow] = SaDataProviderHelper::getFinanceCashFlow;
     _functionTable[SaDataExchangeKeys::companyInfo] = SaDataProviderHelper::getFinanceComInfo;
     _functionTable[SaDataExchangeKeys::dividenHistory] = SaDataProviderHelper::getFinanceDividenHistory;
-    _functionTable[SaDataExchangeKeys::historicalData] = SaDataProviderHelper::getFinanceHistorycalData;
+    _functionTable[SaDataExchangeKeys::historicalData] = SaDataProviderHelper::getFinanceHistoricalData;
     _functionTable[SaDataExchangeKeys::incomeStatement] = SaDataProviderHelper::getFinanceIncomeHistoricalData;
     _functionTable[SaDataExchangeKeys::industry] = SaDataProviderHelper::getFinanceIndustry;
     _functionTable[SaDataExchangeKeys::isin] = SaDataProviderHelper::getFinanceISIN;
@@ -46,6 +46,7 @@ SaDataProvider::SaDataProvider()
     _functionTable[SaDataExchangeKeys::sectors] = SaDataProviderHelper::getFinanceSectors;
     _functionTable[SaDataExchangeKeys::stocks] = SaDataProviderHelper::getFinanceStocks;
     _functionTable[SaDataExchangeKeys::xchange] = SaDataProviderHelper::getFinanceXChange;
+    _functionTable[SaDataExchangeKeys::allinfo] = SaDataProviderHelper::getFinanceAllInfo;
 }
 
 SaDataProvider::~SaDataProvider()
@@ -186,7 +187,7 @@ void SaDataProvider::_onDataAddRequested(int reqId, data_control_h provider, con
         int r = message_port_send_message(gAppList[i], portName, resultB);
 
         if (r != MESSAGE_PORT_ERROR_NONE)
-            WERROR("message_port_send_message failed.(%d)", r);
+            WERROR("message_port_send_message failed.(%d) - appid : %s", r, gAppList[i]);
         else
             WINFO("message_port_send_message success.");
     }

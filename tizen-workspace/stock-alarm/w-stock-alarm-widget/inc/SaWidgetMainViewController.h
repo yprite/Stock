@@ -10,30 +10,38 @@
 
 #include "WViewController.h"
 #include "WTimer.h"
-#include <widget_app.h>
 #include "SaWidgetStockInfoViewController.h"
+#include "SaMessageEventListener.h"
+#include "SaWidgetResumeEffectViewController.h"
+#include "SaProgressObject.h"
+#include <functional>
 
 class SaWidgetMainViewController : public app_assist::WViewController
+
 {
 public:
     SaWidgetMainViewController();
     virtual ~SaWidgetMainViewController();
 
-    void pause();
-    void resume();
+    void showProgress();
+    void removeProgress();
+    void showResumeEffect();
+    void removeResumeEffect();
 
+    void setOnResumeEffectFullyShown(const std::function<void(void)>& effectFullyShownCb);
+    void setOnResumeEffectFinished(const std::function<void(void)>& effectFinishedCb);
 private:
     virtual Evas_Object* onCreateView(Evas_Object *parent, void *viewParam) override;
     virtual void onCreated() override;
     virtual void onDestroy() override;
 
 private:
-    app_assist::WTimerWeakPtr _animator;
-    bool _isAnimatorRunning;
-    double _animationStartTime;
-    widget_context_h _context;
+    SaWidgetResumeEffectViewController *_resumeEffectViewController;
+    SaProgressObject *_progressObject;
+    app_assist::WTimerWeakPtr _resumeTimer;
 
-    SaWidgetStockInfoViewController *_stockInfoViewController;
+    std::function<void(void)> _effectFinishedCb;
+    std::function<void(void)> _effectFullyShownCb;
 };
 
 #endif /* SAWIDGETMAINVIEWCONTROLLER_H_ */

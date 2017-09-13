@@ -11,6 +11,7 @@
 #include "WViewController.h"
 #include <cairo.h>
 #include <vector>
+#include <list>
 
 class SaWidgetGraphObject : public app_assist::WViewController
 {
@@ -19,6 +20,9 @@ public:
     {
         double x;
         double y;
+
+        Point() : x(0), y(0) { }
+        Point(const int& _x, const int& _y) : x(_x), y(_y) { }
     };
 
 public:
@@ -41,7 +45,7 @@ private:
     Evas_Object *_canvas;
     cairo_surface_t *_surface;
     cairo_t *_cairo;
-    std::vector<Point> _pointList;
+    std::list<Point> _pointList;
     int _r, _g, _b, _a;
     int _width, _height;
 };

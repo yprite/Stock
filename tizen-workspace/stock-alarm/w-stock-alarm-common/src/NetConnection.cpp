@@ -307,3 +307,41 @@ void NetConnection::_onIpAddressChanged(const char* ipv4_address, const char* ip
     if (self->_ipChangedCb)
         self->_ipChangedCb(ipv4_address, ipv6_address);
 }
+
+std::string NetConnection::getProxyAddress() const
+{
+    char* proxy = NULL;
+    std::string proxyStr;
+    connection_type_e type = (connection_type_e) CONNECTION_TYPE_DISCONNECTED;
+    int ret = 0;
+
+    ret = connection_get_type(_conHandler, &type);
+    if (ret != 0)
+    {
+        WERROR("Failed to get connection type from net connection[%d]", ret);
+        return proxyStr;
+    }
+
+    if (type == CONNECTION_TYPE_BT || type == CONNECTION_TYPE_NET_PROXY || type == CONNECTION_TYPE_ETHERNET)
+    {
+        ret = connection_get_proxy(_conHandler, CONNECTION_ADDRESS_FAMILY_IPV4, &proxy);
+        if (ret != 0)
+        {
+            WERROR("Failed to get proxy from net connection [%d]", ret);
+            proxy = NULL;
+        }
+    }
+    else
+    {
+        WERROR("connection type is not proxy.");
+        proxy = NULL;
+    }
+
+    if (proxy)
+    {
+        proxyStr = proxy;
+        free(proxy);
+    }
+
+    return proxyStr;
+}

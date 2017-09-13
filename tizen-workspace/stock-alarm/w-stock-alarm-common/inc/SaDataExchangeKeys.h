@@ -21,7 +21,7 @@ public:
     static constexpr char const *cashFlow = "cashflow";
     static constexpr char const *companyInfo = "com-info";
     static constexpr char const *dividenHistory = "dividenhistory";
-    static constexpr char const *historicalData = "historycaldata";
+    static constexpr char const *historicalData = "historicaldata";
     static constexpr char const *incomeStatement = "incomestatement";
     static constexpr char const *industry = "industry";
     static constexpr char const *isin = "isin";
@@ -36,6 +36,7 @@ public:
     static constexpr char const *sectors = "sectors";
     static constexpr char const *stocks = "stocks";
     static constexpr char const *xchange = "xchange";
+    static constexpr char const *allinfo = "allinfo";
 };
 
 #endif /* SADATAEXCHANGEKEYS_H_ */

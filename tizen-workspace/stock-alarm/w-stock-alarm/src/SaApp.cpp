@@ -15,6 +15,7 @@
 #include "RotaryManager.h"
 #include "SaBaseListViewController.h"
 #include "SaCompanyListViewController.h"
+#include "SaAppControlManager.h"
 #include "SaDebug.h"
 
 #include <Elementary.h>
@@ -75,6 +76,7 @@ bool SaApp::onCreate()
     SaDataConsumer::getInstance()->initialize();
     RotaryManager::getInstance()->initialize(getWindowController()->getConformantEvasObject());
     SaCompanyDBManager::getInstance()->initialize();
+    SaAppControlManager::getInstance()->initialize();
 
 //    SaCompanyInfo info = {"aaa", "bbb", "ccc"};
 //    SaCompanyDBManager::getInstance()->add(info);
@@ -89,11 +91,13 @@ void SaApp::onTerminate()
     //  ScRotaryManager::getInstance()->finalize();
     SaDataConsumer::getInstance()->finalize();
     SaCompanyDBManager::getInstance()->finalize();
+    SaAppControlManager::getInstance()->finalize();
 }
 
 void SaApp::onAppControl(app_control_h request, bool firstLaunch)
 {
     WENTER();
+    SaAppControlManager::getInstance()->setCallerControl(request);
     if (firstLaunch)
     {
         auto navi = (WNaviframeController *)(getWindowController()->getBaseViewController());

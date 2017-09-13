@@ -8,8 +8,14 @@
 #include "SaDataConsumer.h"
 #include "SaDataExchangeKeys.h"
 #include "SaCommonDebug.h"
+#include "SaCompanyDBManager.h"
+#include "SaTypes.h"
+#include "SaUtility.h"
+#include "SaMessageEventManager.h"
 
 #include <message_port.h>
+#include <bundle.h>
+#include <vector>
 SaDataConsumer* SaDataConsumer::_instance = nullptr;
 
 SaDataConsumer::SaDataConsumer()
@@ -39,6 +45,7 @@ SaDataConsumer::SaDataConsumer()
     _functionTable[SaDataExchangeKeys::sectors] = SaDataConsumerHelper::parseFinanceSectors;
     _functionTable[SaDataExchangeKeys::stocks] = SaDataConsumerHelper::parseFinanceStocks;
     _functionTable[SaDataExchangeKeys::xchange] = SaDataConsumerHelper::parseFinanceXChange;
+    _functionTable[SaDataExchangeKeys::allinfo] = SaDataConsumerHelper::parseFinanceAllInfo;
 }
 
 SaDataConsumer::~SaDataConsumer()
@@ -142,8 +149,42 @@ int SaDataConsumer::initialize()
                             local_port_id, remote_app_id, remote_port);
 
                     char *key = nullptr;
+                    char *symbol = nullptr;
+                    char *result = nullptr;
+                    char *errorMessage = nullptr;
                     bundle_get_str(message, "key", &key);
-                    self->_functionTable[key](message);
+                    bundle_get_str(message, "symbol", &symbol);
+                    bundle_get_str(message, "result", &result);
+                    bundle_get_str(message, "errorMessage", &errorMessage);
+
+                    WINFO("message port message : key[%s], symbol[%s], result[%s], errorMessage[%s]",
+                        key, symbol, result, errorMessage);
+                    //self->_functionTable[key](message);
+#if 0
+                    SaCompanyInfo companyInfo;
+                    SaCompanyDBManager::getInstance()->getCompanyInfo("005930", companyInfo);
+                    WINFO("companyinfo : %s %s %s %s %s %s %s %s %s",
+                        companyInfo.code.c_str(),
+                        companyInfo.name.c_str(),
+                        companyInfo.market.c_str(),
+                        companyInfo.price.c_str(),
+                        companyInfo.max.c_str(),
+                        companyInfo.min.c_str(),
+                        companyInfo.volume.c_str(),
+                        companyInfo.previous.c_str(),
+                        companyInfo.histroicaldata.c_str());
+
+
+                    bundle *b = bundle_decode((const bundle_raw *)companyInfo.histroicaldata.c_str(), companyInfo.histroicaldata.size());
+                    std::vector<HistoricalData> historicalVec;
+                    SaUtility::convertBundle2HistoricalDataVec(b, historicalVec);
+
+                    for (int i = 0; i < historicalVec.size(); ++i)
+                    {
+                        WDEBUG("[%3d] : %s %s %s", i, historicalVec[i].date.c_str(), historicalVec[i].closedPrice.c_str(), historicalVec[i].volume.c_str());
+                    }
+#endif
+                    SaMessageEventManager::getInstance()->propagateEvent(key, symbol, result, errorMessage);
                 }, this);
 
         if (portId < 0)
@@ -244,6 +285,59 @@ int SaDataConsumer::requestFinanceQuatesList(const char *symbol)
     }
 
     return 0;
+}
+
+int SaDataConsumer::requestFinanceHistoricalData(const char *symbol)
+{
+    WENTER();
+
+    int ret = DATA_CONTROL_ERROR_NONE;
+    int reqId = 0;
+
+    bundle *b = bundle_create();
+    bundle_add_str(b, "symbol", symbol);
+    bundle_raw *r = nullptr;
+    int len = 0;
+    bundle_encode(b, &r, &len);
+    WINFO("data : %s, len : %d", r, len);
+
+    ret = data_control_map_add(_providerMap, SaDataExchangeKeys::historicalData, (const char *)r, &reqId);
+    bundle_free(b);
+    free(r);
+
+    if (ret != DATA_CONTROL_ERROR_NONE)
+    {
+        WERROR("data_control_map_add failed.(%d)", ret);
+        return -1;
+    }
+
+    return 0;
+}
+
+int SaDataConsumer::reqeuestFinanceAllInfo(const char* symbol)
+{
+	 WENTER();
+
+	 int ret = DATA_CONTROL_ERROR_NONE;
+	 int reqId = 0;
+
+	 bundle *b = bundle_create();
+	 bundle_add_str(b, "symbol", symbol);
+	 bundle_raw *r = nullptr;
+	 int len = 0;
+	 bundle_encode(b, &r, &len);
+	 WINFO("data : %s, len : %d", r, len);
+
+	 ret = data_control_map_add(_providerMap, SaDataExchangeKeys::allinfo, (const char *)r, &reqId);
+	 bundle_free(b);
+	 free(r);
+
+	 if (ret != DATA_CONTROL_ERROR_NONE)
+	 {
+		 WERROR("data_control_map_add failed.(%d)", ret);
+		 return -1;
+	 }
+	 return 0;
 }
 
 void SaDataConsumer::_onDataGetResponse(int request_id, data_control_h provider, char **ret_value_list, int ret_value_count, bool provider_result, const char *error, void *user_data)

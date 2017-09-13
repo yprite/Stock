@@ -10,6 +10,7 @@
 
 #include "WDefine.h"
 #include <net_connection.h>
+#include <network/connection_profile.h>
 #include <functional>
 
 class WAPP_ASSIST_EXPORT NetConnection
@@ -71,6 +72,7 @@ public:
     NetConnection::WifiState getWifiState() const;
     NetConnection::BtState getBtState() const;
     NetConnection::EthernetState getEthernetState() const;
+    std::string getProxyAddress() const;
 
     void setOnConnectionTypeChangedCb(const std::function<void(NetConnection::NetState type)>& connectionChangedCb);
     void setOnIpAddressChangedCb(const std::function<void(const char *ipv4_address, const char *ipv6_address)>& ipChangedCb);

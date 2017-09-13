@@ -30,6 +30,8 @@ public:
 
     int requestFinanceQuates(const char *symbol);
     int requestFinanceQuatesList(const char *symbol);
+    int requestFinanceHistoricalData(const char *symbol);
+    int reqeuestFinanceAllInfo(const char* code);
 
 private:
     SaDataConsumer();

@@ -10,9 +10,12 @@
 #include "RotaryManager.h"
 #include "SaCompanyDBManager.h"
 #include "SaCompanyListViewController.h"
+#include "SaListTitleItem.h"
 #include "SaListStockInfoItem.h"
 #include "GLPaddingItem.h"
 #include "GLTitleItem.h"
+#include "SaAppControlManager.h"
+#include "SaDebug.h"
 
 #include <app.h>
 #include <Elementary.h>
@@ -60,6 +63,11 @@ void SaListViewController::updateList()
         _listObj->addPaddingItem(paddingItem);
     }
 
+    {
+        SaListTitleItem *titleItem = new SaListTitleItem();
+        _listObj->addTitleItem(titleItem);
+    }
+
     for (size_t i = 0; i < savedList.size(); ++i)
     {
         SaListStockInfoItem *item = new SaListStockInfoItem(savedList[i]);
@@ -96,7 +104,16 @@ void SaListViewController::onCreated()
 {
     Evas_Object *layout = getEvasObject();
 
+    char *resPath = app_get_resource_path();
+    char themePath[PATH_MAX] = {0, };
+    if (resPath)
+    {
+        snprintf(themePath, sizeof(themePath), "%s%s", resPath, "edje/CustomGenlist.edj");
+        free(resPath);
+    }
+
     SaListObject *listObj = new SaListObject();
+    listObj->setCustomTheme(themePath);
     listObj->create(layout, nullptr);
     elm_object_part_content_set(layout, "sw.list.obj", listObj->getEvasObject());
     _listObj = listObj;
@@ -289,12 +306,23 @@ void SaListViewController::_onDeleteButtonClicked(void *data, Evas_Object *obj, 
 
 void SaListViewController::_onItemClicked(void *data, Evas_Object *obj, void *eventInfo)
 {
+    WENTER();
     auto it = (Elm_Object_Item *)eventInfo;
     if (!it)
         return;
     elm_genlist_item_selected_set(it, EINA_FALSE);
 
     auto self = (SaListViewController *)data;
+    SaListStockInfoItem *item = (SaListStockInfoItem *)(elm_object_item_data_get(it));
+
+    if (SaAppControlManager::getInstance()->isWidgetRequest())
+    {
+        WINFO("widget request!");
+        bool ret = SaAppControlManager::getInstance()->sendSelectedInfo(item->getCompanyInfo());
+        if (ret)
+            elm_win_lower(self->getWindowController()->getEvasObject());
+        return;
+    }
 
     auto navi = (WNaviframeController *)(self->getWindowController()->getBaseViewController());
     auto allCompanyListView = new SaCompanyListViewController();

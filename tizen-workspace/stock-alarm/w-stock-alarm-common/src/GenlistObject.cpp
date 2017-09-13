@@ -254,16 +254,8 @@ void GenlistObject::_initTheme(const char *themePath)
 		return;
 	}
 
-	char *resPath = app_get_resource_path();
-	char edjPath[PATH_MAX] = {0, };
-	if (resPath)
-	{
-		snprintf(edjPath, sizeof(edjPath), "%s%s", resPath, themePath);
-		free(resPath);
-	}
-
 	elm_theme_ref_set(_theme, nullptr);
-	elm_theme_extension_add(_theme, edjPath);
+	elm_theme_extension_add(_theme, themePath);
 }
 
 void GenlistObject::_finalTheme()

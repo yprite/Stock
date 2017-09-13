@@ -60,7 +60,17 @@ void SaDataConsumerHelper::parseFinanceDividenHistory(bundle *b)
 
 void SaDataConsumerHelper::parseFinanceHistorycalData(bundle *b)
 {
-    WENTER();
+	WENTER();
+	char *key = nullptr;
+	char *result = nullptr;
+	char *errorMessage = nullptr;
+	char *jsonData = nullptr;
+
+	bundle_get_str(b, "key", &key);
+	bundle_get_str(b, "result", &result);
+	bundle_get_str(b, "errorMessage", &errorMessage);
+	bundle_get_str(b, "jsonData", &jsonData);
+	WINFO("key : %s, result : %s, errorMessage : %s, jsonData : %s", key, result, errorMessage, jsonData);
 }
 
 void SaDataConsumerHelper::parseFinanceIncomeHistoricalData(bundle *b)
@@ -125,7 +135,7 @@ void SaDataConsumerHelper::parseFinanceQuatesList(bundle *b)
 
     bundle_get_str(b, "key", &key);
     bundle_get_str(b, "result", &result);
-    bundle_get_str(b, "errorMessage", &errorMessage);
+    bundle_get_str(b, "errorMessage", &errorMessage);
     bundle_get_str(b, "jsonData", &jsonData);
 
     WINFO("key : %s, result : %s, errorMessage : %s, jsonData : %s", key, result, errorMessage, jsonData);
@@ -146,4 +156,18 @@ void SaDataConsumerHelper::parseFinanceStocks(bundle *b)
 void SaDataConsumerHelper::parseFinanceXChange(bundle *b)
 {
     WENTER();
+}
+void SaDataConsumerHelper::parseFinanceAllInfo(bundle *b)
+{
+    WENTER();
+
+    char *key = nullptr;
+    char *result = nullptr;
+    char *errorMessage = nullptr;
+
+    bundle_get_str(b, "key", &key);
+    bundle_get_str(b, "result", &result);
+    bundle_get_str(b, "errorMessage", &errorMessage);
+
+    WINFO("key : %s, result : %s, errorMessage: %s", key, result, errorMessage);
 }

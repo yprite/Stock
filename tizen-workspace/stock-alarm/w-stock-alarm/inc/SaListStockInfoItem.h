@@ -17,6 +17,8 @@ public:
     SaListStockInfoItem(const SaCompanyInfo& info);
     virtual ~SaListStockInfoItem();
 
+    SaCompanyInfo getCompanyInfo() const;
+
 protected:
     virtual Elm_Genlist_Item_Class* getItemClassStatic() const;
     virtual WGenlistItemEx::ItemType getItemType() const;

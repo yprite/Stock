@@ -39,6 +39,7 @@ public:
     static void parseFinanceSectors(bundle *b);
     static void parseFinanceStocks(bundle *b);
     static void parseFinanceXChange(bundle *b);
+    static void parseFinanceAllInfo(bundle *b);
 };
 
 #endif /* SADATACONSUMERHELPER_H_ */

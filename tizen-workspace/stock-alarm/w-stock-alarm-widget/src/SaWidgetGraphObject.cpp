@@ -49,7 +49,8 @@ void SaWidgetGraphObject::onCreated()
     evas_object_image_data_update_add(_canvas, 0, 0, _width, _height);
 
     // add first point
-    _pointList.push_back(Point{-10.0f, _height/2.0f});
+    //_pointList.push_back(Point{-20.0f, _height/2.0f});
+    //_pointList.push_back(Point{-10.0f, _height/2.0f});
 }
 
 void SaWidgetGraphObject::onDestroy()
@@ -80,46 +81,56 @@ bool SaWidgetGraphObject::updateGraph(const char *jsonData)
 
 void SaWidgetGraphObject::addPoint(const double &y)
 {
-    _pointList.push_back(Point{0, y});
+    Point p(0, y);
+    _pointList.push_back(p);
 }
 
 void SaWidgetGraphObject::drawGraph()
 {
     Point prevPos2, prevPos3, prevPos1, mid1, mid2;
 
-    cairo_set_line_width(_cairo, 3);
+    cairo_set_line_width(_cairo, 4);
     cairo_set_source_rgba(_cairo, _r/255.0f, _g/255.0f, _b/255.0f, _a/255.0f);
 
-    int _flagW = _width / (_pointList.size() - 2);
-    int _x_ = -1 * _flagW;
-    int minY = INT_MAX;
-    int maxY = 0;
+    double _flagW = _width / (_pointList.size() - 2);
+    double _x_ = -1 * _flagW;
+    double minY = 9999999;
+    double maxY = 0;
 
-    for (auto it = _pointList.begin(); it != _pointList.end(); ++it)
+    for (auto p = _pointList.begin(); p != _pointList.end(); ++p)
     {
-        if (it->y > maxY)
-            maxY = it->y;
-        if (it->y < minY)
-            minY = it->y;
+        if (p->y >= maxY)
+            maxY = p->y;
+        if (p->y <= minY)
+            minY = p->y;
     }
 
+    WINFO("maxY : %f, minY : %f", maxY, minY);
     size_t len = _pointList.size();
-    _pointList.push_back(Point{_pointList[len-1].x, _pointList[len-1].y});
+
+    //_pointList.push_back(Point{_pointList[len-1].x, _pointList[len-1].y});
+    _pointList.push_back(Point{_pointList.back().x, _pointList.back().y});
+
+    _pointList.push_front(Point{-10, (maxY + minY) / 2});
+    _pointList.push_front(Point{-20, (maxY + minY) / 2});
 
     for (auto it = _pointList.begin(); it != _pointList.end(); ++it)
     {
         prevPos2 = prevPos3;
         prevPos3 = prevPos1;
-        int deltaY = maxY - minY;
+        double deltaY = maxY - minY;
 
-        int _y_ = _height - ((_height * it->y) / deltaY);
-
+        //double _y_ = _height - ((_height * it->y) / deltaY);
+        //double _y_ = _height - (it->y * _height / maxY);
+        double _y_ = _height - ((it->y - minY) * _height) / deltaY;
+        WINFO("%lf", _y_);
         mid1.x = (prevPos3.x + prevPos2.x)/2.0f;
         mid1.y = (prevPos3.y + prevPos2.y)/2.0f;
 
         mid2.x = (_x_ + prevPos3.x) / 2.0f;
         mid2.y = (_y_ + prevPos3.y) / 2.0f;
 
+        //WINFO("mid1.x : %f, mid1.y : %f, mid2.x : %f, mid2.y: %f", mid1.x, mid1.y, mid2.x, mid2.y);
         cairo_move_to(_cairo, mid1.x, mid1.y);
         _drawQuadraticCurveTo(prevPos3.x, prevPos3.y, mid2.x, mid2.y);
         prevPos1.x = _x_;

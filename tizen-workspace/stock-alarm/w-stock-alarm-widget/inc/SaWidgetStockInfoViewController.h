@@ -13,16 +13,19 @@
 #include "WTimer.h"
 #include "SaWidgetResumeEffectViewController.h"
 #include "SaWidgetGraphObject.h"
+#include "SaWidgetDetailInfoViewController.h"
+#include "SaCompanyInfo.h"
 
 class SaWidgetStockInfoViewController : public app_assist::WViewController
                                       , public AppEventListener
 {
 public:
-    SaWidgetStockInfoViewController();
+    SaWidgetStockInfoViewController(const SaCompanyInfo& companyInfo);
     virtual ~SaWidgetStockInfoViewController();
 
-    void pause();
-    void resume();
+    void updateInfo(const SaCompanyInfo& companyInfo);
+    void hideAllObjects();
+    void showAllObjects();
 
 private:
     virtual Evas_Object* onCreateView(Evas_Object *parent, void *viewParam) override;
@@ -32,13 +35,14 @@ private:
 
     void _createTitlePriceInfo();
     void _createSubPriceInfo();
+    void _createDetailPriceInfo();
 
     void _updateText();
 
     void _hideGraphAnimation();
     void _showGraphAnimation();
-    void _moveUpSubPriceInfoAndShowDetailAnimation();
-    void _moveDownSubPriceInfoAndHideDetailAnimation();
+    void _showDetailInfoAnimation();
+    void _hideDetailInfoAnimation();
 
 private:
     app_assist::WTimerWeakPtr _animator;
@@ -58,9 +62,9 @@ private:
     Evas_Object *_plusMinusIcon;
     Evas_Object *_plueMinusText;
 
-    SaWidgetResumeEffectViewController *_resumeEffectViewController;
     SaWidgetGraphObject *_graphObject;
-    app_assist::WTimerWeakPtr _resumeTimer;
+    SaWidgetDetailInfoViewController *_detailObject;
+    SaCompanyInfo _companyInfo;
 };
 
 #endif /* SAWIDGETSTOCKINFOVIEWCONTROLLER_H_ */

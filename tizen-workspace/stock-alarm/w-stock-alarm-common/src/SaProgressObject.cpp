@@ -77,7 +77,18 @@ Evas_Object* SaProgressObject::onCreateView(Evas_Object *parent, void *param)
 void SaProgressObject::onCreated()
 {
     Evas_Object *layout = getEvasObject();
+    Evas_Object *canvasImg = elm_image_add(layout);
+    Evas_Object *canvas = elm_image_object_get(canvasImg);
 
+    evas_object_image_size_set(canvas, SCREEN_SIZE, SCREEN_SIZE);
+    evas_object_image_alpha_set(canvas, EINA_TRUE);
+    evas_object_image_colorspace_set(canvas, EVAS_COLORSPACE_ARGB8888);
+    evas_object_show(canvas);
+
+    _canvas = canvas;
+
+    elm_object_part_content_set(layout, "elm.swallow.content", canvasImg);
+/*
     edje_object_signal_callback_add(elm_layout_edje_get(layout), "loaded", "*",
             [](void *data, Evas_Object *obj, const char *emission, const char *source)
             {
@@ -98,7 +109,7 @@ void SaProgressObject::onCreated()
                 elm_object_part_content_set(self->getEvasObject(), "elm.swallow.content", canvasImg);
                 self->run();
             }, this);
-
+*/
 }
 
 void SaProgressObject::onDestroy()

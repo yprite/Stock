@@ -19,7 +19,29 @@ collections
             }
             part
             {
-                name, sw.content;
+                name, elm.swallow.content;
+                type, SWALLOW;
+                description
+                {
+                    state, default 0.0;
+                    rel1.to, base;
+                    rel2.to, base;
+                }
+            }
+            part
+            {
+                name, sw.resume.effect;
+                type, SWALLOW;
+                description
+                {
+                    state, default 0.0;
+                    rel1.to, base;
+                    rel2.to, base;
+                }
+            }
+            part
+            {
+                name, sw.progress.effect;
                 type, SWALLOW;
                 description
                 {
