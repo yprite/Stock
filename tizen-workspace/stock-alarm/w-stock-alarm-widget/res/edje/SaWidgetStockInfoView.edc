@@ -242,6 +242,23 @@ collections
                     color, 0 0 0 0;
                 }
             }
+            part
+            {
+                name, spacer.sw.graph;
+                type, SPACER;
+                description
+                {
+                    state, default 0.0;
+                    min, 360 140;
+                    max, 360 140;
+                    fixed, 1 1;
+                    rel1.to, base;
+                    rel1.relative, 0.5 0.0;
+                    rel2.to, base;
+                    rel2.relative, 0.5 0.0;
+                    align, 0.5 0.0;
+                }
+            }
             /*
             part
             {
@@ -275,11 +292,14 @@ collections
                 description
                 {
                     state, default 0.0;
-                    min, 360 150;
-                    max, 360 150;
+                    min, 360 120;
+                    max, 360 120;
                     fixed, 1 1;
-                    rel1.to, base;
-                    rel2.to, base;
+                    rel1.to, spacer.sw.graph;
+                    rel1.relative, 0.5 1.0;
+                    rel2.to, spacer.sw.graph;
+                    rel2.relative, 0.5 1.0;
+                    align, 0.5 0.0;
                 }
                 description
                 {

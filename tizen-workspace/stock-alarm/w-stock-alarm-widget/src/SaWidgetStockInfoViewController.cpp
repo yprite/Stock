@@ -608,7 +608,7 @@ void SaWidgetStockInfoViewController::updateInfo(const SaCompanyInfo& companyInf
         elm_object_part_content_unset(layout, "sw.graph");
         _graphObject->destroy();
     }
-    SaWidgetGraphObject *graphObj = new SaWidgetGraphObject(360, 150);
+    SaWidgetGraphObject *graphObj = new SaWidgetGraphObject(360, 120);
     for (size_t i = 0; i < vec.size(); ++i)
     {
         std::string number;

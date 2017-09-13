@@ -1,6 +1,6 @@
 bin/w-stock-alarm__DEL__Ova3EwQPELpRWPGCycwjoIOR/sDbYlkhmJ2/jg/Bxx4=
 bin/w-stock-alarm-service__DEL__tLP1deAyI+JKdnoHuoAPTcwvhSFml4z+4mzvwXi3hsw=
-bin/w-stock-alarm-widget__DEL__PvqK4KHvp1TqDrwcYtSvodDtykHgWe4ce0R3rdlpI6Y=
+bin/w-stock-alarm-widget__DEL__kS0nrjc0XjJ2+sDjQ6mtKbPhR+WbMbl9+vV58xzXQkA=
 lib/libw-stock-alarm-common.so__DEL__v2ve2AngzpkAE1sm6MzQG2ohrLwiFcVV0yrilBkXZCY=
 lib/libw-stock-alarm-ui-common.so__DEL__AOIoFjRwy4xfoWBEbuF3DUS0yYamOsADacd8nMyDlLI=
 lib/libw-tizen-app-assist.so__DEL__fMoYfNF6Czjy2rFRhVAwRmm3wuMNsA9CtG2YW1RU1Mc=
@@ -14,7 +14,7 @@ res/edje/SaWidgetDetailInfoView.edj__DEL__mtl0MzlKecNApHXpi1o1ghJmIf3ceOoddoPs2L
 res/edje/SaWidgetIcon.edj__DEL__68hX1LEReHPEEBc36Uru7ZdXAUvIVbJGBOtRYbYPlAY=
 res/edje/SaWidgetMainView.edj__DEL__GnWjlKhhRiwf/sD17jtZQ6Lhxw/cBq/+3Zf5UiaW2UM=
 res/edje/SaWidgetResumeEffectView.edj__DEL__4WAmTr4+35kN4xAbofeBr92NQzUjuTxaCP6kC79coMg=
-res/edje/SaWidgetStockInfoView.edj__DEL__TTwXJVjSjfQJX/CpRpQ3+y54EUaht/KmeJ2PqOe92Qs=
+res/edje/SaWidgetStockInfoView.edj__DEL__Xck7+YYw/LfhYPE7w8bTuwm4OnCCaySN/QwYq00O+9I=
 res/edje/app-assist-efl.edj__DEL__9rNLUfWlFrtlnsJRY+jZSFsBmfrU08Cn5/ZZ7YQ62ao=
 res/edje/inc/HVGA-inc.edj__DEL__EfFsBvJjeEFny3tX0VfGs5WoH/tDn6yiWCp7qMtuFK4=
 res/edje/inc/genlist.txt__DEL__XTeo8Q5vmOx9Opq5Bx4DZYHvuyVGts6DZL0+uNgoqtY=
@@ -37,4 +37,4 @@ shared/res/preview.png__DEL__3S2wqsyIQa6TfFI/g4OhYbcOMGmwLq4Htei2dAAgeqc=
 shared/res/w-stock-alarm-service.png__DEL__1d0oEZHqPn+QzNzGIHwj9ODby6x9ggFs9uOsav6jPNs=
 shared/res/w-stock-alarm.png__DEL__1d0oEZHqPn+QzNzGIHwj9ODby6x9ggFs9uOsav6jPNs=
 tizen-manifest.xml__DEL__aNQloO3VNTBO5irhwOrj6j/r3I47KFAAeieljqtbVtY=
-author-signature.xml__DEL__MR0On1EielTNAfPnonBetDJTt9qNqNEozyI5TBzcQdw=
+author-signature.xml__DEL__NEpeyxblnW190HpzOuPQ0vjfYl7ilvQzvIETtvYw1Jc=
